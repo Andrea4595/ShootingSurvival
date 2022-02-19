@@ -38,8 +38,8 @@
 			{"cost": 300, "power": 0.6}
 		],
 		"increaseChoiceCount": [
-			{"cost": 500, "power": 3},
-			{"cost": 1000, "power": 4}
+			{"cost": 500, "power": 1},
+			{"cost": 1000, "power": 2}
 		]
 	}
 }

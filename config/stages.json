@@ -1,27 +1,86 @@
-[
-	{
-		"credit": 100,
-		"groups" : [
-			[{"name": "enemyA", "count" : 3}],
-			[{"name": "enemyA", "count" : 5}],
-			[{"name": "enemyA", "count" : 5}]
-		]
-	},
-	{
-		"credit": 200,
-		"groups" : [
-			[{"name": "enemyA", "count" : 3}, {"name": "enemyB", "count" : 1}],
-			[{"name": "enemyA", "count" : 5}, {"name": "enemyB", "count" : 1}],
-			[{"name": "enemyA", "count" : 5}, {"name": "enemyB", "count" : 1}]
-		]
-	},
-	{
-		"credit": 300,
-		"groups" : [
-			[{"name": "enemyB", "count" : 3}],
-			[{"name": "enemyA", "count" : 3}, {"name": "enemyB", "count" : 3}],
-			[{"name": "enemyA", "count" : 20}, {"name": "enemyB", "count" : 3}],
-			[{"name": "enemyC", "count" : 1}]
-		]
-	}
-]
+{
+	"items":
+	[
+		{
+			"credit": 100,
+			"groups" : [
+				{
+					"spawns":
+					[
+						{"key": "enemyA", "count" : 3}
+					]
+				},
+				{
+					"spawns":
+					[
+						{"key": "enemyA", "count" : 5}
+					]
+				},
+				{
+					"spawns":
+					[
+						{"key": "enemyA", "count" : 5}
+					]
+				}
+			]
+		},
+		{
+			"credit": 200,
+			"groups" :
+			[
+				{
+					"spawns":
+					[
+						{"key": "enemyA", "count" : 3},
+						{"key": "enemyB", "count" : 1}
+					]
+				},
+				{
+					"spawns":
+					[
+						{"key": "enemyA", "count" : 5},
+						{"key": "enemyB", "count" : 1}
+					]
+				},
+				{
+					"spawns":
+					[
+						{"key": "enemyA", "count" : 5},
+						{"key": "enemyB", "count" : 1}
+					]
+				}
+			]
+		},
+		{
+			"credit": 300,
+			"groups" : [
+				{
+					"spawns":
+					[
+						{"key": "enemyB", "count" : 3}
+					]
+				},
+				{
+					"spawns":
+					[
+						{"key": "enemyA", "count" : 3},
+						{"key": "enemyB", "count" : 3}
+					]
+				},
+				{
+					"spawns":
+					[
+						{"key": "enemyA", "count" : 20},
+						{"key": "enemyB", "count" : 3}
+					]
+				},
+				{
+					"spawns":
+					[
+						{"key": "enemyC", "count" : 1}
+					]
+				}
+			]
+		}
+	]
+}

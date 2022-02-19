@@ -1,26 +1,28 @@
-[
-	{
-		"name": "player",
-		"hp": 100,
-		"moveSpeed": 1,
-		"weapon": ["base"]
-	},
-	{
-		"name": "enemyA",
-		"hp": 1,
-		"moveSpeed": 0.6,
-		"weapon": ["enemyA_weapon"]
-	},
-	{
-		"name": "enemyB",
-		"hp": 10,
-		"moveSpeed": 0.4,
-		"weapon": ["enemyB_weapon"]
-	},
-	{
-		"name": "enemyC",
-		"hp": 100,
-		"moveSpeed": 0.6,
-		"weapon": ["enemyC_weapon"]
-	}
-]
+{
+	"items": [
+		{
+			"key": "player",
+			"maxHp": 100,
+			"moveSpeed": 1,
+			"weapons": ["base"]
+		},
+		{
+			"key": "enemyA",
+			"maxHp": 1,
+			"moveSpeed": 0.6,
+			"weapons": ["enemyA_weapon"]
+		},
+		{
+			"key": "enemyB",
+			"maxHp": 10,
+			"moveSpeed": 0.4,
+			"weapons": ["enemyB_weapon"]
+		},
+		{
+			"key": "enemyC",
+			"maxHp": 100,
+			"moveSpeed": 0.6,
+			"weapons": ["enemyC_weapon"]
+		}
+	]
+}
