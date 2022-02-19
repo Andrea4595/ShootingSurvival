@@ -1,137 +1,236 @@
-[
-	{
-		"name": "base",
-		"projectile":
+{
+	"items":
+	[
 		{
-			"damage" : 5,
-			"range" : 1,
-			"speed" : 4,
-			"scale" : 1,
-			"homming" : 0,
-			"lifetime" : 10,
-			"count" : 1,
-			"angleRange" : 0
+			"key": "base",
+			"projectile":
+			{
+				"damage" : 5,
+				"range" : 1,
+				"speed" : 4,
+				"scale" : 1,
+				"homming" : 0,
+				"lifetime" : 10,
+				"count" : 1,
+				"angleRange" : 0
+			},
+			"fireCount" : 1,
+			"interval" : 1,
+			"upgrades":
+			[
+				{
+					"fixes" :
+					[
+						{
+							"key": "projectile/damage",
+							"fixTo": 6
+						},
+						{
+							"key": "projectile/count",
+							"fixTo": 2
+						}
+					]
+				},
+				{
+					"fixes" :
+					[
+						{
+							"key": "projectile/damage",
+							"fixTo": 7
+						},
+						{
+							"key": "projectile/count",
+							"fixTo": 3
+						}
+					]
+				}
+			]
 		},
-		"fireCount" : 1,
-		"interval" : 1,
-		"upgrades":
-		[
-			{"projectile/damage": 6, "projectile/count": 2},
-			{"projectile/damage": 7, "projectile/count": 3}
-		]
-	},
-	{
-		"name": "missile",
-		"projectile":
 		{
-			"damage" : 12,
-			"range" : 3,
-			"speed" : 1.5,
-			"scale" : 1.2,
-			"homming" : 60,
-			"lifetime" : 10,
-			"count" : 1,
-			"angleRange" : 360
+			"key": "missile",
+			"projectile":
+			{
+				"damage" : 12,
+				"range" : 3,
+				"speed" : 1.5,
+				"scale" : 1.2,
+				"homming" : 60,
+				"lifetime" : 10,
+				"count" : 1,
+				"angleRange" : 360
+			},
+			"fireCount" : 1,
+			"interval" : 7,
+			"upgrades":
+			[
+				{
+					"fixes" :
+					[
+						{
+							"key": "projectile/damage",
+							"fixTo": 20
+						},
+						{
+							"key": "projectile/count",
+							"fixTo": 2
+						}
+					]
+				},
+				{
+					"fixes" :
+					[
+						{
+							"key": "projectile/damage",
+							"fixTo": 40
+						},
+						{
+							"key": "projectile/count",
+							"fixTo": 3
+						}
+					]
+				}
+			]
 		},
-		"fireCount" : 1,
-		"interval" : 7,
-		"upgrades":
-		[
-			{"projectile/damage": 20, "projectile/count": 2},
-			{"projectile/damage": 40, "projectile/count": 3}
-		]
-	},
-	{
-		"name": "shotgun",
-		"projectile":
 		{
-			"damage" : 3,
-			"range" : 1,
-			"speed" : 8,
-			"scale" : 0.6,
-			"homming" : 0,
-			"lifetime" : 0.2,
-			"count" : 4,
-			"angleRange" : 60
+			"key": "shotgun",
+			"projectile":
+			{
+				"damage" : 3,
+				"range" : 1,
+				"speed" : 8,
+				"scale" : 0.6,
+				"homming" : 0,
+				"lifetime" : 0.2,
+				"count" : 4,
+				"angleRange" : 60
+			},
+			"fireCount" : 1,
+			"interval" : 2.2,
+			"upgrades":
+			[
+				{
+					"fixes" :
+					[
+						{
+							"key": "projectile/lifetime",
+							"fixTo": 0.3
+						},
+						{
+							"key": "projectile/count",
+							"fixTo": 6
+						}
+					]
+				},
+				{
+					"fixes" :
+					[
+						{
+							"key": "projectile/lifetime",
+							"fixTo": 0.4
+						},
+						{
+							"key": "projectile/count",
+							"fixTo": 8
+						}
+					]
+				}
+			]
 		},
-		"fireCount" : 1,
-		"interval" : 2.2,
-		"upgrades":
-		[
-			{"projectile/count": 6, "projectile/lifetime": 0.3},
-			{"projectile/count": 8, "projectile/lifetime": 0.4}
-		]
-	},
-	{
-		"name": "torpedo",
-		"projectile":
 		{
-			"damage" : 40,
-			"range" : 3,
-			"speed" : 0.1,
-			"scale" : 2,
-			"homming" : 0,
-			"lifetime" : 10,
-			"count" : 1,
-			"angleRange" : 0
+			"key": "torpedo",
+			"projectile":
+			{
+				"damage" : 40,
+				"range" : 3,
+				"speed" : 0.1,
+				"scale" : 2,
+				"homming" : 0,
+				"lifetime" : 10,
+				"count" : 1,
+				"angleRange" : 0
+			},
+			"fireCount" : 1,
+			"interval" : 12,
+			"upgrades":
+			[
+				{
+					"fixes" :
+					[
+						{
+							"key": "projectile/damage",
+							"fixTo": 50
+						},
+						{
+							"key": "projectile/lange",
+							"fixTo": 4
+						}
+					]
+				},
+				{
+					"fixes" :
+					[
+						{
+							"key": "projectile/damage",
+							"fixTo": 60
+						},
+						{
+							"key": "projectile/lange",
+							"fixTo": 5
+						}
+					]
+				}
+			]
 		},
-		"fireCount" : 1,
-		"interval" : 12,
-		"upgrades":
-		[
-			{"projectile/damage": 50, "projectile/range": 4},
-			{"projectile/damage": 60, "projectile/range": 5}
-		]
-	},
-	{
-		"name": "enemyA_weapon",
-		"projectile":
 		{
-			"damage" : 10,
-			"range" : 1,
-			"speed" : 1,
-			"scale" : 1,
-			"homming" : 0,
-			"lifetime" : 10,
-			"count" : 1,
-			"angleRange" : 0
+			"key": "enemyA_weapon",
+			"projectile":
+			{
+				"damage" : 10,
+				"range" : 1,
+				"speed" : 1,
+				"scale" : 1,
+				"homming" : 0,
+				"lifetime" : 10,
+				"count" : 1,
+				"angleRange" : 0
+			},
+			"fireCount" : 1,
+			"interval" : 2,
+			"upgrades": []
 		},
-		"fireCount" : 1,
-		"interval" : 2,
-		"upgrades": []
-	},
-	{
-		"name": "enemyB_weapon",
-		"projectile":
 		{
-			"damage" : 10,
-			"range" : 1,
-			"speed" : 1,
-			"scale" : 1.5,
-			"homming" : 10,
-			"lifetime" : 10,
-			"count" : 1,
-			"angleRange" : 0
+			"key": "enemyB_weapon",
+			"projectile":
+			{
+				"damage" : 10,
+				"range" : 1,
+				"speed" : 1,
+				"scale" : 1.5,
+				"homming" : 10,
+				"lifetime" : 10,
+				"count" : 1,
+				"angleRange" : 0
+			},
+			"fireCount" : 1,
+			"interval" : 2,
+			"upgrades": []
 		},
-		"fireCount" : 1,
-		"interval" : 2,
-		"upgrades": []
-	},
-	{
-		"name": "enemyC_weapon",
-		"projectile":
 		{
-			"damage" : 5,
-			"range" : 1,
-			"speed" : 3,
-			"scale" : 1,
-			"homming" : 0,
-			"lifetime" : 10,
-			"count" : 3,
-			"angleRange" : 80
-		},
-		"fireCount" : 7,
-		"interval" : 5,
-		"upgrades": []
-	}
-]
+			"key": "enemyC_weapon",
+			"projectile":
+			{
+				"damage" : 5,
+				"range" : 1,
+				"speed" : 3,
+				"scale" : 1,
+				"homming" : 0,
+				"lifetime" : 10,
+				"count" : 3,
+				"angleRange" : 80
+			},
+			"fireCount" : 7,
+			"interval" : 5,
+			"upgrades": []
+		}
+	]
+}
