@@ -1,0 +1,47 @@
+{
+	"stageUpgrades": {
+		"choiceCount": 2,
+		"increaseHp": [0.2, 0.4, 0.6, 0.8, 1],
+		"increaseMoveSpeed": [0.2, 0.4, 0.6, 0.8, 1],
+		"increaseCredit": [0.2, 0.4, 0.6, 0.8, 1],
+		"heal": 50,
+		"credit": 50
+	},
+
+	"permanentUpgrades": {
+		"increaseDamage": [
+			{"cost": 100, "power": 0.2},
+			{"cost": 200, "power": 0.4},
+			{"cost": 300, "power": 0.6}
+		],
+		"increaseInterval": [
+			{"cost": 100, "power": 0.2},
+			{"cost": 200, "power": 0.4},
+			{"cost": 300, "power": 0.6}
+		],
+		"increaseRange": [
+			{"cost": 100, "power": 0.2},
+			{"cost": 200, "power": 0.4},
+			{"cost": 300, "power": 0.6}
+		],
+		"increaseHp": [
+			{"cost": 100, "power": 0.2},
+			{"cost": 200, "power": 0.4},
+			{"cost": 300, "power": 0.6}
+		],
+		"increaseMoveSpeed": [
+			{"cost": 100, "power": 0.2},
+			{"cost": 200, "power": 0.4},
+			{"cost": 300, "power": 0.6}
+		],
+		"increaseCredit": [
+			{"cost": 100, "power": 0.2},
+			{"cost": 200, "power": 0.4},
+			{"cost": 300, "power": 0.6}
+		],
+		"increaseChoiceCount": [
+			{"cost": 500, "power": 1},
+			{"cost": 1000, "power": 2}
+		]
+	}
+}
