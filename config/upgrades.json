@@ -3,7 +3,9 @@
 		"choiceCount": 2,
 		"increaseHp": [0.2, 0.4, 0.6, 0.8, 1],
 		"increaseMoveSpeed": [0.2, 0.4, 0.6, 0.8, 1],
-		"increaseCredit": [0.2, 0.4, 0.6, 0.8, 1]
+		"increaseCredit": [0.2, 0.4, 0.6, 0.8, 1],
+		"heal": 50,
+		"credit": 50
 	},
 
 	"permanentUpgrades": {

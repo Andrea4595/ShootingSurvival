@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Data
 {
     [System.Serializable]
@@ -14,6 +10,8 @@ namespace Data
             public float[] increaseHp;
             public float[] increaseMoveSpeed;
             public float[] increaseCredit;
+            public float heal;
+            public int credit;
         }
 
         [System.Serializable]

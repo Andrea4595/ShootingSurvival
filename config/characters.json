@@ -2,26 +2,34 @@
 	"items": [
 		{
 			"key": "player",
+			"sprite": "Fighter",
+			"scale": 1,
 			"maxHp": 100,
-			"moveSpeed": 1,
-			"weapons": ["base"]
+			"moveSpeed": 5,
+			"weapons": ["base", "missile", "shotgun", "torpedo"]
 		},
 		{
 			"key": "enemyA",
+			"sprite": "Fighter",
+			"scale": 1,
 			"maxHp": 1,
-			"moveSpeed": 0.6,
+			"moveSpeed": 3,
 			"weapons": ["enemyA_weapon"]
 		},
 		{
 			"key": "enemyB",
+			"sprite": "Bomber",
+			"scale": 1.2,
 			"maxHp": 10,
-			"moveSpeed": 0.4,
+			"moveSpeed": 2,
 			"weapons": ["enemyB_weapon"]
 		},
 		{
 			"key": "enemyC",
+			"sprite": "Bomber",
+			"scale": 3,
 			"maxHp": 100,
-			"moveSpeed": 0.6,
+			"moveSpeed": 3,
 			"weapons": ["enemyC_weapon"]
 		}
 	]
