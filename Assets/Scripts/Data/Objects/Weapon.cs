@@ -6,14 +6,13 @@ namespace Data.Object
         [System.Serializable]
         public class Projectile
         {
+            public string sprite;
             public float damage;
             public float range;
             public float speed;
             public float scale;
             public float homming;
             public float lifetime;
-            public int count;
-            public float angleRange;
         }
 
         [System.Serializable]
@@ -32,8 +31,9 @@ namespace Data.Object
         public string key;
         public Projectile projectile;
         public int fireCount;
+        public int continuousCount;
         public float interval;
-        public float angle;
+        public float angleRange;
 
         public Upgrade[] upgrades;
     }

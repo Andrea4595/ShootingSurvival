@@ -5,16 +5,17 @@
 			"key": "base",
 			"projectile":
 			{
-				"damage" : 5,
-				"range" : 1,
-				"speed" : 4,
-				"scale" : 1,
+				"sprite" : "Bullet",
+				"damage" : 2,
+				"range" : 0,
+				"speed" : 25,
+				"scale" : 0.6,
 				"homming" : 0,
-				"lifetime" : 10,
-				"count" : 1,
-				"angleRange" : 0
+				"lifetime" : 3
 			},
 			"fireCount" : 1,
+			"angleRange" : 0,
+			"continuousCount" : 3,
 			"interval" : 1,
 			"upgrades":
 			[
@@ -23,11 +24,11 @@
 					[
 						{
 							"key": "projectile/damage",
-							"fixTo": 6
+							"fixTo": 3
 						},
 						{
-							"key": "projectile/count",
-							"fixTo": 2
+							"key": "continuousCount",
+							"fixTo": 5
 						}
 					]
 				},
@@ -36,11 +37,11 @@
 					[
 						{
 							"key": "projectile/damage",
-							"fixTo": 7
+							"fixTo": 4
 						},
 						{
-							"key": "projectile/count",
-							"fixTo": 3
+							"key": "continuousCount",
+							"fixTo": 7
 						}
 					]
 				}
@@ -50,16 +51,17 @@
 			"key": "missile",
 			"projectile":
 			{
+				"sprite" : "Missile",
 				"damage" : 12,
 				"range" : 3,
-				"speed" : 1.5,
-				"scale" : 1.2,
-				"homming" : 60,
-				"lifetime" : 10,
-				"count" : 1,
-				"angleRange" : 360
+				"speed" : 15,
+				"scale" : 1,
+				"homming" : 180,
+				"lifetime" : 3
 			},
 			"fireCount" : 1,
+			"angleRange" : 300,
+			"continuousCount" : 1,
 			"interval" : 7,
 			"upgrades":
 			[
@@ -71,7 +73,7 @@
 							"fixTo": 20
 						},
 						{
-							"key": "projectile/count",
+							"key": "fireCount",
 							"fixTo": 2
 						}
 					]
@@ -84,7 +86,7 @@
 							"fixTo": 40
 						},
 						{
-							"key": "projectile/count",
+							"key": "fireCount",
 							"fixTo": 3
 						}
 					]
@@ -95,16 +97,17 @@
 			"key": "shotgun",
 			"projectile":
 			{
+				"sprite" : "Bullet",
 				"damage" : 3,
-				"range" : 1,
-				"speed" : 8,
-				"scale" : 0.6,
+				"range" : 0,
+				"speed" : 30,
+				"scale" : 0.3,
 				"homming" : 0,
-				"lifetime" : 0.2,
-				"count" : 4,
-				"angleRange" : 60
+				"lifetime" : 0.2
 			},
-			"fireCount" : 1,
+			"fireCount" : 4,
+			"angleRange" : 60,
+			"continuousCount" : 1,
 			"interval" : 2.2,
 			"upgrades":
 			[
@@ -116,7 +119,7 @@
 							"fixTo": 0.3
 						},
 						{
-							"key": "projectile/count",
+							"key": "fireCount",
 							"fixTo": 6
 						}
 					]
@@ -129,7 +132,7 @@
 							"fixTo": 0.4
 						},
 						{
-							"key": "projectile/count",
+							"key": "fireCount",
 							"fixTo": 8
 						}
 					]
@@ -140,17 +143,18 @@
 			"key": "torpedo",
 			"projectile":
 			{
+				"sprite" : "Missile",
 				"damage" : 40,
-				"range" : 3,
-				"speed" : 0.1,
+				"range" : 8,
+				"speed" : 3,
 				"scale" : 2,
 				"homming" : 0,
-				"lifetime" : 10,
-				"count" : 1,
-				"angleRange" : 0
+				"lifetime" : 10
 			},
 			"fireCount" : 1,
-			"interval" : 12,
+			"angleRange" : 0,
+			"continuousCount" : 1,
+			"interval" : 8,
 			"upgrades":
 			[
 				{
@@ -162,7 +166,7 @@
 						},
 						{
 							"key": "projectile/lange",
-							"fixTo": 4
+							"fixTo": 12
 						}
 					]
 				},
@@ -175,7 +179,7 @@
 						},
 						{
 							"key": "projectile/lange",
-							"fixTo": 5
+							"fixTo": 20
 						}
 					]
 				}
@@ -185,16 +189,17 @@
 			"key": "enemyA_weapon",
 			"projectile":
 			{
+				"sprite" : "Bullet",
 				"damage" : 10,
-				"range" : 1,
-				"speed" : 1,
-				"scale" : 1,
+				"range" : 0,
+				"speed" : 10,
+				"scale" : 0.6,
 				"homming" : 0,
-				"lifetime" : 10,
-				"count" : 1,
-				"angleRange" : 0
+				"lifetime" : 10
 			},
 			"fireCount" : 1,
+			"angleRange" : 0,
+			"continuousCount" : 3,
 			"interval" : 2,
 			"upgrades": []
 		},
@@ -202,33 +207,35 @@
 			"key": "enemyB_weapon",
 			"projectile":
 			{
+				"sprite" : "Missile",
 				"damage" : 10,
-				"range" : 1,
-				"speed" : 1,
+				"range" : 3,
+				"speed" : 10,
 				"scale" : 1.5,
-				"homming" : 10,
-				"lifetime" : 10,
-				"count" : 1,
-				"angleRange" : 0
+				"homming" : 30,
+				"lifetime" : 10
 			},
 			"fireCount" : 1,
-			"interval" : 2,
+			"angleRange" : 0,
+			"continuousCount" : 1,
+			"interval" : 3.5,
 			"upgrades": []
 		},
 		{
 			"key": "enemyC_weapon",
 			"projectile":
 			{
+				"sprite" : "Bullet",
 				"damage" : 5,
-				"range" : 1,
-				"speed" : 3,
+				"range" : 0,
+				"speed" : 20,
 				"scale" : 1,
 				"homming" : 0,
-				"lifetime" : 10,
-				"count" : 3,
-				"angleRange" : 80
+				"lifetime" : 10
 			},
-			"fireCount" : 7,
+			"fireCount" : 3,
+			"angleRange" : 80,
+			"continuousCount" : 35,
 			"interval" : 5,
 			"upgrades": []
 		}

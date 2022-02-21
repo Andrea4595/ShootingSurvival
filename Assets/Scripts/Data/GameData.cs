@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Data
 {
-    public class GameData : MonoBehaviour
+    public class GameData : Singleton<GameData>
     {
         [SerializeField]
         Table<Object.Character> _characterData;
@@ -23,6 +21,8 @@ namespace Data
 
         void Initialize()
         {
+            Initialize(this);
+
             _characterData.Initialize("config/characters.json");
             _weaponData.Initialize("config/weapons.json");
             _stageData.Initialize("config/stages.json");
@@ -30,5 +30,29 @@ namespace Data
         }
 
         private void Awake() => Initialize();
+
+        public Object.Character GetCharacterData(string key)
+        {
+            foreach(var item in characters)
+            {
+                if (item.key == key)
+                    return item;
+            }
+
+            Debug.LogError($"there is no character named '{key}'.");
+            return null;
+        }
+
+        public Object.Weapon GetWeaponData(string key)
+        {
+            foreach (var item in weapons)
+            {
+                if (item.key == key)
+                    return item;
+            }
+
+            Debug.LogError($"there is no weapon named '{key}'.");
+            return null;
+        }
     }
 }
