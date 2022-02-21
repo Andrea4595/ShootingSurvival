@@ -646,6 +646,7 @@ MonoBehaviour:
   spriteBullet: {fileID: 21300000, guid: c5189defb95c55f41ab04cf1a49381e6, type: 3}
   spriteMissile: {fileID: 21300000, guid: de95edeeb33a489448287de930e80497, type: 3}
   spriteFighter: {fileID: 21300000, guid: 53a9117c8a72e8048912f3194f0eebca, type: 3}
+  spriteBomber: {fileID: 21300000, guid: 1500838891da39c4d8be0ca5f1ae721b, type: 3}
 --- !u!1 &1769946538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7022939024663430166, guid: 663710d56b79f3f4eaccf839a6695347, type: 3}
