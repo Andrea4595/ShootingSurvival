@@ -25,14 +25,16 @@ namespace Game
 
         IEnumerator CRun()
         {
-            while(true)
-            {
-                yield return new WaitForSeconds(_information.interval);
+            yield return new WaitForSeconds(Random.Range(0f, _information.interval));
 
+            while (true)
+            {
                 if (!_owner.activated)
                     break;
 
                 StartCoroutine(CFire());
+
+                yield return new WaitForSeconds(_information.interval);
             }
         }
 
@@ -40,6 +42,9 @@ namespace Game
         {
             for (int j = 0; j < _information.continuousCount; j++)
             {
+                if (!_owner.activated)
+                    break;
+
                 var direction = _owner.movement.lookingDirection - _information.angleRange * 0.5f;
                 var directionAdd = _information.angleRange / (_information.fireCount - 1);
 

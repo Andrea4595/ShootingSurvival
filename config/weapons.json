@@ -10,7 +10,7 @@
 				"range" : 0,
 				"speed" : 25,
 				"scale" : 0.6,
-				"homming" : 0,
+				"homming" : 2,
 				"lifetime" : 3
 			},
 			"fireCount" : 1,
@@ -98,12 +98,12 @@
 			"projectile":
 			{
 				"sprite" : "Bullet",
-				"damage" : 3,
+				"damage" : 2,
 				"range" : 0,
 				"speed" : 30,
 				"scale" : 0.3,
 				"homming" : 0,
-				"lifetime" : 0.2
+				"lifetime" : 0.4
 			},
 			"fireCount" : 4,
 			"angleRange" : 60,
@@ -116,7 +116,7 @@
 					[
 						{
 							"key": "projectile/lifetime",
-							"fixTo": 0.3
+							"fixTo": 0.5
 						},
 						{
 							"key": "fireCount",
@@ -129,7 +129,7 @@
 					[
 						{
 							"key": "projectile/lifetime",
-							"fixTo": 0.4
+							"fixTo": 0.6
 						},
 						{
 							"key": "fireCount",

@@ -16,14 +16,15 @@ namespace Game
 
         List<Character> _hits = new List<Character>();
 
-        public void Initialize(Character.Force force, Data.Object.Weapon.Projectile information, Vector3 position)
+        public void Initialize(Character owner, Data.Object.Weapon.Projectile information, Vector3 position)
         {
-            _force = force;
+            _force = owner.force;
             _information = information;
 
             _hits.Clear();
 
             _body.position = position;
+            _sprite.color = owner.color;
 
             StartCoroutine(CRun());
         }
