@@ -5,6 +5,7 @@ namespace Data.Object
     {
         public string key;
         public string sprite;
+        public float[] color;
         public float scale;
         public float maxHp;
         public float moveSpeed;

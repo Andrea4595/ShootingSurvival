@@ -13,6 +13,17 @@ namespace Game
         [SerializeField]
         SpriteRenderer _sprite;
 
+        Color _color = Color.white;
+        public Color color
+        {
+            get => _color;
+            set
+            {
+                _color = value;
+                _sprite.color = _color;
+            }
+        }
+
         List<Weapon> _weapons = new List<Weapon>();
 
         public enum Force { Player, Enemy }
@@ -27,6 +38,8 @@ namespace Game
             this.force = force;
 
             _sprite.sprite = SpriteInformer.GetSprite(information.sprite);
+            color = new Color(information.color[0], information.color[1], information.color[2]);
+
             movement.SetScale(information.scale);
             _weapons.Clear();
 

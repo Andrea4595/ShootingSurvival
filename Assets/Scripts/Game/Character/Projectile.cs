@@ -22,6 +22,7 @@ namespace Game
             _information = information;
             _direction = direction;
             _sprite.sprite = SpriteInformer.GetSprite(information.sprite);
+            _sprite.color = owner.color;
 
             StartCoroutine(CRun());
         }
@@ -124,7 +125,7 @@ namespace Game
         void SpawnExplosion()
         {
             var explosion = ObjectPool<Explosion>.GetObject();
-            explosion.Initialize(_owner.force, _information, _body.position);
+            explosion.Initialize(_owner, _information, _body.position);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
