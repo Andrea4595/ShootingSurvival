@@ -29,47 +29,76 @@
 		"weaponUpgradesWeight": 3
 	},
 
-	"permanentUpgrades": {
-		"increaseDamage": [
-			{"cost": 0, "power": 0},
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseInterval": [
-			{"cost": 0, "power": 0},
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseRange": [
-			{"cost": 0, "power": 0},
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseHp": [
-			{"cost": 0, "power": 0},
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseMoveSpeed": [
-			{"cost": 0, "power": 0},
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseCredit": [
-			{"cost": 0, "power": 0},
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseChoiceCount": [
-			{"cost": 0, "power": 0},
-			{"cost": 500, "power": 1},
-			{"cost": 1000, "power": 2}
-		]
+	"permanentUpgrades":
+	{
+		"increaseDamage": {
+			"name": "공격력 증가",
+			"levels":
+			[
+				{"cost": 0, "power": 0},
+				{"cost": 100, "power": 0.1},
+				{"cost": 200, "power": 0.2},
+				{"cost": 300, "power": 0.3}
+			]
+		},
+		"increaseInterval": {
+			"name": "공격 속도 증가",
+			"levels":
+			[
+				{"cost": 0, "power": 0},
+				{"cost": 200, "power": 0.1},
+				{"cost": 400, "power": 0.2},
+				{"cost": 600, "power": 0.3}
+			]
+		},
+		"increaseRange": {
+			"name": "폭발 범위 증가",
+			"levels":
+			[
+				{"cost": 0, "power": 0},
+				{"cost": 200, "power": 0.1},
+				{"cost": 400, "power": 0.2},
+				{"cost": 600, "power": 0.3}
+			]
+		},
+		"increaseHp": {
+			"name": "체력 증가",
+			"levels":
+			[
+				{"cost": 0, "power": 0},
+				{"cost": 200, "power": 0.2},
+				{"cost": 400, "power": 0.4},
+				{"cost": 600, "power": 0.6}
+			]
+		},
+		"increaseMoveSpeed": {
+			"name": "이동 속도 증가",
+			"levels":
+			[
+				{"cost": 0, "power": 0},
+				{"cost": 200, "power": 0.1},
+				{"cost": 400, "power": 0.2},
+				{"cost": 600, "power": 0.3}
+			]
+		},
+		"increaseCredit": {
+			"name": "크레딧 획득량 증가",
+			"levels":
+			[
+				{"cost": 0, "power": 0},
+				{"cost": 200, "power": 0.1},
+				{"cost": 400, "power": 0.2},
+				{"cost": 600, "power": 0.3}
+			]
+		},
+		"increaseChoiceCount": {
+			"name": "강화 선택지 증가",
+			"levels":
+			[
+				{"cost": 0, "power": 0},
+				{"cost": 500, "power": 1},
+				{"cost": 1000, "power": 2}
+			]
+		}
 	}
 }

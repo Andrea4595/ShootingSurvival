@@ -4,8 +4,6 @@
 		{
 			"key": "rifle",
 			"forPlayer": true,
-			"name": "라이플",
-			"information": "여러발의 탄환을 발사합니다.",
 			"projectile":
 			{
 				"sprite" : "Bullet",
@@ -66,8 +64,6 @@
 		{
 			"key": "missile",
 			"forPlayer": true,
-			"name": "미사일",
-			"information": "적을 추적하는 미사일을 발사합니다.\n미사일은 적의 투사체를 타격하지 않습니다.",
 			"projectile":
 			{
 				"sprite" : "Missile",
@@ -118,8 +114,6 @@
 		{
 			"key": "shotgun",
 			"forPlayer": true,
-			"name": "산탄총",
-			"information": "짧은 거리로 많은 탄환을 발사합니다.",
 			"projectile":
 			{
 				"sprite" : "Bullet",
@@ -170,8 +164,6 @@
 		{
 			"key": "torpedo",
 			"forPlayer": true,
-			"name": "어뢰",
-			"information": "강력하지만 느린 미사일을 발사합니다.\n높은 체력을 가졌습니다.",
 			"projectile":
 			{
 				"sprite" : "Missile",

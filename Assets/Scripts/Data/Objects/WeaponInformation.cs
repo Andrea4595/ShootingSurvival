@@ -33,8 +33,8 @@ namespace Data.Object
         }
 
         public string key;
-        public string name;
-        public string information;
+        public string name => GetWeaponText().name;
+        public string information => GetWeaponText().information;
         public bool forPlayer;
         public Projectile projectile;
         public string fireType;
@@ -42,6 +42,20 @@ namespace Data.Object
         public int continuousCount;
         public float interval;
         public float angleRange;
+
+        LanguageInformation.Language.Weapon GetWeaponText()
+        {
+            LanguageInformation.Language.Weapon weaponText;
+            
+            if (GameData.instance.language.GetWeapon(key, out weaponText) == false)
+            {
+                weaponText = new LanguageInformation.Language.Weapon();
+                weaponText.name = key;
+                weaponText.information = $"No text for {key}. Please write text in config/language.json";
+            }
+
+            return weaponText;
+        }
 
         public Upgrade[] upgrades;
 
