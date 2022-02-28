@@ -13,6 +13,8 @@ namespace Data
         Table<Object.StageInformation> _stageData;
         [SerializeField]
         UpgradeInformation _upgradeData;
+        [SerializeField]
+        LanguageInformation _languageData;
 
         public Object.CharacterInformation[] characters => _characterData.items;
         public Object.WeaponInformation[] weapons => _weaponData.items;
@@ -20,43 +22,8 @@ namespace Data
         public UpgradeInformation.StageUpgrades stageUpgrades => _upgradeData.stageUpgrades;
         public UpgradeInformation.PermanentUpgrades permanentUpgrades => _upgradeData.permanentUpgrades;
 
-        [System.Serializable]
-        public class PermanentUpgradeLevel
-        {
-            public int increaseDamage;
-            public int increaseInterval;
-            public int increaseRange;
-            public int increaseHp;
-            public int increaseMoveSpeed;
-            public int increaseCredit;
-            public int increaseChoiceCount;
-        }
-
-        public PermanentUpgradeLevel permanentUpgradeLevel;
-
-        [System.Serializable]
-        public class StageUpgradeLevel
-        {
-            public int increaseHp;
-            public int increaseMoveSpeed;
-            public int increaseCredit;
-            public Dictionary<string, int> weapons = new Dictionary<string, int>();
-
-            public void Initialize()
-            {
-                increaseHp = 0;
-                increaseMoveSpeed = 0;
-                increaseCredit = 0;
-            }
-
-            public void InitializeWeapons(Object.WeaponInformation[] weaponInfos)
-            {
-                foreach (var weaponInfo in weaponInfos)
-                    weapons.Add(weaponInfo.key, -1);
-            }
-        }
-
-        public StageUpgradeLevel stageUpgradeLevel;
+        public UpgradeInformation.PermanentUpgrades.Level permanentUpgradeLevel;
+        public UpgradeInformation.StageUpgrades.Level stageUpgradeLevel;
 
         void FirstInitialize()
         {
@@ -66,6 +33,8 @@ namespace Data
             _weaponData.Initialize("config/weapons.json");
             _stageData.Initialize("config/stages.json");
             _upgradeData.Initialize("config/upgrades.json");
+            _languageData.Initialize("config/languages.json");
+            languageKey = "kr";
 
             GameInitialize();
         }
@@ -109,5 +78,8 @@ namespace Data
             Debug.LogError($"there is no weapon named '{key}'.");
             return null;
         }
+
+        public string languageKey { get; set; }
+        public LanguageInformation.Language language => _languageData.GetLanguage(languageKey);
     }
 }

@@ -59,15 +59,15 @@ namespace Game.UI
             var gameData = Data.GameData.instance;
             var player = PlayerSetter.instance.player;
 
-            _name.text = $"체력 증가 {gameData.stageUpgradeLevel.increaseHp + 1}";
+            _name.text = $"{gameData.language.IncreaseStatusText(gameData.language.hp)} {gameData.stageUpgradeLevel.increaseHp + 1}";
 
             var baseHp = gameData.GetCharacterData("player").maxHp;
-            var permanentIncreasedHp = gameData.permanentUpgrades.increaseHp[gameData.permanentUpgradeLevel.increaseHp].power;
+            var permanentIncreasedHp = gameData.permanentUpgrades.increaseHp.levels[gameData.permanentUpgradeLevel.increaseHp].power;
             var stageIncreasedHp = gameData.stageUpgrades.increaseHp.power[gameData.stageUpgradeLevel.increaseHp];
             var nextStageIncreasedHp = gameData.stageUpgrades.increaseHp.power[gameData.stageUpgradeLevel.increaseHp + 1];
             var nowHp = baseHp + permanentIncreasedHp + stageIncreasedHp;
             var nextHp = baseHp + permanentIncreasedHp + nextStageIncreasedHp;
-            _content.text = $"체력 : {nowHp} → {nextHp}";
+            _content.text = GetContentText(gameData.language.hp, nowHp, nextHp);
 
             onSelect += () =>
             {
@@ -81,15 +81,15 @@ namespace Game.UI
             var gameData = Data.GameData.instance;
             var player = PlayerSetter.instance.player;
 
-            _name.text = $"이동 속도 증가 {gameData.stageUpgradeLevel.increaseMoveSpeed + 1}";
+            _name.text = $"{gameData.language.IncreaseStatusText(gameData.language.moveSpeed)} {gameData.stageUpgradeLevel.increaseMoveSpeed + 1}";
 
             var baseMoveSpeed = gameData.GetCharacterData("player").moveSpeed;
-            var permanentIncreasedMoveSpeed = gameData.permanentUpgrades.increaseMoveSpeed[gameData.permanentUpgradeLevel.increaseMoveSpeed].power;
+            var permanentIncreasedMoveSpeed = gameData.permanentUpgrades.increaseMoveSpeed.levels[gameData.permanentUpgradeLevel.increaseMoveSpeed].power;
             var stageIncreasedMoveSpeed = gameData.stageUpgrades.increaseMoveSpeed.power[gameData.stageUpgradeLevel.increaseMoveSpeed];
             var nextStageIncreasedMoveSpeed = gameData.stageUpgrades.increaseMoveSpeed.power[gameData.stageUpgradeLevel.increaseMoveSpeed + 1];
             var nowMoveSpeed = baseMoveSpeed * (1 + permanentIncreasedMoveSpeed + stageIncreasedMoveSpeed);
             var nextMoveSpeed = baseMoveSpeed * (1 + permanentIncreasedMoveSpeed + nextStageIncreasedMoveSpeed);
-            _content.text = $"이동 속도 : {nowMoveSpeed} → {nextMoveSpeed}";
+            _content.text = GetContentText(gameData.language.moveSpeed, nowMoveSpeed, nextMoveSpeed);
 
             onSelect += () =>
             {
@@ -103,15 +103,15 @@ namespace Game.UI
             var gameData = Data.GameData.instance;
             var player = PlayerSetter.instance.player;
 
-            _name.text = $"크레딧 보너스 증가 {gameData.stageUpgradeLevel.increaseCredit + 1}";
+            _name.text = $"{gameData.language.IncreaseStatusText(gameData.language.creditBonus)} {gameData.stageUpgradeLevel.increaseCredit + 1}";
 
-            var permanentIncreasedCredit = gameData.permanentUpgrades.increaseCredit[gameData.permanentUpgradeLevel.increaseCredit].power;
+            var permanentIncreasedCredit = gameData.permanentUpgrades.increaseCredit.levels[gameData.permanentUpgradeLevel.increaseCredit].power;
             var stageIncreasedCredit = gameData.stageUpgrades.increaseCredit.power[gameData.stageUpgradeLevel.increaseCredit];
             var nextStageIncreasedCredit = gameData.stageUpgrades.increaseCredit.power[gameData.stageUpgradeLevel.increaseCredit + 1];
             var nowCredit = permanentIncreasedCredit + stageIncreasedCredit;
             var nextCredit = permanentIncreasedCredit + nextStageIncreasedCredit;
-            _content.text = $"크레딧 보너스 : {nowCredit * 100}% → {nextCredit * 100}%";
-            
+            _content.text = GetContentText(gameData.language.creditBonus, nowCredit, nextCredit, true);
+
             onSelect += () =>
             {
                 //TODO : Credit Bonus
@@ -121,20 +121,24 @@ namespace Game.UI
 
         void HealInitialize()
         {
-            _name.text = "회복";
             var gameData = Data.GameData.instance;
+
+            _name.text = gameData.language.heal;
+
             var healAmount = gameData.stageUpgrades.heal.power[0];
-            _content.text = $"체력 {healAmount * 100}% 회복";
+            _content.text = gameData.language.HealInformationText((healAmount * 100).ToString());
 
             onSelect += () => PlayerSetter.instance.player.health.Heal(PlayerSetter.instance.player.health.maxHp * healAmount);
         }
 
         void CreditInitialize()
         {
-            _name.text = "크레딧";
             var gameData = Data.GameData.instance;
+
+            _name.text = gameData.language.credit;
+
             var creditAmount = gameData.stageUpgrades.credit.power[0];
-            _content.text = $"크레딧 {creditAmount} 획득";
+            _content.text = gameData.language.GetCreditText(creditAmount.ToString());
 
             onSelect += () =>
             {
@@ -170,6 +174,7 @@ namespace Game.UI
 
             _name.text = $"{weaponInformation.name.ToUpper()} {level + 1}";
 
+            var language = gameData.language;
             var fixs = weaponInformation.upgrades[level].fixes;
             foreach (var fix in fixs)
             {
@@ -179,54 +184,62 @@ namespace Game.UI
                         Debug.LogError("Can't change projectile sprite.");
                         break;
                     case "projectile/maxHp":
-                        _content.text += $"탄환 체력 : {weaponInformation.projectile.maxHp} → {fix.fixTo}\n";
+                        _content.text += GetContentText(language.weapon_projectile_maxHp, weaponInformation.projectile.maxHp, fix.fixTo);
                         onSelect += () => weaponInformation.projectile.maxHp = fix.fixTo;
                         break;
                     case "projectile/damage":
-                        _content.text += $"탄환 공격력 : {weaponInformation.projectile.damage} → {fix.fixTo}\n";
+                        _content.text += GetContentText(language.weapon_projectile_damage, weaponInformation.projectile.damage, fix.fixTo);
                         onSelect += () => weaponInformation.projectile.damage = fix.fixTo;
                         break;
                     case "projectile/range":
-                        _content.text += $"탄환 폭발 범위 : {weaponInformation.projectile.range} → {fix.fixTo}\n";
+                        _content.text += GetContentText(language.weapon_projectile_range, weaponInformation.projectile.range, fix.fixTo);
                         onSelect += () => weaponInformation.projectile.range = fix.fixTo;
                         break;
                     case "projectile/speed":
-                        _content.text += $"탄환 이동 속도 : {weaponInformation.projectile.speed} → {fix.fixTo}\n";
+                        _content.text += GetContentText(language.weapon_projectile_speed, weaponInformation.projectile.speed, fix.fixTo);
                         onSelect += () => weaponInformation.projectile.speed = fix.fixTo;
                         break;
                     case "projectile/scale":
-                        _content.text += $"탄환 크기 : {weaponInformation.projectile.scale} → {fix.fixTo}\n";
+                        _content.text += GetContentText(language.weapon_projectile_scale, weaponInformation.projectile.scale, fix.fixTo);
                         onSelect += () => weaponInformation.projectile.scale = fix.fixTo;
                         break;
                     case "projectile/homming":
-                        _content.text += $"탄환 선회력 : {weaponInformation.projectile.homming} → {fix.fixTo}\n";
+                        _content.text += GetContentText(language.weapon_projectile_homming, weaponInformation.projectile.homming, fix.fixTo);
                         onSelect += () => weaponInformation.projectile.homming = fix.fixTo;
                         break;
                     case "projectile/lifetime":
-                        _content.text += $"탄환 비행 시간 : {weaponInformation.projectile.lifetime} → {fix.fixTo}\n";
+                        _content.text += GetContentText(language.weapon_projectile_lifetime, weaponInformation.projectile.lifetime, fix.fixTo);
                         onSelect += () => weaponInformation.projectile.lifetime = fix.fixTo;
                         break;
                     case "fireType":
                         Debug.LogError("Can't change fire type.");
                         break;
                     case "fireCount":
-                        _content.text += $"동시 발사 횟수 : {weaponInformation.fireCount} → {fix.fixTo}\n";
+                        _content.text += GetContentText(language.weapon_fireCount, weaponInformation.fireCount, fix.fixTo);
                         onSelect += () => weaponInformation.fireCount = (int)fix.fixTo;
                         break;
                     case "angleRange":
-                        _content.text += $"동시 발사각 : {weaponInformation.angleRange} → {fix.fixTo}\n";
+                        _content.text += GetContentText(language.weapon_angleRange, weaponInformation.angleRange, fix.fixTo);
                         onSelect += () => weaponInformation.angleRange = fix.fixTo;
                         break;
                     case "continuousCount":
-                        _content.text += $"연사 횟수 : {weaponInformation.continuousCount} → {fix.fixTo}\n";
+                        _content.text += GetContentText(language.weapon_continuousCount, weaponInformation.continuousCount, fix.fixTo);
                         onSelect += () => weaponInformation.continuousCount = (int)fix.fixTo;
                         break;
                     case "interval":
-                        _content.text += $"공격 속도 : {weaponInformation.interval} → {fix.fixTo}\n";
+                        _content.text += GetContentText(language.weapon_interval, weaponInformation.interval, fix.fixTo);
                         onSelect += () => weaponInformation.interval = fix.fixTo;
                         break;
                 }
             }
+        }
+
+        string GetContentText(string name, float previous, float fixTo, bool percent = false)
+        {
+            if (percent)
+                return $"{name} : {previous * 100}% → {fixTo * 100}%\n";
+            else
+                return $"{name} : {previous} → {fixTo}\n";
         }
     }
 }

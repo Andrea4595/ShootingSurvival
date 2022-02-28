@@ -49,7 +49,7 @@ namespace Game.UI
         {
             var gameData = Data.GameData.instance;
             var baseCount = gameData.stageUpgrades.choiceCount;
-            var additionalCount = (int)gameData.permanentUpgrades.increaseChoiceCount[gameData.permanentUpgradeLevel.increaseChoiceCount].power;
+            var additionalCount = (int)gameData.permanentUpgrades.increaseChoiceCount.levels[gameData.permanentUpgradeLevel.increaseChoiceCount].power;
 
             return baseCount + additionalCount;
         }
