@@ -6,14 +6,14 @@ namespace Game
 {
     public class StageSpawner : Singleton<StageSpawner>
     {
-        List<Character> _remains = new List<Character>();
+        List<Character.Character> _remains = new List<Character.Character>();
 
-        public Character[] Remains(Character.Force ownerForce)
+        public Character.Character[] Remains(Character.Character.Force ownerForce)
         {
-            if (ownerForce == Character.Force.Player)
+            if (ownerForce == Character.Character.Force.Player)
                 return _remains.ToArray();
             else
-                return new Character[1] { PlayerSetter.instance.player };
+                return new Character.Character[1] { PlayerSetter.instance.player };
         }
 
         private void Awake()
@@ -32,7 +32,7 @@ namespace Game
                 yield return CStage(stage);
         }
 
-        IEnumerator CStage(Data.Object.Stage stage)
+        IEnumerator CStage(Data.Object.StageInformation stage)
         {
             foreach (var group in stage.groups)
             {
@@ -45,7 +45,7 @@ namespace Game
             OfferReward(stage.credit);
         }
 
-        void SpawnCharacterGrop(Data.Object.Stage.Spawn[] spawns)
+        void SpawnCharacterGrop(Data.Object.StageInformation.Spawn[] spawns)
         {
             foreach (var spawn in spawns)
             {
@@ -53,8 +53,8 @@ namespace Game
 
                 for (int i = 0; i < spawn.count; i++)
                 {
-                    var character = ObjectPool<Character>.GetObject();
-                    character.Initialize(key, Character.Force.Enemy);
+                    var character = ObjectPool<Character.Character>.GetObject();
+                    character.Initialize(key, Character.Character.Force.Enemy);
                     SetPosition(character);
                     AddMovementToCharacter(character);
                     _remains.Add(character);
@@ -63,7 +63,7 @@ namespace Game
             }
         }
 
-        void SetPosition(Character character)
+        void SetPosition(Character.Character character)
         {
             Rect SpawnBorder()
             {
@@ -91,14 +91,16 @@ namespace Game
             character.movement.SetPosition(newPosition);
         }
 
-        void AddMovementToCharacter(Character character)
+        void AddMovementToCharacter(Character.Character character)
         {
-            character.gameObject.AddComponent<ChasingPlayer>().Initialize(character);
+            character.gameObject.AddComponent<Character.ChasingPlayer>().Initialize(character);
         }
 
         void OfferReward(int credit)
         {
+            UI.StageUpgradeSelector.instance.Show();
 
+            //TODO : get credit
         }
     }
 }
