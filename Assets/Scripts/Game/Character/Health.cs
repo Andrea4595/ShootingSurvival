@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,24 +7,42 @@ namespace Game
 {
     public class Health : MonoBehaviour
     {
-        Character _owner;
-
         public float maxHp { get; private set; }
         public float hp { get; private set; }
 
-        public void Initialize(Character owner)
+        public event Action onDie;  
+
+        public void Initialize(float maxHp)
         {
-            _owner = owner;
-            maxHp = owner.information.maxHp;
-            hp = owner.information.maxHp;
+            this.maxHp = maxHp;
+            hp = maxHp;
+        }
+
+        public void SetMaxHp(float newMaxHp)
+        {
+            var different = newMaxHp - maxHp;
+
+            maxHp = newMaxHp;
+
+            if (different < 0)
+                return;
+
+            hp += different;
         }
 
         public void TakeDamage(float damage)
         {
             hp -= damage;
 
-            if (hp <= 0)
-                _owner.Destroy();
+            if (hp > 0)
+                return;
+
+            onDie?.Invoke();
+        }
+
+        public void Heal(float heal)
+        {
+            hp = MathF.Min(hp + heal, maxHp);
         }
     }
 }

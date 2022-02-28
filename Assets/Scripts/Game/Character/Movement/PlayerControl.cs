@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game
+namespace Game.Character
 {
     [RequireComponent(typeof(Movement))]
     public class PlayerControl : MonoBehaviour
@@ -38,6 +38,9 @@ namespace Game
 
         void LookAtMouse()
         {
+            if (Time.timeScale == 0)
+                return;
+
             _movement.LookAt(Cursor.position);
         }
     }

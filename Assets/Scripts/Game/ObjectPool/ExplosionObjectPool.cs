@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace Game
 {
-    public class ExplosionObjectPool : ObjectPool<Explosion>
+    public class ExplosionObjectPool : ObjectPool<Weapon.Explosion>
     {
         [SerializeField]
-        Explosion _prefab;
+        Weapon.Explosion _prefab;
 
         private void Awake() => Initialize(transform, 50, _prefab);
     }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -8534086243928179486}
   - component: {fileID: 4317632176603679054}
   - component: {fileID: 7434593213809739839}
+  - component: {fileID: 8659631354444124437}
   - component: {fileID: 7802081849626187347}
   - component: {fileID: 5094595470046365871}
   - component: {fileID: 7668011977076466453}
@@ -53,6 +54,7 @@ MonoBehaviour:
   movement: {fileID: 4317632176603679054}
   health: {fileID: 7434593213809739839}
   _sprite: {fileID: 7668011977076466453}
+  _hitable: {fileID: 8659631354444124437}
 --- !u!114 &4317632176603679054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +80,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0097c230dd95c459d0c471ed87ceb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8659631354444124437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7022939024663430166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d601a3c5e558c458d16a22b3bb41f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 7434593213809739839}
 --- !u!50 &7802081849626187347
 Rigidbody2D:
   serializedVersion: 4

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game
+namespace Game.Character
 {
     [RequireComponent(typeof(Character))]
     public class Movement : MonoBehaviour
