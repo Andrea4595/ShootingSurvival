@@ -13,7 +13,7 @@ namespace Game.UI
         RectTransform _choiceContainer;
 
         [SerializeField]
-        StageUpgradeChoice _choicePrefab;
+        StageUpgrade.StageUpgradeChoice _choicePrefab;
 
         private void Awake()
         {
@@ -68,19 +68,19 @@ namespace Game.UI
             LayoutRebuilder.ForceRebuildLayoutImmediate(_choiceContainer);
         }
 
-        List<string> GetChoiceKeys(int count)
+        List<StageUpgrade.IUpgradeInformation> GetChoiceKeys(int count)
         {
             var stageUpgrades = Data.GameData.instance.stageUpgrades;
             var stageUpgradeLevel = Data.GameData.instance.stageUpgradeLevel;
 
-            WeightedRandom<string> allChoices = new WeightedRandom<string>();
+            WeightedRandom<StageUpgrade.IUpgradeInformation> allChoices = new WeightedRandom<StageUpgrade.IUpgradeInformation>();
 
             if (stageUpgradeLevel.increaseHp < stageUpgrades.increaseHp.power.Length - 1)
-                allChoices.Add("increaseHp", stageUpgrades.increaseHp.weight);
+                allChoices.Add(new StageUpgrade.IncreaseHp(), stageUpgrades.increaseHp.weight);
             if (stageUpgradeLevel.increaseMoveSpeed < stageUpgrades.increaseMoveSpeed.power.Length - 1)
-                allChoices.Add("increaseMoveSpeed", stageUpgrades.increaseMoveSpeed.weight);
+                allChoices.Add(new StageUpgrade.IncreaseMoveSpeed(), stageUpgrades.increaseMoveSpeed.weight);
             if (stageUpgradeLevel.increaseCredit < stageUpgrades.increaseCredit.power.Length - 1)
-                allChoices.Add("increaseCredit", stageUpgrades.increaseCredit.weight);
+                allChoices.Add(new StageUpgrade.IncreaseCredit(), stageUpgrades.increaseCredit.weight);
 
             var weaponInfos = Data.GameData.instance.weapons;
             var weaponUpgradeWeight = stageUpgrades.weaponUpgradesWeight / weaponInfos.Length;
@@ -94,15 +94,15 @@ namespace Game.UI
                 if (level >= weaponInfo.upgrades.Length)
                     continue;
 
-                allChoices.Add($"w_{weaponInfo.key}", weaponUpgradeWeight);
+                allChoices.Add(new StageUpgrade.UpgradeWeapon(weaponInfo), weaponUpgradeWeight);
             }
 
             if (allChoices.Count <= 0)
-                allChoices.Add("credit", stageUpgrades.credit.weight);
+                allChoices.Add(new StageUpgrade.GetCredit(), stageUpgrades.credit.weight);
 
-            allChoices.Add("heal", stageUpgrades.heal.weight);
+            allChoices.Add(new StageUpgrade.GetHeal(), stageUpgrades.heal.weight);
 
-            List<string> choices = new List<string>();
+            List<StageUpgrade.IUpgradeInformation> choices = new List<StageUpgrade.IUpgradeInformation>();
 
             for (var i = Mathf.Min(count, allChoices.Count); i > 0; i--)
                 choices.Add(allChoices.TakeOne());

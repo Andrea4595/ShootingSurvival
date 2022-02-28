@@ -54,8 +54,8 @@ namespace Game.Character
 
             _weapons.Clear();
 
-            foreach (var weaponInformation in information.weapons)
-                AddNewWeapon(weaponInformation);
+            foreach (var weaponKey in information.weapons)
+                AddNewWeapon(Data.GameData.instance.GetWeaponData(weaponKey));
 
             health.Initialize(information.maxHp);
             _hitable.Initialize(force, Hitable.Type.Character);
@@ -72,10 +72,10 @@ namespace Game.Character
             base.Destroy();
         }
 
-        public void AddNewWeapon(string weaponKey)
+        public void AddNewWeapon(Data.Object.WeaponInformation information)
         {
             var weapon = ObjectPool<Weapon.Weapon>.instance.GetObject();
-            weapon.Initialize(this, weaponKey);
+            weapon.Initialize(this, information);
             _weapons.Add(weapon);
         }
     }
