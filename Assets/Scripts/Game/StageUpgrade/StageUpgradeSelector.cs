@@ -56,50 +56,6 @@ namespace Game.UI
 
         void ShowRandomChoices(int count)
         {
-            var gameData = Data.GameData.instance;
-
-            List<string> GetChoiceKeys(int count)
-            {
-                List<string> allChoices = new List<string>();
-
-                if (gameData.stageUpgradeLevel.increaseHp < gameData.stageUpgrades.increaseHp.Length)
-                    allChoices.Add("increaseHp");
-                if (gameData.stageUpgradeLevel.increaseMoveSpeed < gameData.stageUpgrades.increaseMoveSpeed.Length)
-                    allChoices.Add("increaseMoveSpeed");
-                if (gameData.stageUpgradeLevel.increaseCredit < gameData.stageUpgrades.increaseCredit.Length)
-                    allChoices.Add("increaseCredit");
-
-                var weaponInfos = gameData.weapons;
-                foreach (var weaponInfo in weaponInfos)
-                {
-                    if (weaponInfo.forPlayer == false)
-                        continue;
-
-                    int level = gameData.stageUpgradeLevel.weapons[weaponInfo.key];
-
-                    if (level >= weaponInfo.upgrades.Length)
-                        continue;
-                    
-                    allChoices.Add($"w_{weaponInfo.key}");
-                }
-
-                if (allChoices.Count <= 0)
-                    allChoices.Add("credit");
-
-                allChoices.Add("heal");
-
-                List<string> choices = new List<string>();
-
-                for (var i = Mathf.Min(count, allChoices.Count); i > 0; i--)
-                {
-                    var choice = allChoices.ToArray()[Random.Range(0, allChoices.Count)];
-                    allChoices.Remove(choice);
-                    choices.Add(choice);
-                }
-
-                return choices;
-            }
-
             var keys = GetChoiceKeys(count);
 
             foreach (var key in keys)
@@ -110,6 +66,48 @@ namespace Game.UI
             }
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(_choiceContainer);
+        }
+
+        List<string> GetChoiceKeys(int count)
+        {
+            var stageUpgrades = Data.GameData.instance.stageUpgrades;
+            var stageUpgradeLevel = Data.GameData.instance.stageUpgradeLevel;
+
+            WeightedRandom<string> allChoices = new WeightedRandom<string>();
+
+            if (stageUpgradeLevel.increaseHp < stageUpgrades.increaseHp.power.Length - 1)
+                allChoices.Add("increaseHp", stageUpgrades.increaseHp.weight);
+            if (stageUpgradeLevel.increaseMoveSpeed < stageUpgrades.increaseMoveSpeed.power.Length - 1)
+                allChoices.Add("increaseMoveSpeed", stageUpgrades.increaseMoveSpeed.weight);
+            if (stageUpgradeLevel.increaseCredit < stageUpgrades.increaseCredit.power.Length - 1)
+                allChoices.Add("increaseCredit", stageUpgrades.increaseCredit.weight);
+
+            var weaponInfos = Data.GameData.instance.weapons;
+            var weaponUpgradeWeight = stageUpgrades.weaponUpgradesWeight / weaponInfos.Length;
+            foreach (var weaponInfo in weaponInfos)
+            {
+                if (weaponInfo.forPlayer == false)
+                    continue;
+
+                int level = stageUpgradeLevel.weapons[weaponInfo.key];
+
+                if (level >= weaponInfo.upgrades.Length)
+                    continue;
+
+                allChoices.Add($"w_{weaponInfo.key}", weaponUpgradeWeight);
+            }
+
+            if (allChoices.Count <= 0)
+                allChoices.Add("credit", stageUpgrades.credit.weight);
+
+            allChoices.Add("heal", stageUpgrades.heal.weight);
+
+            List<string> choices = new List<string>();
+
+            for (var i = Mathf.Min(count, allChoices.Count); i > 0; i--)
+                choices.Add(allChoices.TakeOne());
+
+            return choices;
         }
     }
 }
