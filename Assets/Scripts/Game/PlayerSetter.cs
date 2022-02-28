@@ -6,7 +6,7 @@ namespace Game
 {
     public class PlayerSetter : Singleton<PlayerSetter>
     {
-        public Character player;
+        public Character.Character player;
 
         private void Awake()
         {
@@ -16,7 +16,7 @@ namespace Game
 
         void SetPlayer()
         {
-            player.Initialize("player", Character.Force.Player);
+            player.Initialize("player", Character.Character.Force.Player);
         }
     }
 }

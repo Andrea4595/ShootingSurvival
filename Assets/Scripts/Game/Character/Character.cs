@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game
+namespace Game.Character
 {
     public class Character : ObjectPoolInstance<Character>
     {
@@ -12,6 +12,9 @@ namespace Game
 
         [SerializeField]
         SpriteRenderer _sprite;
+
+        [SerializeField]
+        Hitable _hitable;
 
         Color _color = Color.white;
         public Color color
@@ -24,15 +27,21 @@ namespace Game
             }
         }
 
-        List<Weapon> _weapons = new List<Weapon>();
+        List<Weapon.Weapon> _weapons = new List<Weapon.Weapon>();
 
         public enum Force { Player, Enemy }
 
         public Force force { get; private set; }
-        public Data.Object.Character information { get; private set; }
+        public Data.Object.CharacterInformation information { get; private set; }
         public event Action onDestroy;
 
-        public void Initialize(Data.Object.Character information, Force force)
+        private void Awake()
+        {
+            ObjectPoolInstanceInitialize(this);
+            health.onDie += () => Destroy();
+        }
+
+        public void Initialize(Data.Object.CharacterInformation information, Force force)
         {
             this.information = information;
             this.force = force;
@@ -41,17 +50,15 @@ namespace Game
             color = new Color(information.color[0], information.color[1], information.color[2]);
 
             movement.SetScale(information.scale);
+            movement.moveSpeed = information.moveSpeed;
+
             _weapons.Clear();
 
             foreach (var weaponInformation in information.weapons)
-            {
-                var weapon = ObjectPool<Weapon>.GetObject();
-                weapon.Initialize(this, weaponInformation);
-                _weapons.Add(weapon);
-            }
+                AddNewWeapon(weaponInformation);
 
-            movement.moveSpeed = information.moveSpeed;
-            health.Initialize(this);
+            health.Initialize(information.maxHp);
+            _hitable.Initialize(force, Hitable.Type.Character);
         }
 
         public void Initialize(string key, Force force)
@@ -63,6 +70,13 @@ namespace Game
         {
             onDestroy?.Invoke();
             base.Destroy();
+        }
+
+        public void AddNewWeapon(string weaponKey)
+        {
+            var weapon = ObjectPool<Weapon.Weapon>.GetObject();
+            weapon.Initialize(this, weaponKey);
+            _weapons.Add(weapon);
         }
     }
 }

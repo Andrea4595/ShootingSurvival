@@ -2,17 +2,23 @@
 	"items":
 	[
 		{
-			"key": "base",
+			"key": "rifle",
+			"forPlayer": true,
+			"name": "라이플",
+			"information": "여러발의 탄환을 발사합니다.",
 			"projectile":
 			{
 				"sprite" : "Bullet",
+				"maxHp" : 0,
 				"damage" : 2,
 				"range" : 0,
 				"speed" : 25,
 				"scale" : 0.6,
 				"homming" : 2,
-				"lifetime" : 3
+				"lifetime" : 3,
+				"hitProjectile" : true
 			},
+			"fireType": "FrontEvenSpread",
 			"fireCount" : 1,
 			"angleRange" : 0,
 			"continuousCount" : 3,
@@ -22,10 +28,6 @@
 				{
 					"fixes" :
 					[
-						{
-							"key": "projectile/damage",
-							"fixTo": 3
-						},
 						{
 							"key": "continuousCount",
 							"fixTo": 5
@@ -37,11 +39,25 @@
 					[
 						{
 							"key": "projectile/damage",
-							"fixTo": 4
-						},
+							"fixTo": 3
+						}
+					]
+				},
+				{
+					"fixes" :
+					[
 						{
 							"key": "continuousCount",
 							"fixTo": 7
+						}
+					]
+				},
+				{
+					"fixes" :
+					[
+						{
+							"key": "projectile/damage",
+							"fixTo": 4
 						}
 					]
 				}
@@ -49,18 +65,24 @@
 		},
 		{
 			"key": "missile",
+			"forPlayer": true,
+			"name": "미사일",
+			"information": "적을 추적하는 미사일을 발사합니다.\n적의 투사체를 타격하지 않습니다.",
 			"projectile":
 			{
 				"sprite" : "Missile",
+				"maxHp" : 0,
 				"damage" : 12,
 				"range" : 3,
 				"speed" : 15,
 				"scale" : 1,
 				"homming" : 180,
-				"lifetime" : 3
+				"lifetime" : 3,
+				"hitProjectile" : false
 			},
+			"fireType": "Random",
 			"fireCount" : 1,
-			"angleRange" : 300,
+			"angleRange" : 360,
 			"continuousCount" : 1,
 			"interval" : 7,
 			"upgrades":
@@ -70,7 +92,7 @@
 					[
 						{
 							"key": "projectile/damage",
-							"fixTo": 20
+							"fixTo": 18
 						},
 						{
 							"key": "fireCount",
@@ -83,7 +105,7 @@
 					[
 						{
 							"key": "projectile/damage",
-							"fixTo": 40
+							"fixTo": 24
 						},
 						{
 							"key": "fireCount",
@@ -95,18 +117,24 @@
 		},
 		{
 			"key": "shotgun",
+			"forPlayer": true,
+			"name": "산탄총",
+			"information": "짧은 거리로 많은 탄환을 발사합니다.",
 			"projectile":
 			{
 				"sprite" : "Bullet",
+				"maxHp" : 0,
 				"damage" : 2,
 				"range" : 0,
-				"speed" : 30,
+				"speed" : 60,
 				"scale" : 0.3,
 				"homming" : 0,
-				"lifetime" : 0.4
+				"lifetime" : 0.15,
+				"hitProjectile" : true
 			},
-			"fireCount" : 4,
-			"angleRange" : 60,
+			"fireType": "FrontEvenSpread",
+			"fireCount" : 5,
+			"angleRange" : 45,
 			"continuousCount" : 1,
 			"interval" : 2.2,
 			"upgrades":
@@ -116,11 +144,11 @@
 					[
 						{
 							"key": "projectile/lifetime",
-							"fixTo": 0.5
+							"fixTo": 0.25
 						},
 						{
 							"key": "fireCount",
-							"fixTo": 6
+							"fixTo": 7
 						}
 					]
 				},
@@ -129,11 +157,11 @@
 					[
 						{
 							"key": "projectile/lifetime",
-							"fixTo": 0.6
+							"fixTo": 0.4
 						},
 						{
 							"key": "fireCount",
-							"fixTo": 8
+							"fixTo": 9
 						}
 					]
 				}
@@ -141,17 +169,23 @@
 		},
 		{
 			"key": "torpedo",
+			"forPlayer": true,
+			"name": "어뢰",
+			"information": "강력하지만 느린 미사일을 발사합니다.\n매우 높은 체력을 가졌습니다.",
 			"projectile":
 			{
 				"sprite" : "Missile",
-				"damage" : 40,
+				"maxHp" : 30,
+				"damage" : 30,
 				"range" : 8,
 				"speed" : 3,
 				"scale" : 2,
 				"homming" : 0,
-				"lifetime" : 10
+				"lifetime" : 5,
+				"hitProjectile" : true
 			},
-			"fireCount" : 1,
+			"fireType": "FrontArrow",
+			"fireCount" : 3,
 			"angleRange" : 0,
 			"continuousCount" : 1,
 			"interval" : 8,
@@ -161,11 +195,7 @@
 					"fixes" :
 					[
 						{
-							"key": "projectile/damage",
-							"fixTo": 50
-						},
-						{
-							"key": "projectile/lange",
+							"key": "projectile/range",
 							"fixTo": 12
 						}
 					]
@@ -174,12 +204,44 @@
 					"fixes" :
 					[
 						{
-							"key": "projectile/damage",
-							"fixTo": 60
-						},
+							"key": "projectile/maxHp",
+							"fixTo": 45
+						}
+					]
+				},
+				{
+					"fixes" :
+					[
 						{
-							"key": "projectile/lange",
+							"key": "fireCount",
+							"fixTo": 2
+						}
+					]
+				},
+				{
+					"fixes" :
+					[
+						{
+							"key": "projectile/range",
 							"fixTo": 20
+						}
+					]
+				},
+				{
+					"fixes" :
+					[
+						{
+							"key": "projectile/maxHp",
+							"fixTo": 60
+						}
+					]
+				},
+				{
+					"fixes" :
+					[
+						{
+							"key": "fireCount",
+							"fixTo": 3
 						}
 					]
 				}
@@ -187,16 +249,20 @@
 		},
 		{
 			"key": "enemyA_weapon",
+			"forPlayer": false,
 			"projectile":
 			{
 				"sprite" : "Bullet",
-				"damage" : 10,
+				"maxHp" : 0,
+				"damage" : 3,
 				"range" : 0,
 				"speed" : 10,
 				"scale" : 0.6,
 				"homming" : 0,
-				"lifetime" : 10
+				"lifetime" : 10,
+				"hitProjectile" : true
 			},
+			"fireType": "FrontEvenSpread",
 			"fireCount" : 1,
 			"angleRange" : 0,
 			"continuousCount" : 3,
@@ -205,16 +271,20 @@
 		},
 		{
 			"key": "enemyB_weapon",
+			"forPlayer": false,
 			"projectile":
 			{
 				"sprite" : "Missile",
+				"maxHp" : 5,
 				"damage" : 10,
 				"range" : 3,
 				"speed" : 10,
 				"scale" : 1.5,
 				"homming" : 30,
-				"lifetime" : 10
+				"lifetime" : 10,
+				"hitProjectile" : true
 			},
+			"fireType": "FrontEvenSpread",
 			"fireCount" : 1,
 			"angleRange" : 0,
 			"continuousCount" : 1,
@@ -223,16 +293,20 @@
 		},
 		{
 			"key": "enemyC_weapon",
+			"forPlayer": false,
 			"projectile":
 			{
 				"sprite" : "Bullet",
+				"maxHp" : 0,
 				"damage" : 5,
 				"range" : 0,
 				"speed" : 20,
 				"scale" : 1,
 				"homming" : 0,
-				"lifetime" : 10
+				"lifetime" : 10,
+				"hitProjectile" : true
 			},
+			"fireType": "FrontEvenSpread",
 			"fireCount" : 3,
 			"angleRange" : 80,
 			"continuousCount" : 35,

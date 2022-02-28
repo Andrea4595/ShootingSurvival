@@ -1,7 +1,7 @@
 namespace Data.Object
 {
     [System.Serializable]
-    public class Stage
+    public class StageInformation
     {
         [System.Serializable]
         public class Spawn

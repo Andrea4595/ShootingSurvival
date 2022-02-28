@@ -2,43 +2,67 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game
+namespace Game.Weapon
 {
     public class Projectile : ObjectPoolInstance<Projectile>
     {
+        public Data.Object.WeaponInformation.Projectile information { get; private set; }
+
         [SerializeField]
         Transform _body;
         [SerializeField]
         SpriteRenderer _sprite;
+        [SerializeField]
+        Character.Hitable _hitable;
+        
+        public Health health;
 
-        Character _owner;
-        Data.Object.Weapon.Projectile _information;
+        Character.Character _owner;
 
         float _direction;
 
-        public void Initialize(Character owner, Data.Object.Weapon.Projectile information, float direction)
+        Coroutine _run;
+
+        bool explosion => information.range > 0;
+
+        private void Awake()
+        {
+            ObjectPoolInstanceInitialize(this);
+            health.onDie += () => Destroy();
+        }
+
+        public void Initialize(Character.Character owner, Data.Object.WeaponInformation.Projectile information, float direction, Vector2 offset)
         {
             _owner = owner;
-            _information = information;
+            this.information = information;
             _direction = direction;
             _sprite.sprite = SpriteInformer.GetSprite(information.sprite);
             _sprite.color = owner.color;
+            _hitable.Initialize(owner.force, Character.Hitable.Type.Projectile);
 
-            StartCoroutine(CRun());
+            health.Initialize(information.maxHp);
+
+            if (_run != null)
+                StopCoroutine(_run);
+
+            _run = StartCoroutine(CRun(offset));
         }
 
-        IEnumerator CRun()
+        public void Initialize(Character.Character owner, Data.Object.WeaponInformation.Projectile information, float direction) => Initialize(owner, information, direction, Vector2.zero);
+
+        IEnumerator CRun(Vector2 initializeOffset)
         {
             var lifeTime = 0f;
+            var position = _owner.movement.position + GetDirectionOffset(_direction, initializeOffset);
 
-            _body.position = _owner.movement.position;
-            _body.localScale = Vector3.one * _information.scale;
+            _body.position = position;
+            _body.localScale = Vector3.one * information.scale;
 
-            while (lifeTime < _information.lifetime)
+            while (lifeTime < information.lifetime)
             {
                 yield return null;
 
-                var moveSpeed = _information.speed * Time.smoothDeltaTime;
+                var moveSpeed = information.speed * Time.smoothDeltaTime;
                 var newPosition = new Vector3();
                 newPosition.x = Mathf.Cos(_direction * Mathf.Deg2Rad) * moveSpeed;
                 newPosition.y = Mathf.Sin(_direction * Mathf.Deg2Rad) * moveSpeed;
@@ -46,7 +70,7 @@ namespace Game
                 _body.position += newPosition;
                 _body.eulerAngles = new Vector3(0, 0, _direction);
 
-                if (_information.homming > 0)
+                if (information.homming > 0)
                     Homming();
 
                 lifeTime += Time.smoothDeltaTime;
@@ -55,14 +79,27 @@ namespace Game
             Destroy();
         }
 
+        Vector3 GetDirectionOffset(float direction, Vector2 offset)
+        {
+            var result = Vector3.zero;
+
+            result.x += Mathf.Cos(direction * Mathf.Deg2Rad) * Mathf.Rad2Deg * offset.x;
+            result.y += Mathf.Sin(direction * Mathf.Deg2Rad) * Mathf.Rad2Deg * offset.x;
+
+            result.x += Mathf.Cos((direction + 90) * Mathf.Deg2Rad) * Mathf.Rad2Deg * offset.y;
+            result.y += Mathf.Sin((direction + 90) * Mathf.Deg2Rad) * Mathf.Rad2Deg * offset.y;
+
+            return result;
+        }
+
         void Homming()
         {
-            Character GetNearestTarget()
+            Character.Character GetNearestTarget()
             {
                 var targets = StageSpawner.instance.Remains(_owner.force);
 
                 var minDistance = Mathf.Infinity;
-                Character nearest = null;
+                Character.Character nearest = null;
 
                 foreach (var target in targets)
                 {
@@ -80,12 +117,12 @@ namespace Game
 
             void TurnLeft()
             {
-                _direction += _information.homming * Time.smoothDeltaTime;
+                _direction += information.homming * Time.smoothDeltaTime;
             }
 
             void TurnRight()
             {
-                _direction -= _information.homming * Time.smoothDeltaTime;
+                _direction -= information.homming * Time.smoothDeltaTime;
             }
 
             var target = GetNearestTarget();
@@ -117,20 +154,20 @@ namespace Game
                 _direction += 360;
         }
 
-        void GiveDamage(Character target)
+        void GiveDamage(Character.Hitable target)
         {
-            target.health.TakeDamage(_information.damage);
+            target.Hit(information.damage);
         }
 
         void SpawnExplosion()
         {
             var explosion = ObjectPool<Explosion>.GetObject();
-            explosion.Initialize(_owner, _information, _body.position);
+            explosion.Initialize(_owner, information, _body.position);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var target = collision.GetComponent<Character>();
+            var target = collision.GetComponent<Character.Hitable>();
 
             if (target == null)
                 return;
@@ -138,12 +175,24 @@ namespace Game
             if (target.force == _owner.force)
                 return;
 
-            if (_information.range == 0)
+            if (!target.canHit)
+                return;
+
+            if (information.hitProjectile == false && target.type == Character.Hitable.Type.Projectile)
+                return;
+
+            if (!explosion)
                 GiveDamage(target);
-            else
-                SpawnExplosion();
 
             Destroy();
+        }
+
+        new void Destroy()
+        {
+            if (explosion)
+                SpawnExplosion();
+
+            base.Destroy();
         }
     }
 }

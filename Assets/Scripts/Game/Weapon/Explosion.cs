@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game
+namespace Game.Weapon
 {
     public class Explosion : ObjectPoolInstance<Explosion>
     {
@@ -11,12 +11,17 @@ namespace Game
         [SerializeField]
         SpriteRenderer _sprite;
 
-        Character.Force _force;
-        Data.Object.Weapon.Projectile _information;
+        Character.Character.Force _force;
+        Data.Object.WeaponInformation.Projectile _information;
 
-        List<Character> _hits = new List<Character>();
+        List<Character.Hitable> _hits = new List<Character.Hitable>();
 
-        public void Initialize(Character owner, Data.Object.Weapon.Projectile information, Vector3 position)
+        private void Awake()
+        {
+            ObjectPoolInstanceInitialize(this);
+        }
+
+        public void Initialize(Character.Character owner, Data.Object.WeaponInformation.Projectile information, Vector3 position)
         {
             _force = owner.force;
             _information = information;
@@ -38,7 +43,7 @@ namespace Game
             while(alpha > 0)
             {
                 alpha -= Time.smoothDeltaTime;
-                _sprite.color = new Color(1, 1, 1, alpha);
+                _sprite.color = new Color(_sprite.color.r, _sprite.color.g, _sprite.color.b, alpha);
 
                 yield return null;
             }
@@ -46,22 +51,25 @@ namespace Game
             Destroy();
         }
 
-        void GiveDamage(Character target)
+        void GiveDamage(Character.Hitable target)
         {
-            target.health.TakeDamage(_information.damage);
+            target.Hit(_information.damage);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var target = collision.GetComponent<Character>();
+            var target = collision.GetComponent<Character.Hitable>();
 
             if (target == null)
                 return;
 
             if (target.force == _force)
                 return;
-            
-            if (_hits.Contains(target) == true)
+
+            if (!target.canHit)
+                return;
+
+            if (_information.hitProjectile == false && target.type == Character.Hitable.Type.Projectile)
                 return;
 
             GiveDamage(target);

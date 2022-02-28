@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2619047770264095368}
   - component: {fileID: 5205869029885487151}
   - component: {fileID: 2258937363950174249}
+  - component: {fileID: 4377930327622708358}
+  - component: {fileID: 3852299628320593260}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -49,6 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _body: {fileID: 9078227261295128351}
   _sprite: {fileID: 2258937363950174249}
+  _hitable: {fileID: 3852299628320593260}
+  health: {fileID: 4377930327622708358}
 --- !u!50 &2619047770264095368
 Rigidbody2D:
   serializedVersion: 4
@@ -138,3 +142,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4377930327622708358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7377693066259331210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0097c230dd95c459d0c471ed87ceb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3852299628320593260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7377693066259331210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d601a3c5e558c458d16a22b3bb41f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 4377930327622708358}

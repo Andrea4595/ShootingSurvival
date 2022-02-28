@@ -9,6 +9,6 @@ namespace Game
         public bool activated => gameObject.activeSelf;
         public void Destroy() => ObjectPool<T>.ReturnObject(_this);
 
-        private void Awake() => _this = GetComponent<T>();
+        public void ObjectPoolInstanceInitialize(T instance) => _this = instance;
     }
 }

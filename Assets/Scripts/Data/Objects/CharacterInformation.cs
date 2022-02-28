@@ -1,7 +1,7 @@
 namespace Data.Object
 {
     [System.Serializable]
-    public class Character
+    public class CharacterInformation
     {
         public string key;
         public string sprite;

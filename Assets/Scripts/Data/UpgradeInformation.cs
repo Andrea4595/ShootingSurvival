@@ -1,7 +1,7 @@
 namespace Data
 {
     [System.Serializable]
-    public class UpgradeData
+    public class UpgradeInformation
     {
         [System.Serializable]
         public class StageUpgrades
