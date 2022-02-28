@@ -18,7 +18,7 @@ namespace Game.Weapon.FireType
                 {
                     var direction = UnityEngine.Random.Range(0f, 360f);
 
-                    ObjectPool<Projectile>.GetObject().Initialize(owner, information.projectile, direction);
+                    ObjectPool<Projectile>.instance.GetObject().Initialize(owner, information.projectile, direction);
                 }
 
                 yield return Time.WaitForSeconds(0.1f);

@@ -21,7 +21,7 @@ namespace Game.Weapon.FireType
                 {
                     direction += angleDistance;
 
-                    ObjectPool<Projectile>.GetObject().Initialize(owner, information.projectile, direction);
+                    ObjectPool<Projectile>.instance.GetObject().Initialize(owner, information.projectile, direction);
                 }
 
                 yield return Time.WaitForSeconds(0.1f);

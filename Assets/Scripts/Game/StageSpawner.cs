@@ -19,6 +19,7 @@ namespace Game
         private void Awake()
         {
             Initialize(this);
+            Time.instance.Fade(1, 0);
         }
 
         private void OnEnable()
@@ -53,7 +54,7 @@ namespace Game
 
                 for (int i = 0; i < spawn.count; i++)
                 {
-                    var character = ObjectPool<Character.Character>.GetObject();
+                    var character = ObjectPool<Character.Character>.instance.GetObject();
                     character.Initialize(key, Character.Character.Force.Enemy);
                     SetPosition(character);
                     AddMovementToCharacter(character);

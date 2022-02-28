@@ -24,6 +24,12 @@ namespace Game
             if (_fade != null)
                 StopCoroutine(_fade);
 
+            if (duration == 0)
+            {
+                timeScale = targetTimeScale;
+                return;
+            }
+
             _fade = StartCoroutine(CRun(targetTimeScale, duration));
         }
 

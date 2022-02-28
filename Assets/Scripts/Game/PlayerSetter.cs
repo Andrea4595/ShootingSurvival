@@ -6,6 +6,9 @@ namespace Game
 {
     public class PlayerSetter : Singleton<PlayerSetter>
     {
+        [SerializeField]
+        UI.GameOver _gameOver;
+
         public Character.Character player;
 
         private void Awake()
@@ -17,6 +20,12 @@ namespace Game
         void SetPlayer()
         {
             player.Initialize("player", Character.Character.Force.Player);
+            player.health.onDie += GameOver;
+        }
+
+        void GameOver()
+        {
+            _gameOver.Run();
         }
     }
 }
