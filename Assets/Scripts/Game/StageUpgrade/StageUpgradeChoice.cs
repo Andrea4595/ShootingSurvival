@@ -63,8 +63,8 @@ namespace Game.UI
 
             var baseHp = gameData.GetCharacterData("player").maxHp;
             var permanentIncreasedHp = gameData.permanentUpgrades.increaseHp[gameData.permanentUpgradeLevel.increaseHp].power;
-            var stageIncreasedHp = gameData.stageUpgrades.increaseHp[gameData.stageUpgradeLevel.increaseHp];
-            var nextStageIncreasedHp = gameData.stageUpgrades.increaseHp[gameData.stageUpgradeLevel.increaseHp + 1];
+            var stageIncreasedHp = gameData.stageUpgrades.increaseHp.power[gameData.stageUpgradeLevel.increaseHp];
+            var nextStageIncreasedHp = gameData.stageUpgrades.increaseHp.power[gameData.stageUpgradeLevel.increaseHp + 1];
             var nowHp = baseHp + permanentIncreasedHp + stageIncreasedHp;
             var nextHp = baseHp + permanentIncreasedHp + nextStageIncreasedHp;
             _content.text = $"체력 : {nowHp} → {nextHp}";
@@ -85,8 +85,8 @@ namespace Game.UI
 
             var baseMoveSpeed = gameData.GetCharacterData("player").moveSpeed;
             var permanentIncreasedMoveSpeed = gameData.permanentUpgrades.increaseMoveSpeed[gameData.permanentUpgradeLevel.increaseMoveSpeed].power;
-            var stageIncreasedMoveSpeed = gameData.stageUpgrades.increaseMoveSpeed[gameData.stageUpgradeLevel.increaseMoveSpeed];
-            var nextStageIncreasedMoveSpeed = gameData.stageUpgrades.increaseMoveSpeed[gameData.stageUpgradeLevel.increaseMoveSpeed + 1];
+            var stageIncreasedMoveSpeed = gameData.stageUpgrades.increaseMoveSpeed.power[gameData.stageUpgradeLevel.increaseMoveSpeed];
+            var nextStageIncreasedMoveSpeed = gameData.stageUpgrades.increaseMoveSpeed.power[gameData.stageUpgradeLevel.increaseMoveSpeed + 1];
             var nowMoveSpeed = baseMoveSpeed * (1 + permanentIncreasedMoveSpeed + stageIncreasedMoveSpeed);
             var nextMoveSpeed = baseMoveSpeed * (1 + permanentIncreasedMoveSpeed + nextStageIncreasedMoveSpeed);
             _content.text = $"이동 속도 : {nowMoveSpeed} → {nextMoveSpeed}";
@@ -106,8 +106,8 @@ namespace Game.UI
             _name.text = $"크레딧 보너스 증가 {gameData.stageUpgradeLevel.increaseCredit + 1}";
 
             var permanentIncreasedCredit = gameData.permanentUpgrades.increaseCredit[gameData.permanentUpgradeLevel.increaseCredit].power;
-            var stageIncreasedCredit = gameData.stageUpgrades.increaseCredit[gameData.stageUpgradeLevel.increaseCredit];
-            var nextStageIncreasedCredit = gameData.stageUpgrades.increaseCredit[gameData.stageUpgradeLevel.increaseCredit + 1];
+            var stageIncreasedCredit = gameData.stageUpgrades.increaseCredit.power[gameData.stageUpgradeLevel.increaseCredit];
+            var nextStageIncreasedCredit = gameData.stageUpgrades.increaseCredit.power[gameData.stageUpgradeLevel.increaseCredit + 1];
             var nowCredit = permanentIncreasedCredit + stageIncreasedCredit;
             var nextCredit = permanentIncreasedCredit + nextStageIncreasedCredit;
             _content.text = $"크레딧 보너스 : {nowCredit * 100}% → {nextCredit * 100}%";
@@ -123,7 +123,7 @@ namespace Game.UI
         {
             _name.text = "회복";
             var gameData = Data.GameData.instance;
-            var healAmount = gameData.stageUpgrades.heal;
+            var healAmount = gameData.stageUpgrades.heal.power[0];
             _content.text = $"체력 {healAmount * 100}% 회복";
 
             onSelect += () => PlayerSetter.instance.player.health.Heal(PlayerSetter.instance.player.health.maxHp * healAmount);
@@ -133,7 +133,7 @@ namespace Game.UI
         {
             _name.text = "크레딧";
             var gameData = Data.GameData.instance;
-            var creditAmount = gameData.stageUpgrades.credit;
+            var creditAmount = gameData.stageUpgrades.credit.power[0];
             _content.text = $"크레딧 {creditAmount} 획득";
 
             onSelect += () =>
@@ -178,6 +178,10 @@ namespace Game.UI
                     case "projectile/sprite":
                         Debug.LogError("Can't change projectile sprite.");
                         break;
+                    case "projectile/maxHp":
+                        _content.text += $"탄환 체력 : {weaponInformation.projectile.maxHp} → {fix.fixTo}\n";
+                        onSelect += () => weaponInformation.projectile.maxHp = fix.fixTo;
+                        break;
                     case "projectile/damage":
                         _content.text += $"탄환 공격력 : {weaponInformation.projectile.damage} → {fix.fixTo}\n";
                         onSelect += () => weaponInformation.projectile.damage = fix.fixTo;
@@ -201,6 +205,9 @@ namespace Game.UI
                     case "projectile/lifetime":
                         _content.text += $"탄환 비행 시간 : {weaponInformation.projectile.lifetime} → {fix.fixTo}\n";
                         onSelect += () => weaponInformation.projectile.lifetime = fix.fixTo;
+                        break;
+                    case "fireType":
+                        Debug.LogError("Can't change fire type.");
                         break;
                     case "fireCount":
                         _content.text += $"동시 발사 횟수 : {weaponInformation.fireCount} → {fix.fixTo}\n";

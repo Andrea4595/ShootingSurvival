@@ -67,7 +67,7 @@
 			"key": "missile",
 			"forPlayer": true,
 			"name": "미사일",
-			"information": "적을 추적하는 미사일을 발사합니다.\n적의 투사체를 타격하지 않습니다.",
+			"information": "적을 추적하는 미사일을 발사합니다.\n미사일은 적의 투사체를 타격하지 않습니다.",
 			"projectile":
 			{
 				"sprite" : "Missile",
@@ -171,7 +171,7 @@
 			"key": "torpedo",
 			"forPlayer": true,
 			"name": "어뢰",
-			"information": "강력하지만 느린 미사일을 발사합니다.\n매우 높은 체력을 가졌습니다.",
+			"information": "강력하지만 느린 미사일을 발사합니다.\n높은 체력을 가졌습니다.",
 			"projectile":
 			{
 				"sprite" : "Missile",
@@ -185,7 +185,7 @@
 				"hitProjectile" : true
 			},
 			"fireType": "FrontArrow",
-			"fireCount" : 3,
+			"fireCount" : 1,
 			"angleRange" : 0,
 			"continuousCount" : 1,
 			"interval" : 8,

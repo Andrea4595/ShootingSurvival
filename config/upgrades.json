@@ -1,11 +1,32 @@
 {
 	"stageUpgrades": {
 		"choiceCount": 2,
-		"increaseHp": [0, 20, 40, 60, 80, 100],
-		"increaseMoveSpeed": [0, 0.2, 0.4, 0.6, 0.8, 1],
-		"increaseCredit": [0, 0.2, 0.4, 0.6, 0.8, 1],
-		"heal": 0.5,
-		"credit": 50
+		"increaseHp":
+		{
+			"weight": 1,
+			"power": [0, 20, 40, 60, 80, 100]
+		},
+		"increaseMoveSpeed":
+		{
+			"weight": 1,
+			"power": [0, 0.2, 0.4, 0.6, 0.8, 1]
+		},
+		"increaseCredit":
+		{
+			"weight": 1,
+			"power": [0, 0.2, 0.4, 0.6, 0.8, 1]
+		},
+		"heal":
+		{
+			"weight": 1,
+			"power": [0.5]
+		},
+		"credit":
+		{
+			"weight": 1,
+			"power": [50]
+		},
+		"weaponUpgradesWeight": 3
 	},
 
 	"permanentUpgrades": {
