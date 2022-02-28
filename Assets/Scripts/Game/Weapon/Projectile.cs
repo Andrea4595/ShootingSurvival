@@ -161,7 +161,7 @@ namespace Game.Weapon
 
         void SpawnExplosion()
         {
-            var explosion = ObjectPool<Explosion>.GetObject();
+            var explosion = ObjectPool<Explosion>.instance.GetObject();
             explosion.Initialize(_owner, information, _body.position);
         }
 

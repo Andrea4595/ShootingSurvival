@@ -74,7 +74,7 @@ namespace Game.Character
 
         public void AddNewWeapon(string weaponKey)
         {
-            var weapon = ObjectPool<Weapon.Weapon>.GetObject();
+            var weapon = ObjectPool<Weapon.Weapon>.instance.GetObject();
             weapon.Initialize(this, weaponKey);
             _weapons.Add(weapon);
         }

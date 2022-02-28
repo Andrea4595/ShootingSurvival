@@ -10,7 +10,7 @@ namespace Game
         public float maxHp { get; private set; }
         public float hp { get; private set; }
 
-        public float hpPercent => hp / Mathf.Max(maxHp, 1);
+        public float hpPercent => Mathf.Clamp01(hp / Mathf.Max(maxHp, 1));
 
         public event Action onUpdate;
         public event Action onDie;

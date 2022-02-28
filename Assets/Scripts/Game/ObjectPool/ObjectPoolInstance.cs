@@ -7,7 +7,7 @@ namespace Game
         T _this;
 
         public bool activated => gameObject.activeSelf;
-        public void Destroy() => ObjectPool<T>.ReturnObject(_this);
+        public void Destroy() => ObjectPool<T>.instance.ReturnObject(_this);
 
         public void ObjectPoolInstanceInitialize(T instance) => _this = instance;
     }

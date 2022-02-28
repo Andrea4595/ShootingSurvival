@@ -25,7 +25,7 @@ namespace Game.Weapon.FireType
 
                 for (int i = 0; i < information.fireCount; i++)
                 {
-                    ObjectPool<Projectile>.GetObject().Initialize(owner, information.projectile, direction, offset);
+                    ObjectPool<Projectile>.instance.GetObject().Initialize(owner, information.projectile, direction, offset);
 
                     if (IsEven(i) != IsEven(information.fireCount))
                     {
