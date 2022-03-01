@@ -67,10 +67,19 @@ namespace Lobby
             if (_information.level >= _information.levels.Length - 1)
                 return;
 
+            var gameData = Data.GameData.instance;
+            var cost = _information.next.cost;
+
+            if (gameData.credit < cost)
+                return;
+
+            gameData.credit -= cost;
+            
             _information.level++;
             UpdateInterface();
+            PermanentUpgradeGenerator.instance.UpdateInterface();
 
-            //TODO : decrease credit cost
+            gameData.playerData.Save();
         }
     }
 }

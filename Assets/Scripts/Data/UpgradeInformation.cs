@@ -39,7 +39,12 @@ namespace Data
             public void InitializeWeapons(Object.WeaponInformation[] weaponInfos)
             {
                 foreach (var weaponInfo in weaponInfos)
-                    weaponLevels.Add(weaponInfo.key, -1);
+                {
+                    if (weaponLevels.ContainsKey(weaponInfo.key))
+                        weaponLevels[weaponInfo.key] = -1;
+                    else
+                        weaponLevels.Add(weaponInfo.key, -1);
+                }
             }
         }
 

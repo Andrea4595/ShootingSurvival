@@ -7,18 +7,21 @@ namespace Game.UI
     public class GameOver : MonoBehaviour
     {
         [SerializeField]
-        Animation _animation;
-        [SerializeField]
         NextLevel _goToLobby;
         [SerializeField]
         float _wait;
+        [SerializeField]
+        TMPro.TextMeshProUGUI _creditReward;
 
-        public void Run()
+        public void Run(int creditReward)
         {
+            _creditReward.text = $"{creditReward.ToString()} Credit";
+            Data.GameData.instance.credit += creditReward;
+            Data.GameData.instance.playerData.Save();
+
             Time.instance.Fade(0, 5);
 
             gameObject.SetActive(true);
-            _animation.Play();
 
             StartCoroutine(CInputWait(_wait));
         }

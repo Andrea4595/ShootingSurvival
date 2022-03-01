@@ -21,6 +21,10 @@ namespace Data
         public Object.StageInformation[] stages => _stageData.items;
         public UpgradeInformation.StageUpgrades stageUpgrades => _upgradeData.stageUpgrades;
         public UpgradeInformation.PermanentUpgrades permanentUpgrades => _upgradeData.permanentUpgrades;
+        public PlayerData playerData = new PlayerData();
+
+        public int credit;
+        public float creditBonus => 1 + stageUpgrades.increaseCredit.current + permanentUpgrades.increaseCreditBonus.current.power * stageUpgrades.increaseCredit.level;
 
         void FirstInitialize()
         {
@@ -31,7 +35,8 @@ namespace Data
             _stageData.Initialize("config/stages.json");
             _upgradeData.Initialize("config/upgrades.json");
             _languageData.Initialize("config/languages.json");
-            languageKey = "kr";
+
+            playerData.Load();
 
             GameInitialize();
         }
