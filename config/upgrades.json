@@ -1,47 +1,74 @@
 {
 	"stageUpgrades": {
 		"choiceCount": 2,
-		"increaseHp": [0.2, 0.4, 0.6, 0.8, 1],
-		"increaseMoveSpeed": [0.2, 0.4, 0.6, 0.8, 1],
-		"increaseCredit": [0.2, 0.4, 0.6, 0.8, 1],
-		"heal": 50,
-		"credit": 50
+		"increaseHp":
+		{
+			"weight": 1,
+			"power": [0, 20, 40, 60, 80, 100]
+		},
+		"increaseMoveSpeed":
+		{
+			"weight": 1,
+			"power": [0, 0.2, 0.4, 0.6, 0.8, 1]
+		},
+		"increaseCredit":
+		{
+			"weight": 1,
+			"power": [0, 0.2, 0.4, 0.6, 0.8, 1]
+		},
+		"heal":
+		{
+			"weight": 1,
+			"power": [0.5]
+		},
+		"credit":
+		{
+			"weight": 1,
+			"power": [50]
+		},
+		"weaponUpgradesWeight": 3
 	},
 
-	"permanentUpgrades": {
-		"increaseDamage": [
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseInterval": [
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseRange": [
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseHp": [
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseMoveSpeed": [
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseCredit": [
-			{"cost": 100, "power": 0.2},
-			{"cost": 200, "power": 0.4},
-			{"cost": 300, "power": 0.6}
-		],
-		"increaseChoiceCount": [
-			{"cost": 500, "power": 1},
-			{"cost": 1000, "power": 2}
-		]
+	"permanentUpgrades":
+	{
+		"increaseHp": {
+			"levels":
+			[
+				{"cost": 0, "power": 0},
+				{"cost": 200, "power": 5},
+				{"cost": 400, "power": 10},
+				{"cost": 600, "power": 15},
+				{"cost": 800, "power": 20},
+				{"cost": 1000, "power": 25},
+				{"cost": 1200, "power": 30}
+			]
+		},
+		"increaseMoveSpeed": {
+			"levels":
+			[
+				{"cost": 0, "power": 0},
+				{"cost": 200, "power": 0.05},
+				{"cost": 400, "power": 0.1},
+				{"cost": 600, "power": 0.15},
+				{"cost": 800, "power": 0.2}
+			]
+		},
+		"increaseCreditBonus": {
+			"levels":
+			[
+				{"cost": 0, "power": 0},
+				{"cost": 200, "power": 0.1},
+				{"cost": 400, "power": 0.2},
+				{"cost": 600, "power": 0.3}
+			]
+		},
+		"increaseChoiceCount": {
+			"levels":
+			[
+				{"cost": 0, "power": 0},
+				{"cost": 600, "power": 1},
+				{"cost": 1500, "power": 2}
+			]
+		}
 	}
 }

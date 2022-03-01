@@ -5,12 +5,14 @@ namespace Game
 {
     public class ObjectPool<T> : Singleton<ObjectPool<T>> where T : MonoBehaviour
     {
-        static Transform _container;
-        static T _poolingObjectPrefab;
-        static Queue<T> _poolingObjectQueue = new Queue<T>();
+        Transform _container;
+        T _poolingObjectPrefab;
+        Queue<T> _poolingObjectQueue = new Queue<T>();
         
         protected void Initialize(Transform container, int initCount, T poolingObjectPrefab)
         {
+            base.Initialize(this);
+
             _container = container;
             _poolingObjectPrefab = poolingObjectPrefab;
 
@@ -18,7 +20,7 @@ namespace Game
                 _poolingObjectQueue.Enqueue(CreateNewObject());
         }
 
-        static T CreateNewObject()
+        T CreateNewObject()
         {
             var newObj = Instantiate(_poolingObjectPrefab);
             newObj.gameObject.SetActive(false);
@@ -27,7 +29,7 @@ namespace Game
             return newObj;
         }
 
-        public static T GetObject()
+        public T GetObject()
         {
             if (_poolingObjectQueue.Count > 0)
             {
@@ -44,7 +46,7 @@ namespace Game
             }
         }
 
-        public static void ReturnObject(T obj)
+        public void ReturnObject(T obj)
         {
             obj.gameObject.SetActive(false);
             _poolingObjectQueue.Enqueue(obj);

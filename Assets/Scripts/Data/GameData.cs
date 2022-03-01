@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Data
@@ -5,21 +6,27 @@ namespace Data
     public class GameData : Singleton<GameData>
     {
         [SerializeField]
-        Table<Object.Character> _characterData;
+        Table<Object.CharacterInformation> _characterData;
         [SerializeField]
-        Table<Object.Weapon> _weaponData;
+        Table<Object.WeaponInformation> _weaponData;
         [SerializeField]
-        Table<Object.Stage> _stageData;
+        Table<Object.StageInformation> _stageData;
         [SerializeField]
-        UpgradeData _upgradeData;
+        UpgradeInformation _upgradeData;
+        [SerializeField]
+        LanguageInformation _languageData;
 
-        public Object.Character[] characters => _characterData.items;
-        public Object.Weapon[] weapons => _weaponData.items;
-        public Object.Stage[] stages => _stageData.items;
-        public UpgradeData.StageUpgrades stageUpgrades => _upgradeData.stageUpgrades;
-        public UpgradeData.PermanentUpgrades permanentUpgrades => _upgradeData.permanentUpgrades;
+        public Object.CharacterInformation[] characters => _characterData.items;
+        public Object.WeaponInformation[] weapons => _weaponData.items;
+        public Object.StageInformation[] stages => _stageData.items;
+        public UpgradeInformation.StageUpgrades stageUpgrades => _upgradeData.stageUpgrades;
+        public UpgradeInformation.PermanentUpgrades permanentUpgrades => _upgradeData.permanentUpgrades;
+        public PlayerData playerData = new PlayerData();
 
-        void Initialize()
+        public int credit;
+        public float creditBonus => 1 + stageUpgrades.increaseCredit.current + permanentUpgrades.increaseCreditBonus.current.power * stageUpgrades.increaseCredit.level;
+
+        void FirstInitialize()
         {
             Initialize(this);
 
@@ -27,11 +34,30 @@ namespace Data
             _weaponData.Initialize("config/weapons.json");
             _stageData.Initialize("config/stages.json");
             _upgradeData.Initialize("config/upgrades.json");
+            _languageData.Initialize("config/languages.json");
+
+            playerData.Load();
+
+            GameInitialize();
+        }
+        
+        public void GameInitialize()
+        {
+            void SetBaseWeaponLevel()
+            {
+                var baseWeapons = GetCharacterData("player").weapons;
+                foreach (var baseWeapon in baseWeapons)
+                    stageUpgrades.weaponLevels[baseWeapon] = 0;
+            }
+
+            stageUpgrades.Initialize();
+            stageUpgrades.InitializeWeapons(weapons);
+            SetBaseWeaponLevel();
         }
 
-        private void Awake() => Initialize();
+        private void Awake() => FirstInitialize();
 
-        public Object.Character GetCharacterData(string key)
+        public Object.CharacterInformation GetCharacterData(string key)
         {
             foreach(var item in characters)
             {
@@ -43,7 +69,7 @@ namespace Data
             return null;
         }
 
-        public Object.Weapon GetWeaponData(string key)
+        public Object.WeaponInformation GetWeaponData(string key)
         {
             foreach (var item in weapons)
             {
@@ -54,5 +80,8 @@ namespace Data
             Debug.LogError($"there is no weapon named '{key}'.");
             return null;
         }
+
+        public string languageKey { get; set; }
+        public LanguageInformation.Language language => _languageData.GetLanguage(languageKey);
     }
 }

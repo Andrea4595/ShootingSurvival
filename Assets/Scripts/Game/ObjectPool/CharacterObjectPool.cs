@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace Game
 {
-    public class CharacterObjectPool : ObjectPool<Character>
+    public class CharacterObjectPool : ObjectPool<Character.Character>
     {
         [SerializeField]
-        Character _prefab;
+        Character.Character _prefab;
 
         private void Awake() => Initialize(transform, 50, _prefab);
     }

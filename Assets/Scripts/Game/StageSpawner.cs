@@ -6,19 +6,46 @@ namespace Game
 {
     public class StageSpawner : Singleton<StageSpawner>
     {
-        List<Character> _remains = new List<Character>();
+        [SerializeField]
+        UI.GameOver _gameOver;
+        [SerializeField]
+        UI.GameOver _clear;
 
-        public Character[] Remains(Character.Force ownerForce)
+        List<Character.Character> _remains = new List<Character.Character>();
+        
+        public int creditReward;
+
+        public Character.Character[] Remains(Character.Character.Force targetForce)
         {
-            if (ownerForce == Character.Force.Player)
-                return _remains.ToArray();
+            if (targetForce == Character.Character.Force.Player)
+                return new Character.Character[1] { PlayerSetter.instance.player };
             else
-                return new Character[1] { PlayerSetter.instance.player };
+                return _remains.ToArray();
+        }
+
+        public Character.Character[] TargetRemains(Character.Character.Force ownerForce)
+        {
+            if (ownerForce == Character.Character.Force.Player)
+                return Remains(Character.Character.Force.Enemy);
+            else
+                return Remains(Character.Character.Force.Player);
+        }
+
+        public void GameOver()
+        {
+            _gameOver.Run(creditReward);
+        }
+
+        public void Clear()
+        {
+            _clear.Run(creditReward);
         }
 
         private void Awake()
         {
+            Data.GameData.instance.GameInitialize();
             Initialize(this);
+            Time.instance.Fade(1, 0);
         }
 
         private void OnEnable()
@@ -28,11 +55,23 @@ namespace Game
 
         IEnumerator CRun()
         {
-            foreach (var stage in Data.GameData.instance.stages)
-                yield return CStage(stage);
+            var stages = Data.GameData.instance.stages;
+            for (var i = 0; i < stages.Length; i++)
+            {
+                yield return CStage(stages[i]);
+
+                OfferReward(stages[i].credit);
+
+                if (i >= stages.Length - 1)
+                    break;
+
+                ShowUpgrade();
+            }
+
+            Clear();
         }
 
-        IEnumerator CStage(Data.Object.Stage stage)
+        IEnumerator CStage(Data.Object.StageInformation stage)
         {
             foreach (var group in stage.groups)
             {
@@ -41,11 +80,9 @@ namespace Game
                 while (_remains.Count > 0)
                     yield return null;
             }
-
-            OfferReward(stage.credit);
         }
 
-        void SpawnCharacterGrop(Data.Object.Stage.Spawn[] spawns)
+        void SpawnCharacterGrop(Data.Object.StageInformation.Spawn[] spawns)
         {
             foreach (var spawn in spawns)
             {
@@ -53,8 +90,8 @@ namespace Game
 
                 for (int i = 0; i < spawn.count; i++)
                 {
-                    var character = ObjectPool<Character>.GetObject();
-                    character.Initialize(key, Character.Force.Enemy);
+                    var character = ObjectPool<Character.Character>.instance.GetObject();
+                    character.Initialize(key, Character.Character.Force.Enemy);
                     SetPosition(character);
                     AddMovementToCharacter(character);
                     _remains.Add(character);
@@ -63,7 +100,7 @@ namespace Game
             }
         }
 
-        void SetPosition(Character character)
+        void SetPosition(Character.Character character)
         {
             Rect SpawnBorder()
             {
@@ -91,14 +128,19 @@ namespace Game
             character.movement.SetPosition(newPosition);
         }
 
-        void AddMovementToCharacter(Character character)
+        void AddMovementToCharacter(Character.Character character)
         {
-            character.gameObject.AddComponent<ChasingPlayer>().Initialize(character);
+            character.gameObject.AddComponent<Character.ChasingPlayer>().Initialize(character);
         }
 
         void OfferReward(int credit)
         {
+            creditReward += Mathf.RoundToInt(credit * Data.GameData.instance.creditBonus);
+        }
 
+        void ShowUpgrade()
+        {
+            UI.StageUpgradeSelector.instance.Show();
         }
     }
 }
