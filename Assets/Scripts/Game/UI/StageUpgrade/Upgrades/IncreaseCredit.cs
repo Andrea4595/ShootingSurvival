@@ -21,7 +21,6 @@ namespace Game.UI.StageUpgrade
 
         public void Upgrade()
         {
-            //TODO : Credit Bonus
             gameData.stageUpgrades.increaseCredit.level++;
         }
     }

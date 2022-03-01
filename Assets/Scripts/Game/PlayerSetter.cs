@@ -25,7 +25,7 @@ namespace Game
 
         void GameOver()
         {
-            _gameOver.Run();
+            StageSpawner.instance.GameOver();
         }
     }
 }

@@ -1,10 +1,12 @@
+using UnityEngine;
+
 namespace Game.UI.StageUpgrade
 {
     public class GetCredit : IUpgrade
     {
         Data.GameData gameData => Data.GameData.instance;
 
-        float creditAmount => gameData.stageUpgrades.credit.power[0];
+        int creditAmount => Mathf.RoundToInt(gameData.stageUpgrades.credit.power[0] * Data.GameData.instance.creditBonus);
 
         public string GetName() => gameData.language.credit;
 
@@ -15,7 +17,7 @@ namespace Game.UI.StageUpgrade
 
         public void Upgrade()
         {
-            //TODO : get credit
+            StageSpawner.instance.creditReward += creditAmount;
         }
     }
 }

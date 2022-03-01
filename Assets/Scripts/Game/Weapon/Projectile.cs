@@ -96,7 +96,7 @@ namespace Game.Weapon
         {
             Character.Character GetNearestTarget()
             {
-                var targets = StageSpawner.instance.Remains(_owner.force);
+                var targets = StageSpawner.instance.TargetRemains(_owner.force);
 
                 var minDistance = Mathf.Infinity;
                 Character.Character nearest = null;

@@ -15,14 +15,15 @@ namespace Game.UI
         [SerializeField]
         StageUpgrade.StageUpgradeChoice _choicePrefab;
 
-        private void Awake()
-        {
-            Initialize(this);
-        }
+        [SerializeField]
+        TMPro.TextMeshProUGUI _credit;
+
+        public void Initialize() => Initialize(this);
 
         public void Show()
         {
             _canvas.SetActive(true);
+            _credit.text = $"{StageSpawner.instance.creditReward.ToString()} Credit";
 
             var choiceCount = GetChoiceCount();
             ShowRandomChoices(choiceCount);
@@ -99,7 +100,8 @@ namespace Game.UI
             if (allChoices.Count <= 0)
                 allChoices.Add(new StageUpgrade.GetCredit(), stageUpgrades.credit.weight);
 
-            allChoices.Add(new StageUpgrade.GetHeal(), stageUpgrades.heal.weight);
+            if (PlayerSetter.instance.player.health.hpPercent <= 0.5f)
+                allChoices.Add(new StageUpgrade.GetHeal(), stageUpgrades.heal.weight);
 
             List<StageUpgrade.IUpgrade> choices = new List<StageUpgrade.IUpgrade>();
 
