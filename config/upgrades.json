@@ -31,58 +31,29 @@
 
 	"permanentUpgrades":
 	{
-		"increaseDamage": {
-			"name": "공격력 증가",
-			"levels":
-			[
-				{"cost": 0, "power": 0},
-				{"cost": 100, "power": 0.1},
-				{"cost": 200, "power": 0.2},
-				{"cost": 300, "power": 0.3}
-			]
-		},
-		"increaseInterval": {
-			"name": "공격 속도 증가",
-			"levels":
-			[
-				{"cost": 0, "power": 0},
-				{"cost": 200, "power": 0.1},
-				{"cost": 400, "power": 0.2},
-				{"cost": 600, "power": 0.3}
-			]
-		},
-		"increaseRange": {
-			"name": "폭발 범위 증가",
-			"levels":
-			[
-				{"cost": 0, "power": 0},
-				{"cost": 200, "power": 0.1},
-				{"cost": 400, "power": 0.2},
-				{"cost": 600, "power": 0.3}
-			]
-		},
 		"increaseHp": {
-			"name": "체력 증가",
 			"levels":
 			[
 				{"cost": 0, "power": 0},
-				{"cost": 200, "power": 0.2},
-				{"cost": 400, "power": 0.4},
-				{"cost": 600, "power": 0.6}
+				{"cost": 200, "power": 5},
+				{"cost": 400, "power": 10},
+				{"cost": 600, "power": 15},
+				{"cost": 800, "power": 20},
+				{"cost": 1000, "power": 25},
+				{"cost": 1200, "power": 30}
 			]
 		},
 		"increaseMoveSpeed": {
-			"name": "이동 속도 증가",
 			"levels":
 			[
 				{"cost": 0, "power": 0},
-				{"cost": 200, "power": 0.1},
-				{"cost": 400, "power": 0.2},
-				{"cost": 600, "power": 0.3}
+				{"cost": 200, "power": 0.05},
+				{"cost": 400, "power": 0.1},
+				{"cost": 600, "power": 0.15},
+				{"cost": 800, "power": 0.2}
 			]
 		},
-		"increaseCredit": {
-			"name": "크레딧 획득량 증가",
+		"increaseCreditBonus": {
 			"levels":
 			[
 				{"cost": 0, "power": 0},
@@ -92,12 +63,11 @@
 			]
 		},
 		"increaseChoiceCount": {
-			"name": "강화 선택지 증가",
 			"levels":
 			[
 				{"cost": 0, "power": 0},
-				{"cost": 500, "power": 1},
-				{"cost": 1000, "power": 2}
+				{"cost": 600, "power": 1},
+				{"cost": 1500, "power": 2}
 			]
 		}
 	}

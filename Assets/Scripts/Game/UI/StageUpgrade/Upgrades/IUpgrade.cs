@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.UI.StageUpgrade
 {
-    public interface IUpgradeInformation
+    public interface IUpgrade
     {
         public string GetName();
         public string GetContent();

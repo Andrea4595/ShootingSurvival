@@ -1,21 +1,21 @@
 namespace Game.UI.StageUpgrade
 {
-    public class IncreaseHp : IUpgradeInformation
+    public class IncreaseHp : IUpgrade
     {
         Data.GameData gameData => Data.GameData.instance;
         Character.Character player => PlayerSetter.instance.player;
 
         float baseHp => gameData.GetCharacterData("player").maxHp;
-        float permanentIncreasedHp => gameData.permanentUpgrades.increaseHp.levels[gameData.permanentUpgradeLevel.increaseHp].power;
-        float stageIncreasedHp => gameData.stageUpgrades.increaseHp.power[gameData.stageUpgradeLevel.increaseHp];
-        float nextStageIncreasedHp => gameData.stageUpgrades.increaseHp.power[gameData.stageUpgradeLevel.increaseHp + 1];
-        float nextHp => baseHp + permanentIncreasedHp + nextStageIncreasedHp;
+        float permanentIncreasedHp => gameData.permanentUpgrades.increaseHp.current.power;
+        float stageIncreasedHp => gameData.stageUpgrades.increaseHp.current + permanentIncreasedHp * gameData.stageUpgrades.increaseHp.level;
+        float nextStageIncreasedHp => gameData.stageUpgrades.increaseHp.next + permanentIncreasedHp * (gameData.stageUpgrades.increaseHp.level + 1);
+        float nextHp => baseHp + nextStageIncreasedHp;
 
-        public string GetName() => $"{gameData.language.IncreaseStatusText(gameData.language.hp)} {gameData.stageUpgradeLevel.increaseHp + 1}";
+        public string GetName() => $"{gameData.language.IncreaseStatusText(gameData.language.hp)} {gameData.stageUpgrades.increaseHp.level + 1}";
 
         public string GetContent()
         {
-            var nowHp = baseHp + permanentIncreasedHp + stageIncreasedHp;
+            var nowHp = baseHp + stageIncreasedHp;
 
             return $"{gameData.language.hp} : {nowHp} ¡æ {nextHp}\n";
         }
@@ -23,7 +23,7 @@ namespace Game.UI.StageUpgrade
         public void Upgrade()
         {
             player.health.SetMaxHp(nextHp);
-            gameData.stageUpgradeLevel.increaseHp++;
+            gameData.stageUpgrades.increaseHp.level++;
         }
     }
 }

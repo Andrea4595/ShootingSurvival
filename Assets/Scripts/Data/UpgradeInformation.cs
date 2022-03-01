@@ -9,40 +9,37 @@ namespace Data
         public class StageUpgrades
         {
             [System.Serializable]
-            public class StageUpgrade
+            public class Upgrade
             {
                 public float weight;
                 public float[] power;
+
+                public int level { get; set; }
+                public float current => power[level];
+                public float next => power[level + 1];
             }
 
             public int choiceCount;
-            public StageUpgrade increaseHp;
-            public StageUpgrade increaseMoveSpeed;
-            public StageUpgrade increaseCredit;
-            public StageUpgrade heal;
-            public StageUpgrade credit;
+            public Upgrade increaseHp;
+            public Upgrade increaseMoveSpeed;
+            public Upgrade increaseCredit;
+            public Upgrade heal;
+            public Upgrade credit;
             public float weaponUpgradesWeight;
 
-            [System.Serializable]
-            public class Level
+            public void Initialize()
             {
-                public int increaseHp;
-                public int increaseMoveSpeed;
-                public int increaseCredit;
-                public Dictionary<string, int> weapons = new Dictionary<string, int>();
+                increaseHp.level = 0;
+                increaseMoveSpeed.level = 0;
+                increaseCredit.level = 0;
+            }
 
-                public void Initialize()
-                {
-                    increaseHp = 0;
-                    increaseMoveSpeed = 0;
-                    increaseCredit = 0;
-                }
+            public Dictionary<string, int> weaponLevels = new Dictionary<string, int>();
 
-                public void InitializeWeapons(Object.WeaponInformation[] weaponInfos)
-                {
-                    foreach (var weaponInfo in weaponInfos)
-                        weapons.Add(weaponInfo.key, -1);
-                }
+            public void InitializeWeapons(Object.WeaponInformation[] weaponInfos)
+            {
+                foreach (var weaponInfo in weaponInfos)
+                    weaponLevels.Add(weaponInfo.key, -1);
             }
         }
 
@@ -50,7 +47,7 @@ namespace Data
         public class PermanentUpgrades
         {
             [System.Serializable]
-            public class PermanentUpgrade
+            public class Upgrade
             {
                 [System.Serializable]
                 public class Level
@@ -59,29 +56,17 @@ namespace Data
                     public float power;
                 }
 
-                public string name;
                 public Level[] levels;
+
+                public int level { get; set; }
+                public Level current => levels[level];
+                public Level next => levels[level + 1];
             }
 
-            public PermanentUpgrade increaseDamage;
-            public PermanentUpgrade increaseInterval;
-            public PermanentUpgrade increaseRange;
-            public PermanentUpgrade increaseHp;
-            public PermanentUpgrade increaseMoveSpeed;
-            public PermanentUpgrade increaseCredit;
-            public PermanentUpgrade increaseChoiceCount;
-
-            [System.Serializable]
-            public class Level
-            {
-                public int increaseDamage;
-                public int increaseInterval;
-                public int increaseRange;
-                public int increaseHp;
-                public int increaseMoveSpeed;
-                public int increaseCredit;
-                public int increaseChoiceCount;
-            }
+            public Upgrade increaseHp;
+            public Upgrade increaseMoveSpeed;
+            public Upgrade increaseCreditBonus;
+            public Upgrade increaseChoiceCount;
         }
 
         public StageUpgrades stageUpgrades;
