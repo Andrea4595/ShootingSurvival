@@ -1,15 +1,15 @@
 namespace Game.UI.StageUpgrade
 {
-    public class GetCredit : IUpgradeInformation
+    public class GetCredit : IUpgrade
     {
         Data.GameData gameData => Data.GameData.instance;
-        Character.Character player => PlayerSetter.instance.player;
+
+        float creditAmount => gameData.stageUpgrades.credit.power[0];
 
         public string GetName() => gameData.language.credit;
 
         public string GetContent()
         {
-            var creditAmount = gameData.stageUpgrades.credit.power[0];
             return gameData.language.GetCreditText(creditAmount.ToString());
         }
 

@@ -22,9 +22,6 @@ namespace Data
         public UpgradeInformation.StageUpgrades stageUpgrades => _upgradeData.stageUpgrades;
         public UpgradeInformation.PermanentUpgrades permanentUpgrades => _upgradeData.permanentUpgrades;
 
-        public UpgradeInformation.PermanentUpgrades.Level permanentUpgradeLevel;
-        public UpgradeInformation.StageUpgrades.Level stageUpgradeLevel;
-
         void FirstInitialize()
         {
             Initialize(this);
@@ -45,11 +42,11 @@ namespace Data
             {
                 var baseWeapons = GetCharacterData("player").weapons;
                 foreach (var baseWeapon in baseWeapons)
-                    stageUpgradeLevel.weapons[baseWeapon] = 0;
+                    stageUpgrades.weaponLevels[baseWeapon] = 0;
             }
 
-            stageUpgradeLevel.Initialize();
-            stageUpgradeLevel.InitializeWeapons(weapons);
+            stageUpgrades.Initialize();
+            stageUpgrades.InitializeWeapons(weapons);
             SetBaseWeaponLevel();
         }
 

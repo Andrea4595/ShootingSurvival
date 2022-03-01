@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.UI.StageUpgrade
 {
-    public class UpgradeWeapon : IUpgradeInformation
+    public class UpgradeWeapon : IUpgrade
     {
         string _name;
         string _content;
@@ -25,9 +25,9 @@ namespace Game.UI.StageUpgrade
             string GetContentText(string name, float previous, float fixTo) => $"{name} : {previous} ¡æ {fixTo}\n";
 
             var gameData = Data.GameData.instance;
-            var level = gameData.stageUpgradeLevel.weapons[information.key];
+            var level = gameData.stageUpgrades.weaponLevels[information.key];
 
-            _onUpgrade += () => gameData.stageUpgradeLevel.weapons[information.key] = level + 1;
+            _onUpgrade += () => gameData.stageUpgrades.weaponLevels[information.key] = level + 1;
 
             if (level == -1)
             {

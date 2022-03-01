@@ -1377,6 +1377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1672310550}
   - component: {fileID: 1672310551}
+  - component: {fileID: 1672310552}
   m_Layer: 5
   m_Name: Upgrade
   m_TagString: Untagged
@@ -1420,6 +1421,22 @@ MonoBehaviour:
   _canvas: {fileID: 1672310549}
   _choiceContainer: {fileID: 115874038}
   _choicePrefab: {fileID: 4051837111278542293, guid: 8f6197287ad7d68479627fac2e96b613, type: 3}
+--- !u!111 &1672310552
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672310549}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b4fd584a8738f88488d3dcbdaca1a271, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b4fd584a8738f88488d3dcbdaca1a271, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1759380925
 GameObject:
   m_ObjectHideFlags: 0

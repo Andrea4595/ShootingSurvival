@@ -5,13 +5,16 @@
 		{
 			"key": "kr",
 			"increaseStatus": "[0] 증가",
+			"increaseUpgradeStatus": "[0] 추가 증가",
 			"hp": "체력",
+			"heal": "회복",
+			"healInformation": "체력 [0]% 회복",
 			"moveSpeed": "이동 속도",
 			"credit": "크레딧",
 			"creditBonus": "크레딧 보너스",
 			"getCredit": "크레딧 [0] 획득",
-			"heal": "회복",
-			"healInformation": "체력 [0]% 회복",
+			"choiceCount": "강화 선택지",
+			
 			"weapon_projectile_maxHp": "탄환 체력",
 			"weapon_projectile_damage": "탄환 공격력",
 			"weapon_projectile_range": "탄환 폭발 범위",
@@ -23,6 +26,7 @@
 			"weapon_angleRange": "동시 발사 각",
 			"weapon_continuousCount": "연사 횟수",
 			"weapon_interval": "공격 속도",
+			
 			"weapons":
 			[
 				{

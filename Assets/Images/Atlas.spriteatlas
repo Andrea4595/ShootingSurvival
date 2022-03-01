@@ -20,7 +20,19 @@ SpriteAtlas:
       readable: 0
       crunchedCompression: 0
       sRGB: 1
-    platformSettings: []
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -39,6 +51,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 1500838891da39c4d8be0ca5f1ae721b, type: 3}
+  - {fileID: 21300000, guid: 4311ee5b9668b804b873787629c97e03, type: 3}
   - {fileID: 21300000, guid: 53a9117c8a72e8048912f3194f0eebca, type: 3}
   - {fileID: 21300000, guid: b4e7177dbc13cb849b835207401f1e23, type: 3}
   - {fileID: 21300000, guid: de95edeeb33a489448287de930e80497, type: 3}
@@ -46,6 +59,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c5189defb95c55f41ab04cf1a49381e6, type: 3}
   m_PackedSpriteNamesToIndex:
   - Bomber
+  - Credit
   - Fighter
   - Explosion
   - Missile

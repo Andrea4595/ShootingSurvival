@@ -49,7 +49,7 @@ namespace Game.UI
         {
             var gameData = Data.GameData.instance;
             var baseCount = gameData.stageUpgrades.choiceCount;
-            var additionalCount = (int)gameData.permanentUpgrades.increaseChoiceCount.levels[gameData.permanentUpgradeLevel.increaseChoiceCount].power;
+            var additionalCount = (int)gameData.permanentUpgrades.increaseChoiceCount.current.power;
 
             return baseCount + additionalCount;
         }
@@ -68,18 +68,17 @@ namespace Game.UI
             LayoutRebuilder.ForceRebuildLayoutImmediate(_choiceContainer);
         }
 
-        List<StageUpgrade.IUpgradeInformation> GetChoiceKeys(int count)
+        List<StageUpgrade.IUpgrade> GetChoiceKeys(int count)
         {
             var stageUpgrades = Data.GameData.instance.stageUpgrades;
-            var stageUpgradeLevel = Data.GameData.instance.stageUpgradeLevel;
 
-            WeightedRandom<StageUpgrade.IUpgradeInformation> allChoices = new WeightedRandom<StageUpgrade.IUpgradeInformation>();
+            WeightedRandom<StageUpgrade.IUpgrade> allChoices = new WeightedRandom<StageUpgrade.IUpgrade>();
 
-            if (stageUpgradeLevel.increaseHp < stageUpgrades.increaseHp.power.Length - 1)
+            if (stageUpgrades.increaseHp.level < stageUpgrades.increaseHp.power.Length - 1)
                 allChoices.Add(new StageUpgrade.IncreaseHp(), stageUpgrades.increaseHp.weight);
-            if (stageUpgradeLevel.increaseMoveSpeed < stageUpgrades.increaseMoveSpeed.power.Length - 1)
+            if (stageUpgrades.increaseMoveSpeed.level < stageUpgrades.increaseMoveSpeed.power.Length - 1)
                 allChoices.Add(new StageUpgrade.IncreaseMoveSpeed(), stageUpgrades.increaseMoveSpeed.weight);
-            if (stageUpgradeLevel.increaseCredit < stageUpgrades.increaseCredit.power.Length - 1)
+            if (stageUpgrades.increaseCredit.level < stageUpgrades.increaseCredit.power.Length - 1)
                 allChoices.Add(new StageUpgrade.IncreaseCredit(), stageUpgrades.increaseCredit.weight);
 
             var weaponInfos = Data.GameData.instance.weapons;
@@ -89,7 +88,7 @@ namespace Game.UI
                 if (weaponInfo.forPlayer == false)
                     continue;
 
-                int level = stageUpgradeLevel.weapons[weaponInfo.key];
+                int level = stageUpgrades.weaponLevels[weaponInfo.key];
 
                 if (level >= weaponInfo.upgrades.Length)
                     continue;
@@ -102,7 +101,7 @@ namespace Game.UI
 
             allChoices.Add(new StageUpgrade.GetHeal(), stageUpgrades.heal.weight);
 
-            List<StageUpgrade.IUpgradeInformation> choices = new List<StageUpgrade.IUpgradeInformation>();
+            List<StageUpgrade.IUpgrade> choices = new List<StageUpgrade.IUpgrade>();
 
             for (var i = Mathf.Min(count, allChoices.Count); i > 0; i--)
                 choices.Add(allChoices.TakeOne());

@@ -15,7 +15,7 @@ namespace Game.UI.StageUpgrade
 
         public event Action onSelect;
 
-        public void Initialize(IUpgradeInformation information)
+        public void Initialize(IUpgrade information)
         {
             _name.text = information.GetName();
             _content.text = information.GetContent();

@@ -1,6 +1,6 @@
 namespace Game.UI.StageUpgrade
 {
-    public class GetHeal : IUpgradeInformation
+    public class GetHeal : IUpgrade
     {
         Data.GameData gameData => Data.GameData.instance;
 

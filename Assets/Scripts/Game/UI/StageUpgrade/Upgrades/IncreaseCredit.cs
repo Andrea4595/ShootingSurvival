@@ -1,20 +1,20 @@
 namespace Game.UI.StageUpgrade
 {
-    public class IncreaseCredit : IUpgradeInformation
+    public class IncreaseCredit : IUpgrade
     {
         Data.GameData gameData => Data.GameData.instance;
         Character.Character player => PlayerSetter.instance.player;
 
-        float permanentIncreasedCredit => gameData.permanentUpgrades.increaseCredit.levels[gameData.permanentUpgradeLevel.increaseCredit].power;
-        float stageIncreasedCredit => gameData.stageUpgrades.increaseCredit.power[gameData.stageUpgradeLevel.increaseCredit];
-        float nextStageIncreasedCredit => gameData.stageUpgrades.increaseCredit.power[gameData.stageUpgradeLevel.increaseCredit + 1];
-        float nextCredit => permanentIncreasedCredit + nextStageIncreasedCredit;
+        float permanentIncreasedCredit => gameData.permanentUpgrades.increaseCreditBonus.current.power;
+        float stageIncreasedCredit => gameData.stageUpgrades.increaseCredit.current + permanentIncreasedCredit * gameData.stageUpgrades.increaseCredit.level;
+        float nextStageIncreasedCredit => gameData.stageUpgrades.increaseCredit.next + permanentIncreasedCredit * (gameData.stageUpgrades.increaseCredit.level + 1);
+        float nextCredit => nextStageIncreasedCredit;
 
-        public string GetName() => $"{gameData.language.IncreaseStatusText(gameData.language.creditBonus)} {gameData.stageUpgradeLevel.increaseCredit + 1}";
+        public string GetName() => $"{gameData.language.IncreaseStatusText(gameData.language.creditBonus)} {gameData.stageUpgrades.increaseCredit.level + 1}";
 
         public string GetContent()
         {
-            var nowCredit = permanentIncreasedCredit + stageIncreasedCredit;
+            var nowCredit = stageIncreasedCredit;
 
             return $"{gameData.language.creditBonus} : {nowCredit * 100}% ¡æ {nextCredit * 100}%\n";
         }
@@ -22,7 +22,7 @@ namespace Game.UI.StageUpgrade
         public void Upgrade()
         {
             //TODO : Credit Bonus
-            gameData.stageUpgradeLevel.increaseCredit++;
+            gameData.stageUpgrades.increaseCredit.level++;
         }
     }
 }
