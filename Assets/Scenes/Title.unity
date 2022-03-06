@@ -367,25 +367,18 @@ MonoBehaviour:
         power: []
       weaponUpgradesWeight: 0
     permanentUpgrades:
-      increaseDamage: []
-      increaseInterval: []
-      increaseRange: []
-      increaseHp: []
-      increaseMoveSpeed: []
-      increaseCredit: []
-      increaseChoiceCount: []
-  permanentUpgradeLevel:
-    increaseDamage: 0
-    increaseInterval: 0
-    increaseRange: 0
-    increaseHp: 0
-    increaseMoveSpeed: 0
-    increaseCredit: 0
-    increaseChoiceCount: 0
-  stageUpgradeLevel:
-    increaseHp: 0
-    increaseMoveSpeed: 0
-    increaseCredit: 0
+      increaseHp:
+        levels: []
+      increaseMoveSpeed:
+        levels: []
+      increaseCreditBonus:
+        levels: []
+      increaseChoiceCount:
+        levels: []
+  _languageData:
+    languageList: []
+    languages: []
+  credit: 0
 --- !u!114 &1135278920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,10 +403,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42e6921102e78b42892e4c4c693c3e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteBullet: {fileID: 21300000, guid: c5189defb95c55f41ab04cf1a49381e6, type: 3}
-  spriteMissile: {fileID: 21300000, guid: de95edeeb33a489448287de930e80497, type: 3}
-  spriteFighter: {fileID: 21300000, guid: 53a9117c8a72e8048912f3194f0eebca, type: 3}
-  spriteBomber: {fileID: 21300000, guid: 1500838891da39c4d8be0ca5f1ae721b, type: 3}
+  sprites:
+  - key: Fighter
+    sprite: {fileID: 21300000, guid: 53a9117c8a72e8048912f3194f0eebca, type: 3}
+  - key: Bomber
+    sprite: {fileID: 21300000, guid: 1500838891da39c4d8be0ca5f1ae721b, type: 3}
+  - key: Bullet
+    sprite: {fileID: 21300000, guid: c5189defb95c55f41ab04cf1a49381e6, type: 3}
+  - key: Missile
+    sprite: {fileID: 21300000, guid: de95edeeb33a489448287de930e80497, type: 3}
 --- !u!114 &1135278922
 MonoBehaviour:
   m_ObjectHideFlags: 0

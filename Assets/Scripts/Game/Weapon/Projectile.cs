@@ -36,7 +36,7 @@ namespace Game.Weapon
             _owner = owner;
             this.information = information;
             _direction = direction;
-            _sprite.sprite = SpriteInformer.GetSprite(information.sprite);
+            _sprite.sprite = Data.SpriteInformer.GetSprite(information.sprite);
             _sprite.color = owner.color;
             _hitable.Initialize(owner.force, Character.Hitable.Type.Projectile);
 
