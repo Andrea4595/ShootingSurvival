@@ -11,8 +11,6 @@ namespace Game
         
         protected void Initialize(Transform container, int initCount, T poolingObjectPrefab)
         {
-            base.Initialize(this);
-
             _container = container;
             _poolingObjectPrefab = poolingObjectPrefab;
 

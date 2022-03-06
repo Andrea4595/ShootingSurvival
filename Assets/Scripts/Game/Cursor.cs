@@ -9,8 +9,6 @@ namespace Game
         [SerializeField]
         Camera _camera;
 
-        private void Awake() => Initialize(this);
-
         public static Vector2 position
         {
             get

@@ -15,7 +15,6 @@ namespace Lobby
 
         public void Initialize()
         {
-            Initialize(this);
             UpdateInterface();
         }
 
