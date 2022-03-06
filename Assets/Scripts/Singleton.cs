@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour
+public class Singleton<T> : MonoBehaviour where T : Object
 {
-    public static T instance { get; private set; }
-
-    protected void Initialize(T self) => instance = self;
+    static T _instance;
+    public static T instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = FindObjectOfType<T>(true);
+            return _instance;
+        }
+    }
 }

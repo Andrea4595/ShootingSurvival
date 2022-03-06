@@ -6,14 +6,10 @@ namespace Game
 {
     public class PlayerSetter : Singleton<PlayerSetter>
     {
-        [SerializeField]
-        UI.GameOver _gameOver;
-
         public Character.Character player;
 
         private void Awake()
         {
-            Initialize(this);
             SetPlayer();
         }
 
