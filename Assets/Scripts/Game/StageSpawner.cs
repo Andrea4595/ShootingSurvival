@@ -10,6 +10,8 @@ namespace Game
         UI.GameOver _gameOver;
         [SerializeField]
         UI.GameOver _clear;
+        [SerializeField]
+        bool _stageStart = true;
 
         List<Character.Character> _remains = new List<Character.Character>();
         
@@ -33,23 +35,30 @@ namespace Game
 
         public void GameOver()
         {
-            _gameOver.Run(creditReward);
+            _gameOver?.Run(creditReward);
         }
 
         public void Clear()
         {
-            _clear.Run(creditReward);
+            _clear?.Run(creditReward);
+        }
+
+        public void AddRemain(Character.Character character)
+        {
+            _remains.Add(character);
         }
 
         private void Awake()
         {
             Data.GameData.instance.GameInitialize();
-            Initialize(this);
             Time.instance.Fade(1, 0);
         }
 
         private void OnEnable()
         {
+            if (!_stageStart)
+                return;
+
             StartCoroutine(CRun());
         }
 
