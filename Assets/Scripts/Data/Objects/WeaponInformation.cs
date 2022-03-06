@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 
 namespace Data.Object
@@ -8,40 +9,109 @@ namespace Data.Object
         [System.Serializable]
         public class Projectile
         {
-            public string sprite;
-            public float maxHp;
-            public float damage;
-            public float range;
-            public float speed;
-            public float scale;
-            public float homming;
-            public float lifetime;
-            public bool hitProjectile;
-        }
+            public string sprite = "Bullet";
+            public float maxHp = 0;
+            public float damage = 1;
+            public float range = 0;
+            public float speed = 10;
+            public float scale = 1;
+            public float homming = 0;
+            public float lifetime = 5;
+            public bool hitProjectile = true;
 
-        [System.Serializable]
-        public class Fix
-        {
-            public string key;
-            public float fixTo;
+            public Projectile Clone()
+            {
+                var clone = new Projectile();
+                clone.sprite = (string)sprite.Clone();
+                clone.maxHp = maxHp;
+                clone.damage = damage;
+                clone.range = range;
+                clone.speed = speed;
+                clone.scale = scale;
+                clone.homming = homming;
+                clone.lifetime = lifetime;
+                clone.hitProjectile = hitProjectile;
+                return clone;
+            }
         }
 
         [System.Serializable]
         public class Upgrade
         {
-            public Fix[] fixes;
+            [System.Serializable]
+            public class Fix
+            {
+                public string key;
+                public float fixTo;
+
+                public static string[] keyList = { "projectile/maxHp", "projectile/damage", "projectile/range", "projectile/speed", "projectile/scale", "projectile/homming", "projectile/lifetime", "fireCount", "continuousCount", "interval", "angleRange" };
+
+                public Fix Clone()
+                {
+                    var clone = new Fix();
+                    clone.key = (string)key.Clone();
+                    clone.fixTo = fixTo;
+
+                    return clone;
+                }
+            }
+
+            public Fix[] fixes = new Fix[0];
+
+            public Upgrade Clone()
+            {
+                var clone = new Upgrade();
+                clone.fixes = new Fix[fixes.Length];
+                for (int i = 0; i < fixes.Length; i++)
+                    clone.fixes[i] = fixes[i].Clone();
+
+                return clone;
+            }
         }
 
-        public string key;
+        public string key = "newWeapon";
         public string name => GetWeaponText().name;
         public string information => GetWeaponText().information;
-        public bool forPlayer;
-        public Projectile projectile;
-        public string fireType;
-        public int fireCount;
-        public int continuousCount;
-        public float interval;
-        public float angleRange;
+        public bool forPlayer = false;
+        public Projectile projectile = new Projectile();
+        public enum Type { FrontEvenSpread, FrontArrow, Random }
+        public string fireType = "FrontEvenSpread";
+        public int fireCount = 1;
+        public int continuousCount = 1;
+        public float interval = 1;
+        public float angleRange = 0;
+
+        public Type GetFireType()
+        {
+            switch (fireType)
+            {
+                case "FrontEvenSpread":
+                    return Type.FrontEvenSpread;
+                case "FrontArrow":
+                    return Type.FrontArrow;
+                case "Random":
+                    return Type.Random;
+            }
+
+            UnityEngine.Debug.LogError($"no firetype named {fireType}");
+            return Type.FrontEvenSpread;
+        }
+
+        public void SetFireType(Type type)
+        {
+            switch (type)
+            {
+                case Type.FrontEvenSpread:
+                    fireType = "FrontEvenSpread";
+                    break;
+                case Type.FrontArrow:
+                    fireType = "FrontArrow";
+                    break;
+                case Type.Random:
+                    fireType = "Random";
+                    break;
+            }
+        }
 
         LanguageInformation.Language.Weapon GetWeaponText()
         {
@@ -61,18 +131,36 @@ namespace Data.Object
 
         public IEnumerator FireTypeCoroutine(Game.Character.Character owner)
         {
-            switch (fireType)
+            switch (GetFireType())
             {
-                case "FrontEvenSpread":
+                case Type.FrontEvenSpread:
                     return Game.Weapon.FireType.FrontEvenSpread.CRun(owner, this);
-                case "FrontArrow":
+                case Type.FrontArrow:
                     return Game.Weapon.FireType.FrontArrow.CRun(owner, this);
-                case "Random":
+                case Type.Random:
                     return Game.Weapon.FireType.Random.CRun(owner, this);
             }
 
-            UnityEngine.Debug.LogError($"no firetype named {fireType}");
             return null;
+        }
+
+        public WeaponInformation Clone()
+        {
+            var clone = new WeaponInformation();
+
+            clone.key = (string)key.Clone();
+            clone.forPlayer = forPlayer;
+            clone.projectile = projectile.Clone();
+            clone.fireType = (string)fireType.Clone();
+            clone.fireCount = fireCount;
+            clone.continuousCount = continuousCount;
+            clone.interval = interval;
+            clone.angleRange = angleRange;
+            clone.upgrades = new Upgrade[upgrades.Length];
+            for (var i = 0; i < upgrades.Length; i++)
+                clone.upgrades[i] = upgrades[i].Clone();
+
+            return clone;
         }
     }
 }
