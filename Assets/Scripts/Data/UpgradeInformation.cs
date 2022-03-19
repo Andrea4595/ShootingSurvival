@@ -25,7 +25,6 @@ namespace Data
             public Upgrade increaseCredit;
             public Upgrade heal;
             public Upgrade credit;
-            public float weaponUpgradesWeight;
 
             public void Initialize()
             {
@@ -57,8 +56,8 @@ namespace Data
                 [System.Serializable]
                 public class Level
                 {
-                    public int cost;
-                    public float power;
+                    public int cost = 0;
+                    public float power = 1;
                 }
 
                 public Level[] levels;
