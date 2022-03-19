@@ -14,11 +14,6 @@ namespace Game
 
         Coroutine _fade;
 
-        private void Awake()
-        {
-            Initialize(this);
-        }
-
         public void Fade(float targetTimeScale, float duration)
         {
             if (_fade != null)

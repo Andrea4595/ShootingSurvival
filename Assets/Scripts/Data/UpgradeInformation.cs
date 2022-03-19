@@ -25,7 +25,6 @@ namespace Data
             public Upgrade increaseCredit;
             public Upgrade heal;
             public Upgrade credit;
-            public float weaponUpgradesWeight;
 
             public void Initialize()
             {
@@ -36,14 +35,14 @@ namespace Data
 
             public Dictionary<string, int> weaponLevels = new Dictionary<string, int>();
 
-            public void InitializeWeapons(Object.WeaponInformation[] weaponInfos)
+            public void InitializeWeapons(Dictionary<string, Object.WeaponInformation> weaponInfos)
             {
                 foreach (var weaponInfo in weaponInfos)
                 {
-                    if (weaponLevels.ContainsKey(weaponInfo.key))
-                        weaponLevels[weaponInfo.key] = -1;
+                    if (weaponLevels.ContainsKey(weaponInfo.Key))
+                        weaponLevels[weaponInfo.Key] = -1;
                     else
-                        weaponLevels.Add(weaponInfo.key, -1);
+                        weaponLevels.Add(weaponInfo.Key, -1);
                 }
             }
         }
@@ -57,8 +56,8 @@ namespace Data
                 [System.Serializable]
                 public class Level
                 {
-                    public int cost;
-                    public float power;
+                    public int cost = 0;
+                    public float power = 1;
                 }
 
                 public Level[] levels;

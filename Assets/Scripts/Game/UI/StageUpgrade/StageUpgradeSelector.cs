@@ -18,8 +18,6 @@ namespace Game.UI
         [SerializeField]
         TMPro.TextMeshProUGUI _credit;
 
-        public void Initialize() => Initialize(this);
-
         public void Show()
         {
             _canvas.SetActive(true);
@@ -82,8 +80,7 @@ namespace Game.UI
             if (stageUpgrades.increaseCredit.level < stageUpgrades.increaseCredit.power.Length - 1)
                 allChoices.Add(new StageUpgrade.IncreaseCredit(), stageUpgrades.increaseCredit.weight);
 
-            var weaponInfos = Data.GameData.instance.weapons;
-            var weaponUpgradeWeight = stageUpgrades.weaponUpgradesWeight / weaponInfos.Length;
+            var weaponInfos = Data.GameData.instance.weapons.Values;
             foreach (var weaponInfo in weaponInfos)
             {
                 if (weaponInfo.forPlayer == false)
@@ -94,7 +91,7 @@ namespace Game.UI
                 if (level >= weaponInfo.upgrades.Length)
                     continue;
 
-                allChoices.Add(new StageUpgrade.UpgradeWeapon(weaponInfo), weaponUpgradeWeight);
+                allChoices.Add(new StageUpgrade.UpgradeWeapon(weaponInfo), weaponInfo.weight);
             }
 
             if (allChoices.Count <= 0)

@@ -46,16 +46,16 @@ namespace Game.Character
             this.information = information;
             this.force = force;
 
-            _sprite.sprite = SpriteInformer.GetSprite(information.sprite);
-            color = new Color(information.color[0], information.color[1], information.color[2]);
+            _sprite.sprite = information.GetSprite();
+            color = information.GetColor();
 
             movement.SetScale(information.scale);
             movement.moveSpeed = information.moveSpeed;
 
-            _weapons.Clear();
+            ClearWeapon();
 
             foreach (var weaponKey in information.weapons)
-                AddNewWeapon(Data.GameData.instance.GetWeaponData(weaponKey));
+                AddNewWeapon(Data.GameData.instance.GetWeaponInformation(weaponKey).Clone());
 
             health.Initialize(information.maxHp);
             _hitable.Initialize(force, Hitable.Type.Character);
@@ -63,7 +63,7 @@ namespace Game.Character
 
         public void Initialize(string key, Force force)
         {
-            Initialize(Data.GameData.instance.GetCharacterData(key), force);
+            Initialize(Data.GameData.instance.GetCharacterInformation(key), force);
         }
 
         public new void Destroy()
@@ -72,11 +72,27 @@ namespace Game.Character
             base.Destroy();
         }
 
+        public void ClearWeapon()
+        {
+            foreach (var weapon in _weapons)
+                weapon.Destroy();
+            _weapons.Clear();
+        }
+
         public void AddNewWeapon(Data.Object.WeaponInformation information)
         {
             var weapon = ObjectPool<Weapon.Weapon>.instance.GetObject();
             weapon.Initialize(this, information);
             _weapons.Add(weapon);
+        }
+
+        public Weapon.Weapon GetWeapon(string key)
+        {
+            foreach (var weapon in _weapons)
+                if (weapon.information.key.CompareTo(key) == 0)
+                    return weapon;
+
+            return null;
         }
     }
 }

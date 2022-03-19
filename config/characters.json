@@ -1,40 +1,64 @@
 {
-	"items": [
-		{
-			"key": "player",
-			"sprite": "Fighter",
-			"color": [1, 1, 1],
-			"scale": 1,
-			"maxHp": 100,
-			"moveSpeed": 5,
-			"weapons": ["rifle"]
-		},
-		{
-			"key": "enemyA",
-			"sprite": "Fighter",
-			"color": [1, 0, 0],
-			"scale": 1,
-			"maxHp": 1,
-			"moveSpeed": 3,
-			"weapons": ["enemyA_weapon"]
-		},
-		{
-			"key": "enemyB",
-			"sprite": "Bomber",
-			"color": [1, 0, 0],
-			"scale": 1.2,
-			"maxHp": 10,
-			"moveSpeed": 2,
-			"weapons": ["enemyB_weapon"]
-		},
-		{
-			"key": "enemyC",
-			"sprite": "Bomber",
-			"color": [1, 0.5, 0],
-			"scale": 3,
-			"maxHp": 100,
-			"moveSpeed": 3,
-			"weapons": ["enemyC_weapon"]
-		}
-	]
+    "items": [
+        {
+            "key": "player",
+            "sprite": "Fighter",
+            "color": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "scale": 1.0,
+            "maxHp": 100.0,
+            "moveSpeed": 5.0,
+            "weapons": [
+                "rifle"
+            ]
+        },
+        {
+            "key": "enemyA",
+            "sprite": "Fighter",
+            "color": [
+                1.0,
+                0.0,
+                0.0
+            ],
+            "scale": 1.0,
+            "maxHp": 1.0,
+            "moveSpeed": 3.0,
+            "weapons": [
+                "enemyA_weapon"
+            ]
+        },
+        {
+            "key": "enemyB",
+            "sprite": "Bomber",
+            "color": [
+                1.0,
+                0.0,
+                0.0
+            ],
+            "scale": 1.2000000476837159,
+            "maxHp": 10.0,
+            "moveSpeed": 2.0,
+            "weapons": [
+                "enemyB_weapon"
+            ]
+        },
+        {
+            "key": "enemyC",
+            "sprite": "Bomber",
+            "color": [
+                1.0,
+                0.5,
+                0.0
+            ],
+            "scale": 3.0,
+            "maxHp": 100.0,
+            "moveSpeed": 3.0,
+            "weapons": [
+                "enemyC_weapon"
+            ]
+        }
+    ]
 }

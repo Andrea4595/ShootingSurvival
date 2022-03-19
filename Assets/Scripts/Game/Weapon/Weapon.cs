@@ -8,7 +8,7 @@ namespace Game.Weapon
     {
         Character.Character _owner;
 
-        Data.Object.WeaponInformation _information;
+        public Data.Object.WeaponInformation information { get; set; }
 
         private void Awake()
         {
@@ -18,28 +18,28 @@ namespace Game.Weapon
         public void Initialize(Character.Character owner, Data.Object.WeaponInformation information)
         {
             _owner = owner;
-            _information = information;
+            this.information = information;
 
             StartCoroutine(CRun());
         }
 
         public void Initialize(Character.Character owner, string key)
         {
-            Initialize(owner, Data.GameData.instance.GetWeaponData(key));
+            Initialize(owner, Data.GameData.instance.GetWeaponInformation(key));
         }
 
         IEnumerator CRun()
         {
-            yield return Time.WaitForSeconds(Random.Range(0, _information.interval));
+            yield return Time.WaitForSeconds(Random.Range(0, information.interval));
 
             while (true)
             {
                 if (!_owner.activated)
                     break;
 
-                StartCoroutine(_information.FireTypeCoroutine(_owner));
+                StartCoroutine(information.FireTypeCoroutine(_owner));
 
-                yield return Time.WaitForSeconds(_information.interval);
+                yield return Time.WaitForSeconds(information.interval);
             }
         }
     }

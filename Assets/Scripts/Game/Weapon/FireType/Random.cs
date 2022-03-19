@@ -11,12 +11,14 @@ namespace Game.Weapon.FireType
         {
             for (int j = 0; j < information.continuousCount; j++)
             {
+                var ownerDirection = owner.movement.lookingDirection - information.angleRange * 0.5f;
+
                 if (owner.activated == false)
                     break;
 
                 for (int i = 0; i < information.fireCount; i++)
                 {
-                    var direction = UnityEngine.Random.Range(0f, 360f);
+                    var direction = ownerDirection - information.angleRange * 0.5f + UnityEngine.Random.Range(0f, information.angleRange);
 
                     ObjectPool<Projectile>.instance.GetObject().Initialize(owner, information.projectile, direction);
                 }

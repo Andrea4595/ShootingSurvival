@@ -5,7 +5,7 @@ namespace Game.UI.StageUpgrade
         Data.GameData gameData => Data.GameData.instance;
         Character.Character player => PlayerSetter.instance.player;
 
-        float baseMoveSpeed => gameData.GetCharacterData("player").moveSpeed;
+        float baseMoveSpeed => gameData.GetCharacterInformation("player").moveSpeed;
         float permanentIncreasedMoveSpeed => gameData.permanentUpgrades.increaseMoveSpeed.current.power;
         float stageIncreasedMoveSpeed => gameData.stageUpgrades.increaseMoveSpeed.current + permanentIncreasedMoveSpeed * gameData.stageUpgrades.increaseMoveSpeed.level;
         float nextStageIncreasedMoveSpeed => gameData.stageUpgrades.increaseMoveSpeed.next + permanentIncreasedMoveSpeed * (gameData.stageUpgrades.increaseMoveSpeed.level + 1);
