@@ -8,31 +8,34 @@ namespace JsonEditor
     public class ToggleInputField : MonoBehaviour
     {
         [SerializeField]
-        GameObject _button;
+        UnityEngine.UI.Button _button;
         [SerializeField]
         TMPro.TMP_InputField _inputField;
         [SerializeField]
         float defaultValue = 1;
 
         public UnityEvent<float> onValueChanged;
+        public UnityEvent onSelect;
 
         private void Awake()
         {
+            void Initialize()
+            {
+                void ValueChanged(string text)
+                {
+                    var value = ExceptionFilter.TryFloatParse(text);
+
+                    ShowToggle(value <= 0);
+                    onValueChanged?.Invoke(value);
+                }
+
+                void OnSelect(string v) => onSelect?.Invoke();
+
+                _inputField.onEndEdit.AddListener(ValueChanged);
+                _inputField.onSelect.AddListener(OnSelect);
+            }
+
             Initialize();
-        }
-
-        void Initialize()
-        {
-            _inputField.onEndEdit.AddListener(ValueChanged);
-        }
-
-        void ValueChanged(string text)
-        {
-            var value = ExceptionFilter.TryFloatParse(text);
-
-            ShowToggle(value <= 0);
-
-            onValueChanged?.Invoke(value);
         }
 
         public void SetValueWithoutNotify(float value)
@@ -48,12 +51,13 @@ namespace JsonEditor
 
             ShowToggle(false);
 
+            onSelect?.Invoke();
             onValueChanged?.Invoke(defaultValue);
         }
 
         public void ShowToggle(bool toggleActive)
         {
-            _button.SetActive(toggleActive);
+            _button.gameObject.SetActive(toggleActive);
             _inputField.gameObject.SetActive(!toggleActive);
         }
     }
