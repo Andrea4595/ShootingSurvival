@@ -10,6 +10,9 @@ namespace JsonEditor
         {
             float value;
 
+            if (text.CompareTo("") == 0)
+                text = "0";
+
             if (text[0] == '.')
                 text = $"0{text}";
 
@@ -26,6 +29,9 @@ namespace JsonEditor
         public static int TryIntParse(string text)
         {
             int value;
+
+            if (text.CompareTo("") == 0)
+                text = "0";
 
             if (text[0] == '.')
                 text = $"0{text}";

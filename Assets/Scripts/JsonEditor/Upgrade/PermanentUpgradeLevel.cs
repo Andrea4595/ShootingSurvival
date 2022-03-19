@@ -15,6 +15,17 @@ namespace JsonEditor
         PermanentUpgradeInterface _upgradeInterface;
         Data.UpgradeInformation.PermanentUpgrades.Upgrade.Level _level;
 
+        private void Awake()
+        {
+            void Initialize()
+            {
+                _power.onEndEdit.AddListener(UpdatePower);
+                _cost.onEndEdit.AddListener(UpdateCost);
+            }
+
+            Initialize();
+        }
+
         public void Initialize(PermanentUpgradeInterface upgradeInterface, Data.UpgradeInformation.PermanentUpgrades.Upgrade.Level level)
         {
             _upgradeInterface = upgradeInterface;
@@ -24,7 +35,7 @@ namespace JsonEditor
             _cost.SetTextWithoutNotify(level.cost.ToString());
         }
 
-        public void UpdatePower(string text)
+        void UpdatePower(string text)
         {
             var value = ExceptionFilter.TryFloatParse(text);
             _level.power = value;
@@ -32,7 +43,7 @@ namespace JsonEditor
             UpdateLevel();
         }
 
-        public void UpdateCost(string text)
+        void UpdateCost(string text)
         {
             var value = ExceptionFilter.TryIntParse(text);
             _level.cost = value;
