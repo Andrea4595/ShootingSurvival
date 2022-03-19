@@ -44,7 +44,7 @@ namespace JsonEditor
 
         public void UpdateWeaponLevel(string key, int level)
         {
-            var information = Data.GameData.instance.GetWeaponData(key).Clone();
+            var information = Data.GameData.instance.GetWeaponInformation(key).Clone();
 
             UpdateWeaponInformation(information);
 

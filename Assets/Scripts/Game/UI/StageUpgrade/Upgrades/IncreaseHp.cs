@@ -5,7 +5,7 @@ namespace Game.UI.StageUpgrade
         Data.GameData gameData => Data.GameData.instance;
         Character.Character player => PlayerSetter.instance.player;
 
-        float baseHp => gameData.GetCharacterData("player").maxHp;
+        float baseHp => gameData.GetCharacterInformation("player").maxHp;
         float permanentIncreasedHp => gameData.permanentUpgrades.increaseHp.current.power;
         float stageIncreasedHp => gameData.stageUpgrades.increaseHp.current + permanentIncreasedHp * gameData.stageUpgrades.increaseHp.level;
         float nextStageIncreasedHp => gameData.stageUpgrades.increaseHp.next + permanentIncreasedHp * (gameData.stageUpgrades.increaseHp.level + 1);

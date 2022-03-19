@@ -25,7 +25,7 @@ namespace Game.Weapon
 
         public void Initialize(Character.Character owner, string key)
         {
-            Initialize(owner, Data.GameData.instance.GetWeaponData(key));
+            Initialize(owner, Data.GameData.instance.GetWeaponInformation(key));
         }
 
         IEnumerator CRun()
