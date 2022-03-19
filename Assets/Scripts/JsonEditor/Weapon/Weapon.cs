@@ -136,7 +136,7 @@ namespace JsonEditor
 
         public void UpdateDamage(string text)
         {
-            var value = float.Parse(text);
+            var value = ExceptionFilter.TryFloatParse(text);
             _information.projectile.damage = value;
 
             UpdateInformation();
@@ -151,7 +151,7 @@ namespace JsonEditor
 
         public void UpdateSpeed(string text)
         {
-            var value = float.Parse(text);
+            var value = ExceptionFilter.TryFloatParse(text);
             _information.projectile.speed = value;
 
             UpdateInformation();
@@ -166,7 +166,7 @@ namespace JsonEditor
 
         public void UpdateHomming(string text)
         {
-            var value = float.Parse(text);
+            var value = ExceptionFilter.TryFloatParse(text);
             _information.projectile.homming = value;
 
             UpdateInformation();
@@ -174,7 +174,7 @@ namespace JsonEditor
 
         public void UpdateLifetime(string text)
         {
-            var value = float.Parse(text);
+            var value = ExceptionFilter.TryFloatParse(text);
             _information.projectile.lifetime = value;
 
             UpdateInformation();
@@ -196,7 +196,7 @@ namespace JsonEditor
 
         public void UpdateFireCount(string text)
         {
-            var value = int.Parse(text);
+            var value = ExceptionFilter.TryIntParse(text);
             _information.fireCount = value;
 
             UpdateInformation();
@@ -204,7 +204,7 @@ namespace JsonEditor
 
         public void UpdateAngleRange(string text)
         {
-            var value = float.Parse(text);
+            var value = ExceptionFilter.TryFloatParse(text);
             _information.angleRange = value;
 
             UpdateInformation();
@@ -212,7 +212,7 @@ namespace JsonEditor
 
         public void UpdateContinuousCount(string text)
         {
-            var value = int.Parse(text);
+            var value = ExceptionFilter.TryIntParse(text);
             _information.continuousCount = value;
 
             UpdateInformation();
@@ -220,7 +220,7 @@ namespace JsonEditor
 
         public void UpdateInterval(string text)
         {
-            var value = float.Parse(text);
+            var value = ExceptionFilter.TryFloatParse(text);
             _information.interval = value;
 
             UpdateInformation();
@@ -237,7 +237,7 @@ namespace JsonEditor
         {
             Data.GameData.instance.SetWeaponData(_information);
             TestPlayer.instance.UpdateWeaponInformation(_information.Clone());
-            SaveJsonData.instance.SaveIfAuto(SaveJsonData.weaponsPath, Data.GameData.instance.GetWeaponsData());
+            SaveJsonData.instance.SaveWeaponIfAuto();
         }
 
         internal void SelectUpgradeLevel(int level)
