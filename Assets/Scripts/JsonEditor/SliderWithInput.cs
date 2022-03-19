@@ -39,7 +39,7 @@ namespace JsonEditor
 
         void InputFieldValueChange(string text)
         {
-            var value = float.Parse(text);
+            var value = ExceptionFilter.TryFloatParse(text);
             _slider.SetValueWithoutNotify(value * _scaleSliderMultiply);
 
             onValueChanged?.Invoke(value);

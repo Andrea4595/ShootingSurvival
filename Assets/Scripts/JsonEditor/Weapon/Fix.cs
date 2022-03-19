@@ -42,7 +42,7 @@ namespace JsonEditor
 
         public void UpdateValue(string text)
         {
-            var value = float.Parse(text);
+            var value = ExceptionFilter.TryFloatParse(text);
             _fix.fixTo = value;
             _fixList.UpdateFix(this.index, _fix);
         }

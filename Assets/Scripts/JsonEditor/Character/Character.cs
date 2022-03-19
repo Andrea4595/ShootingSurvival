@@ -120,7 +120,7 @@ namespace JsonEditor
 
         public void UpdateHp(string text)
         {
-            var value = float.Parse(text);
+            var value = ExceptionFilter.TryFloatParse(text);
             _information.maxHp = value;
 
             UpdateInformation();
@@ -128,7 +128,7 @@ namespace JsonEditor
 
         public void UpdateMoveSpeed(string text)
         {
-            var value = float.Parse(text);
+            var value = ExceptionFilter.TryFloatParse(text);
             _information.moveSpeed = value;
 
             UpdateInformation();
@@ -145,7 +145,7 @@ namespace JsonEditor
         {
             Data.GameData.instance.SetCharacterData(_information);
             TestPlayer.instance.UpdateCharacterInformation(_information.Clone());
-            SaveJsonData.instance.SaveIfAuto(SaveJsonData.charactersPath, Data.GameData.instance.GetCharactersData());
+            SaveJsonData.instance.SaveCharacterIfAuto();
         }
     }
 }

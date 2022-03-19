@@ -28,7 +28,7 @@ namespace JsonEditor
 
         void ValueChanged(string text)
         {
-            var value = float.Parse(text);
+            var value = ExceptionFilter.TryFloatParse(text);
 
             ShowToggle(value <= 0);
 
