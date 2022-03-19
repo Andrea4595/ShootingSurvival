@@ -1,4 +1,8 @@
 # ShootingSurvival
+
+  <br/>
+
+[게임 및 에디터 다운로드](https://github.com/Andrea4595/ShootingSurvival/raw/main/Game.zip)
   
   <br/><br/>
   
