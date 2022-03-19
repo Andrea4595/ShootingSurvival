@@ -70,7 +70,7 @@ namespace JsonEditor
 
         protected override void UpdateItems()
         {
-            SaveJsonData.instance.SaveIfAuto(SaveJsonData.charactersPath, characterData);
+            SaveJsonData.instance.SaveCharacterIfAuto();
         }
     }
 }

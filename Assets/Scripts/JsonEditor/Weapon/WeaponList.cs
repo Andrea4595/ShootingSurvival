@@ -22,8 +22,6 @@ namespace JsonEditor
 
             foreach (var character in weaponData.items)
                 AddItemWithoutUpdate().Initialize(this, character.key);
-
-            UpdateItems();
         }
 
         public void ShowWeaponInterface(int index)
@@ -69,7 +67,7 @@ namespace JsonEditor
 
         protected override void UpdateItems()
         {
-            SaveJsonData.instance.SaveIfAuto(SaveJsonData.weaponsPath, weaponData);
+            SaveJsonData.instance.SaveWeaponIfAuto();
         }
     }
 }

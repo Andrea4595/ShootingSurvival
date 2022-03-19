@@ -1,309 +1,290 @@
 {
-	"items":
-	[
-		{
-			"key": "rifle",
-			"forPlayer": true,
-			"projectile":
-			{
-				"sprite" : "Bullet",
-				"maxHp" : 0,
-				"damage" : 2,
-				"range" : 0,
-				"speed" : 25,
-				"scale" : 0.6,
-				"homming" : 2,
-				"lifetime" : 3,
-				"hitProjectile" : true
-			},
-			"fireType": "FrontEvenSpread",
-			"fireCount" : 1,
-			"angleRange" : 0,
-			"continuousCount" : 3,
-			"interval" : 1,
-			"upgrades":
-			[
-				{
-					"fixes" :
-					[
-						{
-							"key": "continuousCount",
-							"fixTo": 5
-						}
-					]
-				},
-				{
-					"fixes" :
-					[
-						{
-							"key": "projectile/damage",
-							"fixTo": 3
-						}
-					]
-				},
-				{
-					"fixes" :
-					[
-						{
-							"key": "continuousCount",
-							"fixTo": 7
-						}
-					]
-				},
-				{
-					"fixes" :
-					[
-						{
-							"key": "projectile/damage",
-							"fixTo": 4
-						}
-					]
-				}
-			]
-		},
-		{
-			"key": "missile",
-			"forPlayer": true,
-			"projectile":
-			{
-				"sprite" : "Missile",
-				"maxHp" : 0,
-				"damage" : 12,
-				"range" : 3,
-				"speed" : 15,
-				"scale" : 1,
-				"homming" : 180,
-				"lifetime" : 3,
-				"hitProjectile" : false
-			},
-			"fireType": "Random",
-			"fireCount" : 1,
-			"angleRange" : 360,
-			"continuousCount" : 1,
-			"interval" : 7,
-			"upgrades":
-			[
-				{
-					"fixes" :
-					[
-						{
-							"key": "projectile/damage",
-							"fixTo": 18
-						},
-						{
-							"key": "fireCount",
-							"fixTo": 2
-						}
-					]
-				},
-				{
-					"fixes" :
-					[
-						{
-							"key": "projectile/damage",
-							"fixTo": 24
-						},
-						{
-							"key": "fireCount",
-							"fixTo": 3
-						}
-					]
-				}
-			]
-		},
-		{
-			"key": "shotgun",
-			"forPlayer": true,
-			"projectile":
-			{
-				"sprite" : "Bullet",
-				"maxHp" : 0,
-				"damage" : 2,
-				"range" : 0,
-				"speed" : 60,
-				"scale" : 0.3,
-				"homming" : 0,
-				"lifetime" : 0.15,
-				"hitProjectile" : true
-			},
-			"fireType": "FrontEvenSpread",
-			"fireCount" : 5,
-			"angleRange" : 45,
-			"continuousCount" : 1,
-			"interval" : 2.2,
-			"upgrades":
-			[
-				{
-					"fixes" :
-					[
-						{
-							"key": "projectile/lifetime",
-							"fixTo": 0.25
-						},
-						{
-							"key": "fireCount",
-							"fixTo": 7
-						}
-					]
-				},
-				{
-					"fixes" :
-					[
-						{
-							"key": "projectile/lifetime",
-							"fixTo": 0.4
-						},
-						{
-							"key": "fireCount",
-							"fixTo": 9
-						}
-					]
-				}
-			]
-		},
-		{
-			"key": "torpedo",
-			"forPlayer": true,
-			"projectile":
-			{
-				"sprite" : "Missile",
-				"maxHp" : 30,
-				"damage" : 30,
-				"range" : 8,
-				"speed" : 3,
-				"scale" : 2,
-				"homming" : 0,
-				"lifetime" : 5,
-				"hitProjectile" : true
-			},
-			"fireType": "FrontArrow",
-			"fireCount" : 1,
-			"angleRange" : 0,
-			"continuousCount" : 1,
-			"interval" : 8,
-			"upgrades":
-			[
-				{
-					"fixes" :
-					[
-						{
-							"key": "projectile/range",
-							"fixTo": 12
-						}
-					]
-				},
-				{
-					"fixes" :
-					[
-						{
-							"key": "projectile/maxHp",
-							"fixTo": 45
-						}
-					]
-				},
-				{
-					"fixes" :
-					[
-						{
-							"key": "fireCount",
-							"fixTo": 2
-						}
-					]
-				},
-				{
-					"fixes" :
-					[
-						{
-							"key": "projectile/range",
-							"fixTo": 20
-						}
-					]
-				},
-				{
-					"fixes" :
-					[
-						{
-							"key": "projectile/maxHp",
-							"fixTo": 60
-						}
-					]
-				},
-				{
-					"fixes" :
-					[
-						{
-							"key": "fireCount",
-							"fixTo": 3
-						}
-					]
-				}
-			]
-		},
-		{
-			"key": "enemyA_weapon",
-			"forPlayer": false,
-			"projectile":
-			{
-				"sprite" : "Bullet",
-				"maxHp" : 0,
-				"damage" : 3,
-				"range" : 0,
-				"speed" : 10,
-				"scale" : 0.6,
-				"homming" : 0,
-				"lifetime" : 10,
-				"hitProjectile" : true
-			},
-			"fireType": "FrontEvenSpread",
-			"fireCount" : 1,
-			"angleRange" : 0,
-			"continuousCount" : 3,
-			"interval" : 2,
-			"upgrades": []
-		},
-		{
-			"key": "enemyB_weapon",
-			"forPlayer": false,
-			"projectile":
-			{
-				"sprite" : "Missile",
-				"maxHp" : 5,
-				"damage" : 10,
-				"range" : 3,
-				"speed" : 10,
-				"scale" : 1.5,
-				"homming" : 30,
-				"lifetime" : 10,
-				"hitProjectile" : true
-			},
-			"fireType": "FrontEvenSpread",
-			"fireCount" : 1,
-			"angleRange" : 0,
-			"continuousCount" : 1,
-			"interval" : 3.5,
-			"upgrades": []
-		},
-		{
-			"key": "enemyC_weapon",
-			"forPlayer": false,
-			"projectile":
-			{
-				"sprite" : "Bullet",
-				"maxHp" : 0,
-				"damage" : 5,
-				"range" : 0,
-				"speed" : 20,
-				"scale" : 1,
-				"homming" : 0,
-				"lifetime" : 10,
-				"hitProjectile" : true
-			},
-			"fireType": "FrontEvenSpread",
-			"fireCount" : 3,
-			"angleRange" : 80,
-			"continuousCount" : 35,
-			"interval" : 5,
-			"upgrades": []
-		}
-	]
+    "items": [
+        {
+            "key": "rifle",
+            "forPlayer": true,
+            "weight": 1.0,
+            "projectile": {
+                "sprite": "Bullet",
+                "maxHp": 0.0,
+                "damage": 2.0,
+                "range": 0.0,
+                "speed": 25.0,
+                "scale": 0.6000000238418579,
+                "homming": 2.0,
+                "lifetime": 3.0,
+                "hitProjectile": true
+            },
+            "fireType": "FrontEvenSpread",
+            "fireCount": 1,
+            "continuousCount": 3,
+            "interval": 1.0,
+            "angleRange": 0.0,
+            "upgrades": [
+                {
+                    "fixes": [
+                        {
+                            "key": "continuousCount",
+                            "fixTo": 5.0
+                        }
+                    ]
+                },
+                {
+                    "fixes": [
+                        {
+                            "key": "projectile/damage",
+                            "fixTo": 3.0
+                        }
+                    ]
+                },
+                {
+                    "fixes": [
+                        {
+                            "key": "continuousCount",
+                            "fixTo": 7.0
+                        }
+                    ]
+                },
+                {
+                    "fixes": [
+                        {
+                            "key": "projectile/damage",
+                            "fixTo": 4.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "missile",
+            "forPlayer": true,
+            "weight": 1.0,
+            "projectile": {
+                "sprite": "Missile",
+                "maxHp": 0.0,
+                "damage": 12.0,
+                "range": 3.0,
+                "speed": 15.0,
+                "scale": 1.0,
+                "homming": 180.0,
+                "lifetime": 3.0,
+                "hitProjectile": false
+            },
+            "fireType": "Random",
+            "fireCount": 1,
+            "continuousCount": 1,
+            "interval": 7.0,
+            "angleRange": 360.0,
+            "upgrades": [
+                {
+                    "fixes": [
+                        {
+                            "key": "projectile/damage",
+                            "fixTo": 18.0
+                        },
+                        {
+                            "key": "fireCount",
+                            "fixTo": 2.0
+                        }
+                    ]
+                },
+                {
+                    "fixes": [
+                        {
+                            "key": "projectile/damage",
+                            "fixTo": 24.0
+                        },
+                        {
+                            "key": "fireCount",
+                            "fixTo": 3.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "shotgun",
+            "forPlayer": true,
+            "weight": 1.0,
+            "projectile": {
+                "sprite": "Bullet",
+                "maxHp": 0.0,
+                "damage": 2.0,
+                "range": 0.0,
+                "speed": 60.0,
+                "scale": 0.30000001192092898,
+                "homming": 0.0,
+                "lifetime": 0.15000000596046449,
+                "hitProjectile": true
+            },
+            "fireType": "FrontEvenSpread",
+            "fireCount": 5,
+            "continuousCount": 1,
+            "interval": 2.200000047683716,
+            "angleRange": 45.0,
+            "upgrades": [
+                {
+                    "fixes": [
+                        {
+                            "key": "projectile/lifetime",
+                            "fixTo": 0.25
+                        },
+                        {
+                            "key": "fireCount",
+                            "fixTo": 7.0
+                        }
+                    ]
+                },
+                {
+                    "fixes": [
+                        {
+                            "key": "projectile/lifetime",
+                            "fixTo": 0.4000000059604645
+                        },
+                        {
+                            "key": "fireCount",
+                            "fixTo": 9.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "torpedo",
+            "forPlayer": true,
+            "weight": 1.0,
+            "projectile": {
+                "sprite": "Missile",
+                "maxHp": 30.0,
+                "damage": 30.0,
+                "range": 8.0,
+                "speed": 3.0,
+                "scale": 2.0,
+                "homming": 0.0,
+                "lifetime": 5.0,
+                "hitProjectile": true
+            },
+            "fireType": "FrontArrow",
+            "fireCount": 1,
+            "continuousCount": 1,
+            "interval": 8.0,
+            "angleRange": 0.0,
+            "upgrades": [
+                {
+                    "fixes": [
+                        {
+                            "key": "projectile/range",
+                            "fixTo": 12.0
+                        }
+                    ]
+                },
+                {
+                    "fixes": [
+                        {
+                            "key": "projectile/maxHp",
+                            "fixTo": 45.0
+                        }
+                    ]
+                },
+                {
+                    "fixes": [
+                        {
+                            "key": "fireCount",
+                            "fixTo": 2.0
+                        }
+                    ]
+                },
+                {
+                    "fixes": [
+                        {
+                            "key": "projectile/range",
+                            "fixTo": 20.0
+                        }
+                    ]
+                },
+                {
+                    "fixes": [
+                        {
+                            "key": "projectile/maxHp",
+                            "fixTo": 60.0
+                        }
+                    ]
+                },
+                {
+                    "fixes": [
+                        {
+                            "key": "fireCount",
+                            "fixTo": 3.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "enemyA_weapon",
+            "forPlayer": false,
+            "weight": 1.0,
+            "projectile": {
+                "sprite": "Bullet",
+                "maxHp": 0.0,
+                "damage": 3.0,
+                "range": 0.0,
+                "speed": 10.0,
+                "scale": 0.6000000238418579,
+                "homming": 0.0,
+                "lifetime": 10.0,
+                "hitProjectile": true
+            },
+            "fireType": "FrontEvenSpread",
+            "fireCount": 1,
+            "continuousCount": 3,
+            "interval": 2.0,
+            "angleRange": 0.0,
+            "upgrades": []
+        },
+        {
+            "key": "enemyB_weapon",
+            "forPlayer": false,
+            "weight": 1.0,
+            "projectile": {
+                "sprite": "Missile",
+                "maxHp": 5.0,
+                "damage": 10.0,
+                "range": 3.0,
+                "speed": 10.0,
+                "scale": 1.5,
+                "homming": 30.0,
+                "lifetime": 10.0,
+                "hitProjectile": true
+            },
+            "fireType": "FrontEvenSpread",
+            "fireCount": 1,
+            "continuousCount": 1,
+            "interval": 3.5,
+            "angleRange": 0.0,
+            "upgrades": []
+        },
+        {
+            "key": "enemyC_weapon",
+            "forPlayer": false,
+            "weight": 1.0,
+            "projectile": {
+                "sprite": "Bullet",
+                "maxHp": 0.0,
+                "damage": 5.0,
+                "range": 0.0,
+                "speed": 20.0,
+                "scale": 1.0,
+                "homming": 0.0,
+                "lifetime": 10.0,
+                "hitProjectile": true
+            },
+            "fireType": "FrontEvenSpread",
+            "fireCount": 3,
+            "continuousCount": 35,
+            "interval": 5.0,
+            "angleRange": 80.0,
+            "upgrades": []
+        }
+    ]
 }
