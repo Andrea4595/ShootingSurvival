@@ -10,6 +10,8 @@ namespace JsonEditor
         StageUpgradeInterface _upgradeInterface;
 
         [SerializeField]
+        TMPro.TMP_InputField _choiceCount;
+        [SerializeField]
         TMPro.TextMeshProUGUI _rateIncreaseHp;
         [SerializeField]
         TMPro.TextMeshProUGUI _rateIncreaseMoveSpeed;
@@ -18,11 +20,25 @@ namespace JsonEditor
         [SerializeField]
         TMPro.TextMeshProUGUI _rateHeal;
 
-        private void Awake() => UpdateInterface();
+        private void Awake()
+        {
+            void Initialize()
+            {
+                void UpdateChoiceCount(string text)
+                {
+                    var value = ExceptionFilter.TryIntParse(text);
+                    Data.GameData.instance.stageUpgrades.choiceCount = value;
+                }
+
+                _choiceCount.onEndEdit.AddListener(UpdateChoiceCount);
+            }
+
+            Initialize();
+            UpdateInterface();
+        }
 
         public void UpdateInterface()
         {
-            _upgradeInterface.Hide();
             ClearWithoutUpdate();
 
             var stageUpgrades = Data.GameData.instance.stageUpgrades;
@@ -41,6 +57,8 @@ namespace JsonEditor
 
                 weightSum += weapon.Value.weight;
             }
+
+            _choiceCount.SetTextWithoutNotify(Data.GameData.instance.stageUpgrades.choiceCount.ToString());
 
             string GetRateText(float weight) => $"{Mathf.Round(weight * 10000 / weightSum) / 100}%";
 

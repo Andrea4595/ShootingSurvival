@@ -27,6 +27,8 @@ namespace JsonEditor
         [SerializeField]
         CharacterWeaponList _weaponList;
 
+        public Data.Object.CharacterInformation target => _information;
+
         private void Awake() => Initialize();
 
         void Initialize()
