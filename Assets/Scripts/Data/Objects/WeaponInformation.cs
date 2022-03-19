@@ -41,7 +41,7 @@ namespace Data.Object
             [System.Serializable]
             public class Fix
             {
-                public string key;
+                public string key = "projectile/damage";
                 public float fixTo;
 
                 public static string[] keyList = { "projectile/maxHp", "projectile/damage", "projectile/range", "projectile/speed", "projectile/scale", "projectile/homming", "projectile/lifetime", "fireCount", "continuousCount", "interval", "angleRange" };
@@ -73,6 +73,7 @@ namespace Data.Object
         public string name => GetWeaponText().name;
         public string information => GetWeaponText().information;
         public bool forPlayer = false;
+        public float weight = 1;
         public Projectile projectile = new Projectile();
         public enum Type { FrontEvenSpread, FrontArrow, Random }
         public string fireType = "FrontEvenSpread";

@@ -81,7 +81,6 @@ namespace Game.UI
                 allChoices.Add(new StageUpgrade.IncreaseCredit(), stageUpgrades.increaseCredit.weight);
 
             var weaponInfos = Data.GameData.instance.weapons.Values;
-            var weaponUpgradeWeight = stageUpgrades.weaponUpgradesWeight / weaponInfos.Count;
             foreach (var weaponInfo in weaponInfos)
             {
                 if (weaponInfo.forPlayer == false)
@@ -92,7 +91,7 @@ namespace Game.UI
                 if (level >= weaponInfo.upgrades.Length)
                     continue;
 
-                allChoices.Add(new StageUpgrade.UpgradeWeapon(weaponInfo), weaponUpgradeWeight);
+                allChoices.Add(new StageUpgrade.UpgradeWeapon(weaponInfo), weaponInfo.weight);
             }
 
             if (allChoices.Count <= 0)
