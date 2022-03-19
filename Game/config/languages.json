@@ -1,0 +1,55 @@
+{
+	"languageList": ["kr"],
+	"languages":
+	[
+		{
+			"key": "kr",
+			"increaseStatus": "[0] 증가",
+			"increaseUpgradeStatus": "[0] 추가 증가",
+			"hp": "체력",
+			"heal": "회복",
+			"healInformation": "체력 [0]% 회복",
+			"moveSpeed": "이동 속도",
+			"credit": "크레딧",
+			"creditBonus": "크레딧 보너스",
+			"getCredit": "크레딧 [0] 획득",
+			"choiceCount": "강화 선택지",
+			
+			"weapon_projectile_maxHp": "탄환 체력",
+			"weapon_projectile_damage": "탄환 공격력",
+			"weapon_projectile_range": "탄환 폭발 범위",
+			"weapon_projectile_speed": "탄환 이동 속도",
+			"weapon_projectile_scale": "탄환 크기",
+			"weapon_projectile_homming": "탄환 선회력",
+			"weapon_projectile_lifetime": "탄환 비행 시간",
+			"weapon_fireCount": "동시 발사 횟수",
+			"weapon_angleRange": "동시 발사 각",
+			"weapon_continuousCount": "연사 횟수",
+			"weapon_interval": "공격 속도",
+			
+			"weapons":
+			[
+				{
+					"key": "rifle",
+					"name": "라이플",
+					"information": "여러발의 탄환을 연사합니다."
+				},
+				{
+					"key": "missile",
+					"name": "미사일",
+					"information": "적을 추적하는 미사일을 발사합니다.\n미사일은 적의 투사체를 타격하지 않습니다."
+				},
+				{
+					"key": "shotgun",
+					"name": "산탄총",
+					"information": "짧은 거리로 많은 탄환을 발사합니다."
+				},
+				{
+					"key": "torpedo",
+					"name": "어뢰",
+					"information": "강력하지만 느린 미사일을 발사합니다.\n높은 체력을 가졌습니다."
+				}
+			]
+		}
+	]
+}
