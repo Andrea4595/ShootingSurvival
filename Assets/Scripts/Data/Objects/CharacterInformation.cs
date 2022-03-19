@@ -13,6 +13,7 @@ namespace Data.Object
         public float moveSpeed = 5;
         public string[] weapons = new string[0];
 
+        public Sprite GetSprite() => SpriteInformer.GetSprite(sprite);
         public Color GetColor() => new Color(color[0], color[1], color[2]);
 
         public CharacterInformation Clone()

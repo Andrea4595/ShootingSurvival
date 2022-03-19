@@ -22,10 +22,10 @@ namespace JsonEditor
 
         public void UpdateInterface(string key)
         {
-            var information = Data.GameData.instance.GetCharacterData(key);
+            var information = Data.GameData.instance.GetCharacterInformation(key);
 
             _key.text = key;
-            _sprite.sprite = Data.SpriteInformer.GetSprite(information.sprite);
+            _sprite.sprite = information.GetSprite();
             _sprite.color = information.GetColor();
         }
 
