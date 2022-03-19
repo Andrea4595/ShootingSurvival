@@ -46,7 +46,7 @@ namespace Game.Character
             this.information = information;
             this.force = force;
 
-            _sprite.sprite = Data.SpriteInformer.GetSprite(information.sprite);
+            _sprite.sprite = information.GetSprite();
             color = information.GetColor();
 
             movement.SetScale(information.scale);
@@ -55,7 +55,7 @@ namespace Game.Character
             ClearWeapon();
 
             foreach (var weaponKey in information.weapons)
-                AddNewWeapon(Data.GameData.instance.GetWeaponData(weaponKey).Clone());
+                AddNewWeapon(Data.GameData.instance.GetWeaponInformation(weaponKey).Clone());
 
             health.Initialize(information.maxHp);
             _hitable.Initialize(force, Hitable.Type.Character);
@@ -63,7 +63,7 @@ namespace Game.Character
 
         public void Initialize(string key, Force force)
         {
-            Initialize(Data.GameData.instance.GetCharacterData(key), force);
+            Initialize(Data.GameData.instance.GetCharacterInformation(key), force);
         }
 
         public new void Destroy()
