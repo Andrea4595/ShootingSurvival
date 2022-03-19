@@ -4,19 +4,19 @@ namespace Data.Object
     public class StageInformation
     {
         [System.Serializable]
-        public class Spawn
-        {
-            public string key;
-            public int count;
-        }
-
-        [System.Serializable]
         public class Group
         {
-            public Spawn[] spawns;
+            [System.Serializable]
+            public class Spawn
+            {
+                public string key = "player";
+                public int count = 1;
+            }
+
+            public Spawn[] spawns = new Spawn[0];
         }
 
         public int credit;
-        public Group[] groups;
+        public Group[] groups = new Group[0];
     }
 }
