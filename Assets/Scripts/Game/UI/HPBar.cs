@@ -11,10 +11,15 @@ namespace Game.UI
         [SerializeField]
         TMPro.TextMeshProUGUI _label;
 
-        private void OnEnable()
+        private void Awake()
         {
             var player = PlayerSetter.instance.player;
             player.health.onUpdate += UpdateState;
+        }
+
+        private void OnEnable()
+        {
+            UpdateState();
         }
 
         void UpdateState()
