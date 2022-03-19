@@ -51,8 +51,11 @@ namespace JsonEditor
 
             _items.Add(item);
 
-            _addButton.transform.SetParent(null);
-            _addButton.transform.SetParent(_container);
+            if (_addButton != null)
+            {
+                _addButton.transform.SetParent(null);
+                _addButton.transform.SetParent(_container);
+            }
 
             ContainerSort();
         }
@@ -89,8 +92,11 @@ namespace JsonEditor
             foreach (var item in _items)
                 item.transform.SetParent(_container);
 
-            _addButton.transform.SetParent(null);
-            _addButton.transform.SetParent(_container);
+            if (_addButton != null)
+            {
+                _addButton.transform.SetParent(null);
+                _addButton.transform.SetParent(_container);
+            }
 
             ContainerSort();
             SwapItems(indexA, indexB);
