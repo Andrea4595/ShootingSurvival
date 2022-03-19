@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -90,7 +91,7 @@ namespace Data
         {
             void SetBaseWeaponLevel()
             {
-                var baseWeapons = GetCharacterData("player").weapons;
+                var baseWeapons = GetCharacterInformation("player").weapons;
                 foreach (var baseWeapon in baseWeapons)
                     stageUpgrades.weaponLevels[baseWeapon] = 0;
             }
@@ -102,15 +103,27 @@ namespace Data
 
         private void Awake() => FirstInitialize();
 
-        public Object.CharacterInformation GetCharacterData(string key) => characters[key];
-        public Object.WeaponInformation GetWeaponData(string key) => weapons[key];
+        public Object.CharacterInformation GetCharacterInformation(string key) => characters[key];
+        public Object.WeaponInformation GetWeaponInformation(string key) => weapons[key];
 
         public string languageKey { get; set; }
         public LanguageInformation.Language language => _languageData.GetLanguage(languageKey);
 
         public Table<Object.CharacterInformation> GetCharactersData() => _characterData;
         public Table<Object.WeaponInformation> GetWeaponsData() => _weaponData;
-        public void SetCharacterData(Object.CharacterInformation information) => characters[information.key] = information;
-        public void SetWeaponData(Object.WeaponInformation information) => weapons[information.key] = information;
+        public Table<Object.StageInformation> GetStagesData() => _stageData;
+        public UpgradeInformation GetUpgradeData() => _upgradeData;
+        public void SetCharacterData(Object.CharacterInformation information)
+        {
+            characters[information.key] = information;
+            CharacterDataInitialize();
+        }
+        public void SetWeaponData(Object.WeaponInformation information)
+        {
+            weapons[information.key] = information;
+            WeaponDataInitialize();
+        }
+
+        public void SetStageData(Object.StageInformation[] stages) => _stageData.items = stages;
     }
 }

@@ -22,7 +22,7 @@ namespace JsonEditor
 
         public void UpdateInterface(string key)
         {
-            var information = Data.GameData.instance.GetWeaponData(key);
+            var information = Data.GameData.instance.GetWeaponInformation(key);
 
             _key.text = key;
             _sprite.sprite = Data.SpriteInformer.GetSprite(information.projectile.sprite);

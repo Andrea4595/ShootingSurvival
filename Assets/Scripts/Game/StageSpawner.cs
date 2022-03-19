@@ -91,11 +91,11 @@ namespace Game
             }
         }
 
-        void SpawnCharacterGrop(Data.Object.StageInformation.Spawn[] spawns)
+        void SpawnCharacterGrop(Data.Object.StageInformation.Group.Spawn[] spawns)
         {
             foreach (var spawn in spawns)
             {
-                var key = Data.GameData.instance.GetCharacterData(spawn.key);
+                var key = Data.GameData.instance.GetCharacterInformation(spawn.key);
 
                 for (int i = 0; i < spawn.count; i++)
                 {
