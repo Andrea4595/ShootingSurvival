@@ -25,7 +25,7 @@ namespace Data
         public PlayerData playerData = new PlayerData();
 
         public int credit;
-        public float creditBonus => 1 + stageUpgrades.increaseCredit.current + permanentUpgrades.increaseCreditBonus.current.power * stageUpgrades.increaseCredit.level;
+        public float creditBonus => 1 + stageUpgrades.increaseCredit.current + permanentUpgrades.increaseCreditBonus.current.power;
 
         void FirstInitialize()
         {
@@ -113,6 +113,7 @@ namespace Data
         public Table<Object.WeaponInformation> GetWeaponsData() => _weaponData;
         public Table<Object.StageInformation> GetStagesData() => _stageData;
         public UpgradeInformation GetUpgradeData() => _upgradeData;
+        public LanguageInformation GetLanguageData() => _languageData;
         public void SetCharacterData(Object.CharacterInformation information)
         {
             characters[information.key] = information;

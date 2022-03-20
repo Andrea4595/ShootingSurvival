@@ -14,6 +14,7 @@ namespace Data
             public class UpgradesLevel
             {
                 public int increaseHp;
+                public int increaseDamage;
                 public int increaseMoveSpeed;
                 public int increaseCreditBonus;
                 public int increaseChoiceCount;
@@ -38,7 +39,7 @@ namespace Data
         {
             UpdateSaveData();
 
-            var jsonText = JsonUtility.ToJson(_saveData);
+            var jsonText = JsonUtility.ToJson(_saveData, true);
             File.WriteAllText(_path, jsonText);
         }
 
@@ -49,6 +50,7 @@ namespace Data
             gameData.credit = _saveData.credit;
             gameData.languageKey = _saveData.language;
             gameData.permanentUpgrades.increaseHp.level = _saveData.upgradesLevel.increaseHp;
+            gameData.permanentUpgrades.increaseDamage.level = _saveData.upgradesLevel.increaseDamage;
             gameData.permanentUpgrades.increaseMoveSpeed.level = _saveData.upgradesLevel.increaseMoveSpeed;
             gameData.permanentUpgrades.increaseCreditBonus.level = _saveData.upgradesLevel.increaseCreditBonus;
             gameData.permanentUpgrades.increaseChoiceCount.level = _saveData.upgradesLevel.increaseChoiceCount;
@@ -61,6 +63,7 @@ namespace Data
             _saveData.credit = gameData.credit;
             _saveData.language = gameData.languageKey;
             _saveData.upgradesLevel.increaseHp = gameData.permanentUpgrades.increaseHp.level;
+            _saveData.upgradesLevel.increaseDamage = gameData.permanentUpgrades.increaseDamage.level;
             _saveData.upgradesLevel.increaseMoveSpeed = gameData.permanentUpgrades.increaseMoveSpeed.level;
             _saveData.upgradesLevel.increaseCreditBonus = gameData.permanentUpgrades.increaseCreditBonus.level;
             _saveData.upgradesLevel.increaseChoiceCount = gameData.permanentUpgrades.increaseChoiceCount.level;

@@ -35,6 +35,8 @@ namespace Game.Character
         public Data.Object.CharacterInformation information { get; private set; }
         public event Action onDestroy;
 
+        public float damageMultiply = 1;
+
         private void Awake()
         {
             ObjectPoolInstanceInitialize(this);

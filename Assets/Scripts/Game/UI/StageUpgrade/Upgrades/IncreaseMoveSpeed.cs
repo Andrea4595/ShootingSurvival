@@ -5,10 +5,9 @@ namespace Game.UI.StageUpgrade
         Data.GameData gameData => Data.GameData.instance;
         Character.Character player => PlayerSetter.instance.player;
 
-        float baseMoveSpeed => gameData.GetCharacterInformation("player").moveSpeed;
-        float permanentIncreasedMoveSpeed => gameData.permanentUpgrades.increaseMoveSpeed.current.power;
-        float stageIncreasedMoveSpeed => gameData.stageUpgrades.increaseMoveSpeed.current + permanentIncreasedMoveSpeed * gameData.stageUpgrades.increaseMoveSpeed.level;
-        float nextStageIncreasedMoveSpeed => gameData.stageUpgrades.increaseMoveSpeed.next + permanentIncreasedMoveSpeed * (gameData.stageUpgrades.increaseMoveSpeed.level + 1);
+        float baseMoveSpeed => gameData.GetCharacterInformation("player").moveSpeed + gameData.permanentUpgrades.increaseMoveSpeed.current.power;
+        float stageIncreasedMoveSpeed => gameData.stageUpgrades.increaseMoveSpeed.current;
+        float nextStageIncreasedMoveSpeed => gameData.stageUpgrades.increaseMoveSpeed.next;
         float nextMoveSpeed => baseMoveSpeed * (1 + nextStageIncreasedMoveSpeed);
 
         public string GetName() => $"{gameData.language.IncreaseStatusText(gameData.language.moveSpeed)} {gameData.stageUpgrades.increaseMoveSpeed.level + 1}";

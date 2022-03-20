@@ -8,19 +8,19 @@ namespace Lobby.Upgrades
     public class IncreaseHp : IUpgrade
     {
         LanguageInformation.Language language => GameData.instance.language;
-        string valueContentName => language.IncreaseStatusText(language.hp);
-        string valueName => language.increaseUpgradeStatusText(language.hp);
+        string valueContentName => language.hp;
+        string valueName => language.increaseBaseStatusText(language.hp);
 
         public UpgradeInformation.PermanentUpgrades.Upgrade information => GameData.instance.permanentUpgrades.increaseHp;
 
         public string GetContent()
         {
-            var currentIncrease = GameData.instance.stageUpgrades.increaseHp.current;
+            var current = GameData.instance.GetCharacterInformation("player").maxHp;
 
             if (information.level < information.levels.Length - 1)
-                return $"{valueContentName} : +{currentIncrease + information.current.power} ¡æ +{currentIncrease + information.next.power}";
+                return $"{valueContentName} : {current + information.current.power} ¡æ {current + information.next.power}";
             else
-                return $"{valueContentName} : +{currentIncrease + information.current.power}";
+                return $"{valueContentName} : {current + information.current.power}";
         }
 
         public string GetName()

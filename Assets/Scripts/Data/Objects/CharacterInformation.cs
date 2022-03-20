@@ -11,6 +11,7 @@ namespace Data.Object
         public float scale = 1;
         public float maxHp = 10;
         public float moveSpeed = 5;
+        public float homming = 1000;
         public string[] weapons = new string[0];
 
         public Sprite GetSprite() => SpriteInformer.GetSprite(sprite);
@@ -25,6 +26,7 @@ namespace Data.Object
             clone.scale = scale;
             clone.maxHp = maxHp;
             clone.moveSpeed = moveSpeed;
+            clone.homming = homming;
             clone.weapons = new string[weapons.Length];
             for (var i = 0; i < weapons.Length; i++)
                 clone.weapons[i] = (string)weapons[i].Clone();
