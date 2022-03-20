@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JsonEditor
 {
-    public class TipReciever : MonoBehaviour
+    public class TipReceiver : MonoBehaviour
     {
         //Todo 언어
 
@@ -17,6 +17,11 @@ namespace JsonEditor
         public void ShowCharacterWeapons() => Tip.Show(
             "Weapons",
             "이 캐릭터가 가지는 무기입니다. 한 캐릭터가 여러개의 무기를 가질 수 있습니다.\n\nplayer 캐릭터에게 무기가 부여될 경우 시작할 때 기본적으로 보유하는 무기가 됩니다."
+            );
+
+        public void ShowCharacterHomming() => Tip.Show(
+            "Homming",
+            "목표를 향해 선회하는 속도입니다.\n\n플레이어 캐릭터는 커서를, 적 캐릭터들은 플레이어 캐릭터를 향해 선회합니다."
             );
 
         //Weapon
@@ -77,18 +82,23 @@ namespace JsonEditor
 
         //Permanent Upgrade
         public void ShowPermanentUpgradeIncreaceHp() => Tip.Show(
-            "Increase Hp Upgrade",
-            "스테이지 클리어 보상으로 선택 가능한 항목 중 '최대 체력 증가' 업그레이드의 효과를 높입니다.\n\n스테이지 클리어 보상으로 '최대 체력 증가' 업그레이드를 선택 할 때마다 플레이어 캐릭터의 체력이 이 값 만큼 씩 추가로 증가합니다."
+            "Increase Hp",
+            "player 캐릭터의 기본 체력에 더해집니다."
+            );
+
+        public void ShowPermanentUpgradeIncreaceDamage() => Tip.Show(
+            "Increase Damage",
+            "player 캐릭터가 발사하는 모든 투사체의 공격력이 증가합니다."
             );
 
         public void ShowPermanentUpgradeIncreaceMoveSpeed() => Tip.Show(
-            "Increase Move Speed Upgrade",
-            "스테이지 클리어 보상으로 선택 가능한 항목 중 '이동 속도 증가' 업그레이드의 효과를 높입니다.\n\n스테이지 클리어 보상으로 '이동 속도 증가' 업그레이드를 선택 할 때마다 플레이어 캐릭터의 이동 속도가 이 값 % 만큼 씩 추가로 증가합니다."
+            "Increase Move Speed",
+            "player 캐릭터의 기본 이동속도에 더해집니다."
             );
 
         public void ShowPermanentUpgradeIncreaceCreditBonus() => Tip.Show(
-            "Increase Move Speed Upgrade",
-            "스테이지 클리어 보상으로 선택 가능한 항목 중 '크레딧 획득량 증가' 업그레이드의 효과를 높입니다.\n\n스테이지 클리어 보상으로 '크레딧 획득량 증가' 업그레이드를 선택 할 때마다 크레딧 획득량 증가량이 이 값 % 만큼 씩 추가로 증가합니다."
+            "Increase Move Speed",
+            "기본 크레딧 획득량에 더해집니다."
             );
 
         public void ShowPermanentUpgradeChoiceCount() => Tip.Show(
@@ -104,7 +114,7 @@ namespace JsonEditor
 
         public void ShowStageUpgradeHeal() => Tip.Show(
             "Heal",
-            "체력을 지정 된 % 만큼 회복하는 선택지입니다."
+            "체력을 지정 된 % 만큼 회복하는 선택지입니다.\n\n피해입은 체력이 이 선택지로 회복되는 양의 이상일 때에만 등장합니다."
             );
 
         public void ShowStageUpgradeCredit() => Tip.Show(

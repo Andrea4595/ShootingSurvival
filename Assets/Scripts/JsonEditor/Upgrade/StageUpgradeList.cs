@@ -17,8 +17,6 @@ namespace JsonEditor
         TMPro.TextMeshProUGUI _rateIncreaseMoveSpeed;
         [SerializeField]
         TMPro.TextMeshProUGUI _rateIncreaseCredit;
-        [SerializeField]
-        TMPro.TextMeshProUGUI _rateHeal;
 
         private void Awake()
         {
@@ -45,8 +43,7 @@ namespace JsonEditor
             float weightSum =
                 stageUpgrades.increaseHp.weight +
                 stageUpgrades.increaseMoveSpeed.weight +
-                stageUpgrades.increaseCredit.weight +
-                stageUpgrades.heal.weight;
+                stageUpgrades.increaseCredit.weight;
 
             var weapons = Data.GameData.instance.weapons;
 
@@ -65,7 +62,6 @@ namespace JsonEditor
             _rateIncreaseHp.text = GetRateText(stageUpgrades.increaseHp.weight);
             _rateIncreaseMoveSpeed.text = GetRateText(stageUpgrades.increaseMoveSpeed.weight);
             _rateIncreaseCredit.text = GetRateText(stageUpgrades.increaseCredit.weight);
-            _rateHeal.text = GetRateText(stageUpgrades.heal.weight);
 
             foreach (var weapon in weapons)
             {

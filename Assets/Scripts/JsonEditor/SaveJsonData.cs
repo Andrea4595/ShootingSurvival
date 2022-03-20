@@ -11,6 +11,7 @@ namespace JsonEditor
         public const string weaponsPath = "config/weapons.json";
         public const string stagesPath = "config/stages.json";
         public const string upgradesPath = "config/upgrades.json";
+        public const string languagesPath = "config/languages.json";
         public const string backup = ".bac";
 
         [SerializeField]
@@ -53,6 +54,14 @@ namespace JsonEditor
                 return;
 
             SaveUpgradeData();
+        }
+
+        public void SaveLanguageIfAuto()
+        {
+            if (EditorConfig.instance.autoSave == false)
+                return;
+
+            SaveLanguageData();
         }
 
         public bool Save(string path, object information)
@@ -122,6 +131,7 @@ namespace JsonEditor
         public bool SaveWeaponData() => Save(weaponsPath, Data.GameData.instance.GetWeaponsData());
         public bool SaveStageData() => Save(stagesPath, Data.GameData.instance.GetStagesData());
         public bool SaveUpgradeData() => Save(upgradesPath, Data.GameData.instance.GetUpgradeData());
+        public bool SaveLanguageData() => Save(languagesPath, Data.GameData.instance.GetLanguageData());
 
         public void SaveAll()
         {
@@ -148,6 +158,13 @@ namespace JsonEditor
                 if (log.Length != 0)
                     log += ", ";
                 log += upgradesPath;
+            }
+
+            if (SaveLanguageData())
+            {
+                if (log.Length != 0)
+                    log += ", ";
+                log += languagesPath;
             }
 
             if (log.Length <= 0)
