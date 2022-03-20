@@ -33,6 +33,7 @@ namespace Lobby
             }
 
             InstantiateUpgrade(new Upgrades.IncreaseHp());
+            InstantiateUpgrade(new Upgrades.IncreaseDamage());
             InstantiateUpgrade(new Upgrades.IncreaseMoveSpeed());
             InstantiateUpgrade(new Upgrades.IncreaseCreditBonus());
             InstantiateUpgrade(new Upgrades.IncreaseChoiceCount());
