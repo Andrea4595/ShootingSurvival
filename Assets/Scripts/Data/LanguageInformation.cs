@@ -13,12 +13,13 @@ namespace Data
             public string key;
             public string increaseStatus;
             public string IncreaseStatusText(string value) => increaseStatus.Replace("[0]", value);
-            public string increaseUpgradeStatus;
-            public string increaseUpgradeStatusText(string value) => increaseUpgradeStatus.Replace("[0]", value);
+            public string increaseBaseStatus;
+            public string increaseBaseStatusText(string value) => increaseBaseStatus.Replace("[0]", value);
             public string hp;
             public string heal;
             public string healInformation;
             public string HealInformationText(string value) => healInformation.Replace("[0]", value);
+            public string damage;
             public string moveSpeed;
             public string credit;
             public string creditBonus;
@@ -40,9 +41,9 @@ namespace Data
             [System.Serializable]
             public class Weapon
             {
-                public string key;
-                public string name;
-                public string information;
+                public string key = "";
+                public string name = "";
+                public string information = "";
             }
 
             public Weapon[] weapons;
@@ -55,6 +56,14 @@ namespace Data
                     _weapons.Add(weapon.key, weapon);
             }
 
+            public void AddWeapon(string key, Weapon weapon)
+            {
+                _weapons.Add(key, weapon);
+
+                var list = new List<Weapon>(weapons);
+                list.Add(weapon);
+                weapons = list.ToArray();
+            }
             public bool GetWeapon(string key, out Weapon weapon) => _weapons.TryGetValue(key, out weapon);
         }
 

@@ -16,6 +16,10 @@ namespace JsonEditor
         [SerializeField]
         TMPro.TMP_InputField _key;
         [SerializeField]
+        TMPro.TMP_InputField _name;
+        [SerializeField]
+        TMPro.TMP_InputField _informationText;
+        [SerializeField]
         Toggle _forPlayer;
         [SerializeField]
         SpriteSelector _sprite;
@@ -54,7 +58,145 @@ namespace JsonEditor
 
         void Initialize()
         {
+            void UpdateKey(string text)
+            {
+                var from = _information.key;
+                _information.key = text;
+
+                UpdateInformation();
+                SaveJsonData.instance.UpdateReferencedWeaponKey(from, _information.key);
+                _weaponList.UpdateInterface();
+            }
+
+            void UpdateName(string text)
+            {
+                GetLanguage().name = text;
+                SaveJsonData.instance.SaveLanguageIfAuto();
+            }
+
+            void UpdateInformationText(string text)
+            {
+                GetLanguage().information = text;
+                SaveJsonData.instance.SaveLanguageIfAuto();
+            }
+
+            void UpdateForPlayer(bool toggle)
+            {
+                _information.forPlayer = toggle;
+
+                UpdateInformation();
+            }
+
+            void UpdateSprite(int index)
+            {
+                _information.projectile.sprite = Data.SpriteInformer.instance.sprites[index].key;
+
+                UpdateInformation();
+                _weaponList.UpdateInterface();
+            }
+
+            void UpdateHp(float value)
+            {
+                _information.projectile.maxHp = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateDamage(string text)
+            {
+                var value = ExceptionFilter.TryFloatParse(text);
+                _information.projectile.damage = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateExplosionRange(float value)
+            {
+                _information.projectile.range = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateSpeed(string text)
+            {
+                var value = ExceptionFilter.TryFloatParse(text);
+                _information.projectile.speed = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateScale(float value)
+            {
+                _information.projectile.scale = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateHomming(string text)
+            {
+                var value = ExceptionFilter.TryFloatParse(text);
+                _information.projectile.homming = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateLifetime(string text)
+            {
+                var value = ExceptionFilter.TryFloatParse(text);
+                _information.projectile.lifetime = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateHitProjectile(bool toggle)
+            {
+                _information.projectile.hitProjectile = toggle;
+
+                UpdateInformation();
+            }
+
+            void UpdateFireType(int index)
+            {
+                _information.SetFireType((Data.Object.WeaponInformation.Type)index);
+
+                UpdateInformation();
+            }
+
+            void UpdateFireCount(string text)
+            {
+                var value = ExceptionFilter.TryIntParse(text);
+                _information.fireCount = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateAngleRange(string text)
+            {
+                var value = ExceptionFilter.TryFloatParse(text);
+                _information.angleRange = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateContinuousCount(string text)
+            {
+                var value = ExceptionFilter.TryIntParse(text);
+                _information.continuousCount = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateInterval(string text)
+            {
+                var value = ExceptionFilter.TryFloatParse(text);
+                _information.interval = value;
+
+                UpdateInformation();
+            }
+
             _key.onValueChanged.AddListener(UpdateKey);
+            _name.onValueChanged.AddListener(UpdateName);
+            _informationText.onValueChanged.AddListener(UpdateInformationText);
             _forPlayer.onValueChanged.AddListener(UpdateForPlayer);
             _sprite.onValueChanged.AddListener(UpdateSprite);
             _hp.onValueChanged.AddListener(UpdateHp);
@@ -80,6 +222,8 @@ namespace JsonEditor
             _information = information;
 
             _key.SetTextWithoutNotify(information.key);
+            _name.SetTextWithoutNotify(GetLanguage().name);
+            _informationText.SetTextWithoutNotify(GetLanguage().information);
             _forPlayer.SetIsOnWithoutNotify(information.forPlayer);
             _sprite.SetValueWithoutNotify(information.projectile.sprite);
             _hp.SetValueWithoutNotify(information.projectile.maxHp);
@@ -102,130 +246,6 @@ namespace JsonEditor
 
         public bool CheckKey(string key) => _information.key.CompareTo(key) == 0;
 
-        public void UpdateKey(string text)
-        {
-            var from = _information.key;
-            _information.key = text;
-
-            UpdateInformation();
-            SaveJsonData.instance.UpdateReferencedWeaponKey(from, _information.key);
-            _weaponList.UpdateInterface();
-        }
-
-        public void UpdateForPlayer(bool toggle)
-        {
-            _information.forPlayer = toggle;
-
-            UpdateInformation();
-        }
-
-        public void UpdateSprite(int index)
-        {
-            _information.projectile.sprite = Data.SpriteInformer.instance.sprites[index].key;
-
-            UpdateInformation();
-            _weaponList.UpdateInterface();
-        }
-
-        public void UpdateHp(float value)
-        {
-            _information.projectile.maxHp = value;
-
-            UpdateInformation();
-        }
-
-        public void UpdateDamage(string text)
-        {
-            var value = ExceptionFilter.TryFloatParse(text);
-            _information.projectile.damage = value;
-
-            UpdateInformation();
-        }
-
-        public void UpdateExplosionRange(float value)
-        {
-            _information.projectile.range = value;
-
-            UpdateInformation();
-        }
-
-        public void UpdateSpeed(string text)
-        {
-            var value = ExceptionFilter.TryFloatParse(text);
-            _information.projectile.speed = value;
-
-            UpdateInformation();
-        }
-
-        public void UpdateScale(float value)
-        {
-            _information.projectile.scale = value;
-
-            UpdateInformation();
-        }
-
-        public void UpdateHomming(string text)
-        {
-            var value = ExceptionFilter.TryFloatParse(text);
-            _information.projectile.homming = value;
-
-            UpdateInformation();
-        }
-
-        public void UpdateLifetime(string text)
-        {
-            var value = ExceptionFilter.TryFloatParse(text);
-            _information.projectile.lifetime = value;
-
-            UpdateInformation();
-        }
-
-        public void UpdateHitProjectile(bool toggle)
-        {
-            _information.projectile.hitProjectile = toggle;
-
-            UpdateInformation();
-        }
-
-        public void UpdateFireType(int index)
-        {
-            _information.SetFireType((Data.Object.WeaponInformation.Type)index);
-
-            UpdateInformation();
-        }
-
-        public void UpdateFireCount(string text)
-        {
-            var value = ExceptionFilter.TryIntParse(text);
-            _information.fireCount = value;
-
-            UpdateInformation();
-        }
-
-        public void UpdateAngleRange(string text)
-        {
-            var value = ExceptionFilter.TryFloatParse(text);
-            _information.angleRange = value;
-
-            UpdateInformation();
-        }
-
-        public void UpdateContinuousCount(string text)
-        {
-            var value = ExceptionFilter.TryIntParse(text);
-            _information.continuousCount = value;
-
-            UpdateInformation();
-        }
-
-        public void UpdateInterval(string text)
-        {
-            var value = ExceptionFilter.TryFloatParse(text);
-            _information.interval = value;
-
-            UpdateInformation();
-        }
-
         public void UpdateUpgrade(Data.Object.WeaponInformation.Upgrade[] upgrades)
         {
             _information.upgrades = upgrades;
@@ -243,6 +263,20 @@ namespace JsonEditor
         internal void SelectUpgradeLevel(int level)
         {
             TestPlayer.instance.UpdateWeaponLevel(_information.key, level);
+        }
+
+        Data.LanguageInformation.Language.Weapon GetLanguage()
+        {
+            Data.LanguageInformation.Language.Weapon language;
+
+            if (Data.GameData.instance.language.GetWeapon(_information.key, out language) == false)
+            {
+                language = new Data.LanguageInformation.Language.Weapon();
+                language.key = _information.key;
+                Data.GameData.instance.language.AddWeapon(_information.key, language);
+            }
+
+            return language;
         }
     }
 }
