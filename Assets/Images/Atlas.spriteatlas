@@ -38,7 +38,7 @@ SpriteAtlas:
       padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
+      enableRotation: 0
       enableTightPacking: 1
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
@@ -50,6 +50,13 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 1b4f0370fe38a3345a0d589145dcec62, type: 3}
+  - {fileID: 21300000, guid: 9a184a227cd76f54899d586e8ea235a2, type: 3}
+  - {fileID: 21300000, guid: e69b594222050ec49a00af095605ad52, type: 3}
+  - {fileID: 21300000, guid: 28e058b2221b5094aa6c373f72d1aada, type: 3}
+  - {fileID: 21300000, guid: 3029ee6462cd733499aa51332b51928d, type: 3}
+  - {fileID: 21300000, guid: 0bffa9a64960d5a4c8460e661194fecb, type: 3}
+  - {fileID: 21300000, guid: 0f8c59d74353b4444b03861291d92380, type: 3}
   - {fileID: 21300000, guid: 1500838891da39c4d8be0ca5f1ae721b, type: 3}
   - {fileID: 21300000, guid: 4311ee5b9668b804b873787629c97e03, type: 3}
   - {fileID: 21300000, guid: 53a9117c8a72e8048912f3194f0eebca, type: 3}
@@ -58,6 +65,13 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e6a784afaf6cb90499df409c3ed8a82c, type: 3}
   - {fileID: 21300000, guid: c5189defb95c55f41ab04cf1a49381e6, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Star
+  - Airship
+  - Stealth
+  - Wild
+  - Ballista
+  - Lightning
+  - Bomb
   - Bomber
   - Credit
   - Fighter
