@@ -25,6 +25,8 @@ namespace JsonEditor
         [SerializeField]
         TMPro.TMP_InputField _moveSpeed;
         [SerializeField]
+        TMPro.TMP_InputField _homming;
+        [SerializeField]
         CharacterWeaponList _weaponList;
 
         public Data.Object.CharacterInformation target => _information;
@@ -33,6 +35,85 @@ namespace JsonEditor
 
         void Initialize()
         {
+            void UpdateKey(string text)
+            {
+                var from = _information.key;
+                _information.key = text;
+
+                UpdateInformation();
+                SaveJsonData.instance.UpdateReferencedCharacterKey(from, _information.key);
+                _characterList.UpdateInterface();
+            }
+
+            void UpdateSprite(int index)
+            {
+                _information.sprite = _sprite.key;
+
+                UpdateInformation();
+                _characterList.UpdateInterface();
+            }
+
+            void UpdateScale(float scale)
+            {
+                _information.scale = scale;
+
+                UpdateInformation();
+            }
+
+            void UpdateColorR(float value)
+            {
+                _information.color[0] = value;
+
+                UpdateColor();
+            }
+
+            void UpdateColorG(float value)
+            {
+                _information.color[1] = value;
+
+                UpdateColor();
+            }
+
+            void UpdateColorB(float value)
+            {
+                _information.color[2] = value;
+
+                UpdateColor();
+            }
+
+            void UpdateColor()
+            {
+                Color color = _information.GetColor();
+                _sprite.color = color;
+
+                UpdateInformation();
+                _characterList.UpdateInterface();
+            }
+
+            void UpdateHp(string text)
+            {
+                var value = ExceptionFilter.TryFloatParse(text);
+                _information.maxHp = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateMoveSpeed(string text)
+            {
+                var value = ExceptionFilter.TryFloatParse(text);
+                _information.moveSpeed = value;
+
+                UpdateInformation();
+            }
+
+            void UpdateHomming(string text)
+            {
+                var value = ExceptionFilter.TryFloatParse(text);
+                _information.homming = value;
+
+                UpdateInformation();
+            }
+
             _key.onEndEdit.AddListener(UpdateKey);
             _sprite.onValueChanged.AddListener(UpdateSprite);
             _color[0].onValueChanged.AddListener(UpdateColorR);
@@ -41,6 +122,7 @@ namespace JsonEditor
             _scale.onValueChanged.AddListener(UpdateScale);
             _maxHp.onEndEdit.AddListener(UpdateHp);
             _moveSpeed.onEndEdit.AddListener(UpdateMoveSpeed);
+            _homming.onEndEdit.AddListener(UpdateHomming);
             _weaponList.Initialize(this);
         }
 
@@ -58,83 +140,13 @@ namespace JsonEditor
             _scale.SetValueWithoutNotify(information.scale);
             _maxHp.SetTextWithoutNotify(information.maxHp.ToString());
             _moveSpeed.SetTextWithoutNotify(information.moveSpeed.ToString());
+            _homming.SetTextWithoutNotify(information.homming.ToString());
             _weaponList.UpdateInterface(_information.weapons);
         }
 
         public void HideInterface() => gameObject.SetActive(false);
 
         public bool CheckKey(string key) => _information.key.CompareTo(key) == 0;
-
-        public void UpdateKey(string text)
-        {
-            var from = _information.key;
-            _information.key = text;
-
-            UpdateInformation();
-            SaveJsonData.instance.UpdateReferencedCharacterKey(from, _information.key);
-            _characterList.UpdateInterface();
-        }
-
-        public void UpdateSprite(int index)
-        {
-            _information.sprite = _sprite.key;
-
-            UpdateInformation();
-            _characterList.UpdateInterface();
-        }
-
-        public void UpdateScale(float scale)
-        {
-            _information.scale = scale;
-
-            UpdateInformation();
-        }
-
-        public void UpdateColorR(float value)
-        {
-            _information.color[0] = value;
-
-            UpdateColor();
-        }
-
-        public void UpdateColorG(float value)
-        {
-            _information.color[1] = value;
-
-            UpdateColor();
-        }
-
-        public void UpdateColorB(float value)
-        {
-            _information.color[2] = value;
-
-            UpdateColor();
-        }
-
-        void UpdateColor()
-        {
-            Color color = _information.GetColor();
-            _sprite.color = color;
-
-            UpdateInformation();
-            _characterList.UpdateInterface();
-        }
-
-        public void UpdateHp(string text)
-        {
-            var value = ExceptionFilter.TryFloatParse(text);
-            _information.maxHp = value;
-
-            UpdateInformation();
-        }
-
-        public void UpdateMoveSpeed(string text)
-        {
-            var value = ExceptionFilter.TryFloatParse(text);
-            _information.moveSpeed = value;
-
-            UpdateInformation();
-        }
 
         public void UpdateWeapon(string[] weapons)
         {
