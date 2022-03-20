@@ -725,6 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac28d0f78d7d384aa7e8ebdaabb2841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   _keyDropDown: {fileID: 8610461078010017612}
 --- !u!1 &8610461077274772907
 GameObject:
@@ -959,7 +960,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 100
   m_Viewport: {fileID: 8610461077739890399}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 8610461077054848931}

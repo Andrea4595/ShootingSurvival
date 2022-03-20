@@ -128,7 +128,7 @@ namespace Data.Object
             return weaponText;
         }
 
-        public Upgrade[] upgrades;
+        public Upgrade[] upgrades = new Upgrade[0];
 
         public IEnumerator FireTypeCoroutine(Game.Character.Character owner)
         {

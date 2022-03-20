@@ -11,7 +11,7 @@ namespace Game.Weapon.FireType
         {
             for (int j = 0; j < information.continuousCount; j++)
             {
-                var ownerDirection = owner.movement.lookingDirection - information.angleRange * 0.5f;
+                var ownerDirection = owner.movement.lookingDirection;
 
                 if (owner.activated == false)
                     break;

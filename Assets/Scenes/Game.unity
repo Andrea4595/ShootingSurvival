@@ -331,6 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOver: {fileID: 1397689248}
   _clear: {fileID: 817379101}
+  _stageStart: 1
   creditReward: 0
 --- !u!4 &252517992
 Transform:
@@ -360,7 +361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b912cd6fc2e724ba59bd1a7e05a3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameOver: {fileID: 1397689248}
   player: {fileID: 1769946540}
 --- !u!1 &274303636
 GameObject:
@@ -2329,18 +2329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1a862c3eb7aa6468c95c761d6ee7d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movement: {fileID: 1769946544}
---- !u!114 &1769946544 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4317632176603679054, guid: 663710d56b79f3f4eaccf839a6695347, type: 3}
-  m_PrefabInstance: {fileID: 688785286}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769946538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5b3248e6de70c14f96ac97d8c6c1c37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _character: {fileID: 1769946540}
 --- !u!1 &1842934001
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,9 +13,10 @@ namespace JsonEditor
 
         UpgradeInformation.PermanentUpgrades information => GameData.instance.permanentUpgrades;
 
-        public void ShowIncreaseHp() => _interface.Show(information.increaseHp, "Increase Hp Upgrade");
-        public void ShowIncreaseMoveSpeed() => _interface.Show(information.increaseMoveSpeed, "Increase Move Speed Upgrade");
-        public void ShowIncreaseCreditBonus() => _interface.Show(information.increaseCreditBonus, "Increase Credit Bonus Upgrade");
-        public void ShowIncreaseChoiceCount() => _interface.Show(information.increaseChoiceCount, "Increase Choice Count Upgrade");
+        public void ShowIncreaseHp() => _interface.Show(information.increaseHp, "Hp");
+        public void ShowIncreaseDamage() => _interface.Show(information.increaseDamage, "Damage");
+        public void ShowIncreaseMoveSpeed() => _interface.Show(information.increaseMoveSpeed, "Move Speed");
+        public void ShowIncreaseCreditBonus() => _interface.Show(information.increaseCreditBonus, "Credit Bonus");
+        public void ShowIncreaseChoiceCount() => _interface.Show(information.increaseChoiceCount, "Choice Count");
     }
 }

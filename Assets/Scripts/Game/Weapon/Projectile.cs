@@ -34,7 +34,8 @@ namespace Game.Weapon
         public void Initialize(Character.Character owner, Data.Object.WeaponInformation.Projectile information, float direction, Vector2 offset)
         {
             _owner = owner;
-            this.information = information;
+            this.information = information.Clone();
+            this.information.damage *= _owner.damageMultiply;
             _direction = direction;
             _sprite.sprite = Data.SpriteInformer.GetSprite(information.sprite);
             _sprite.color = owner.color;
@@ -71,7 +72,7 @@ namespace Game.Weapon
                 _body.eulerAngles = new Vector3(0, 0, _direction);
 
                 if (information.homming > 0)
-                    Homming();
+                    RunHomming();
 
                 lifeTime += Time.smoothDeltaTime;
             }
@@ -92,7 +93,7 @@ namespace Game.Weapon
             return result;
         }
 
-        void Homming()
+        void RunHomming()
         {
             Character.Character GetNearestTarget()
             {
@@ -115,43 +116,12 @@ namespace Game.Weapon
                 return nearest;
             }
 
-            void TurnLeft()
-            {
-                _direction += information.homming * Time.smoothDeltaTime;
-            }
-
-            void TurnRight()
-            {
-                _direction -= information.homming * Time.smoothDeltaTime;
-            }
-
             var target = GetNearestTarget();
 
             if (target == null)
                 return;
 
-            var targetVector = target.movement.position - _body.position;
-            var targetDirection = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
-
-            if (_direction < targetDirection)
-            {
-                if (_direction + 180 > targetDirection)
-                    TurnLeft();
-                else
-                    TurnRight();
-            }
-            else
-            {
-                if (_direction - 180 < targetDirection)
-                    TurnRight();
-                else
-                    TurnLeft();
-            }
-
-            while (_direction > 180)
-                _direction -= 360;
-            while (_direction <= -180)
-                _direction += 360;
+            _direction = GameMath.Homming(_direction, _body.position, target.movement.position, information.homming);
         }
 
         void GiveDamage(Character.Hitable target)

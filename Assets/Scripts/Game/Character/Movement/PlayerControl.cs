@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Game.Character
 {
-    [RequireComponent(typeof(Movement))]
+    [RequireComponent(typeof(Character))]
     public class PlayerControl : MonoBehaviour
     {
         [SerializeField]
-        Movement _movement;
+        Character _character;
 
         private void OnEnable()
         {
@@ -33,7 +33,7 @@ namespace Game.Character
             if (inputVector.x == 0 && inputVector.y == 0)
                 return;
 
-            _movement.Move(inputVector);
+            _character.movement.Move(inputVector);
         }
 
         void LookAtMouse()
@@ -41,7 +41,7 @@ namespace Game.Character
             if (Time.timeScale == 0)
                 return;
 
-            _movement.LookAt(Cursor.position);
+            _character.movement.LookAtDirection(GameMath.Homming(_character.movement.lookingDirection, _character.movement.position, Cursor.position, _character.information.homming));
         }
     }
 }

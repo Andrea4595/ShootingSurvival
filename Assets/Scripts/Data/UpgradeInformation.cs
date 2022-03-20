@@ -68,6 +68,7 @@ namespace Data
             }
 
             public Upgrade increaseHp;
+            public Upgrade increaseDamage;
             public Upgrade increaseMoveSpeed;
             public Upgrade increaseCreditBonus;
             public Upgrade increaseChoiceCount;
