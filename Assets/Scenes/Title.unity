@@ -365,7 +365,6 @@ MonoBehaviour:
       credit:
         weight: 0
         power: []
-      weaponUpgradesWeight: 0
     permanentUpgrades:
       increaseHp:
         levels: []
@@ -408,8 +407,22 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 53a9117c8a72e8048912f3194f0eebca, type: 3}
   - key: Bomber
     sprite: {fileID: 21300000, guid: 1500838891da39c4d8be0ca5f1ae721b, type: 3}
+  - key: Airship
+    sprite: {fileID: 21300000, guid: 9a184a227cd76f54899d586e8ea235a2, type: 3}
+  - key: Lightning
+    sprite: {fileID: 21300000, guid: 0bffa9a64960d5a4c8460e661194fecb, type: 3}
+  - key: Star
+    sprite: {fileID: 21300000, guid: 1b4f0370fe38a3345a0d589145dcec62, type: 3}
+  - key: Stealth
+    sprite: {fileID: 21300000, guid: e69b594222050ec49a00af095605ad52, type: 3}
+  - key: Whild
+    sprite: {fileID: 21300000, guid: 28e058b2221b5094aa6c373f72d1aada, type: 3}
   - key: Bullet
     sprite: {fileID: 21300000, guid: c5189defb95c55f41ab04cf1a49381e6, type: 3}
+  - key: Bomb
+    sprite: {fileID: 21300000, guid: 0f8c59d74353b4444b03861291d92380, type: 3}
+  - key: Ballista
+    sprite: {fileID: 21300000, guid: 3029ee6462cd733499aa51332b51928d, type: 3}
   - key: Missile
     sprite: {fileID: 21300000, guid: de95edeeb33a489448287de930e80497, type: 3}
 --- !u!114 &1135278922
