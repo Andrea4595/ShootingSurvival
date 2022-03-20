@@ -154,7 +154,7 @@
             "forPlayer": true,
             "weight": 1.0,
             "projectile": {
-                "sprite": "Missile",
+                "sprite": "Bomb",
                 "maxHp": 30.0,
                 "damage": 30.0,
                 "range": 8.0,
@@ -221,7 +221,7 @@
             ]
         },
         {
-            "key": "enemyA_weapon",
+            "key": "e_weak_rifle",
             "forPlayer": false,
             "weight": 1.0,
             "projectile": {
@@ -243,11 +243,11 @@
             "upgrades": []
         },
         {
-            "key": "enemyB_weapon",
+            "key": "e_big_missile",
             "forPlayer": false,
             "weight": 1.0,
             "projectile": {
-                "sprite": "Missile",
+                "sprite": "Bomb",
                 "maxHp": 5.0,
                 "damage": 10.0,
                 "range": 3.0,
@@ -265,7 +265,7 @@
             "upgrades": []
         },
         {
-            "key": "enemyC_weapon",
+            "key": "e_3way_rifle",
             "forPlayer": false,
             "weight": 1.0,
             "projectile": {
@@ -284,6 +284,94 @@
             "continuousCount": 35,
             "interval": 5.0,
             "angleRange": 80.0,
+            "upgrades": []
+        },
+        {
+            "key": "e_aircraft_carrier",
+            "forPlayer": false,
+            "weight": 1.0,
+            "projectile": {
+                "sprite": "Fighter",
+                "maxHp": 1.0,
+                "damage": 15.0,
+                "range": 3.0,
+                "speed": 15.0,
+                "scale": 1.0,
+                "homming": 70.0,
+                "lifetime": 30.0,
+                "hitProjectile": true
+            },
+            "fireType": "Random",
+            "fireCount": 3,
+            "continuousCount": 1,
+            "interval": 5.0,
+            "angleRange": 360.0,
+            "upgrades": []
+        },
+        {
+            "key": "e_minigun",
+            "forPlayer": false,
+            "weight": 1.0,
+            "projectile": {
+                "sprite": "Bullet",
+                "maxHp": 0.0,
+                "damage": 5.0,
+                "range": 0.0,
+                "speed": 15.0,
+                "scale": 0.699999988079071,
+                "homming": 0.0,
+                "lifetime": 5.0,
+                "hitProjectile": true
+            },
+            "fireType": "Random",
+            "fireCount": 1,
+            "continuousCount": 20,
+            "interval": 3.4000000953674318,
+            "angleRange": 50.0,
+            "upgrades": []
+        },
+        {
+            "key": "e_minigun2",
+            "forPlayer": false,
+            "weight": 1.0,
+            "projectile": {
+                "sprite": "Bullet",
+                "maxHp": 0.0,
+                "damage": 1.0,
+                "range": 0.0,
+                "speed": 30.0,
+                "scale": 0.30000001192092898,
+                "homming": 0.0,
+                "lifetime": 5.0,
+                "hitProjectile": true
+            },
+            "fireType": "Random",
+            "fireCount": 1,
+            "continuousCount": 10,
+            "interval": 2.0,
+            "angleRange": 8.0,
+            "upgrades": []
+        },
+        {
+            "key": "e_ballista",
+            "forPlayer": false,
+            "weight": 1.0,
+            "projectile": {
+                "sprite": "Ballista",
+                "maxHp": 0.0,
+                "damage": 30.0,
+                "range": 0.0,
+                "speed": 30.0,
+                "scale": 3.5999999046325685,
+                "homming": 0.0,
+                "lifetime": 30.0,
+                "hitProjectile": true
+            },
+            "fireType": "FrontArrow",
+            "fireCount": 1,
+            "continuousCount": 1,
+            "interval": 2.0,
+            "angleRange": 0.0,
             "upgrades": []
         }
     ]
