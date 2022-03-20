@@ -1,1 +1,11 @@
-{"credit":0,"upgradesLevel":{"increaseHp":0,"increaseMoveSpeed":0,"increaseCreditBonus":0,"increaseChoiceCount":0},"language":"kr"}
+{
+    "credit": 157,
+    "upgradesLevel": {
+        "increaseHp": 4,
+        "increaseDamage": 5,
+        "increaseMoveSpeed": 3,
+        "increaseCreditBonus": 2,
+        "increaseChoiceCount": 1
+    },
+    "language": "kr"
+}

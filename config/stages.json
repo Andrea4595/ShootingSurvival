@@ -30,7 +30,7 @@
             ]
         },
         {
-            "credit": 200,
+            "credit": 110,
             "groups": [
                 {
                     "spawns": [
@@ -71,7 +71,7 @@
             ]
         },
         {
-            "credit": 300,
+            "credit": 120,
             "groups": [
                 {
                     "spawns": [
@@ -108,7 +108,7 @@
                 {
                     "spawns": [
                         {
-                            "key": "enemyC",
+                            "key": "Boss1",
                             "count": 1
                         }
                     ]
@@ -116,7 +116,7 @@
             ]
         },
         {
-            "credit": 0,
+            "credit": 130,
             "groups": [
                 {
                     "spawns": [
@@ -137,8 +137,41 @@
                 {
                     "spawns": [
                         {
-                            "key": "enemyC",
+                            "key": "Boss1",
                             "count": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "credit": 140,
+            "groups": [
+                {
+                    "spawns": [
+                        {
+                            "key": "enemyC",
+                            "count": 1
+                        }
+                    ]
+                },
+                {
+                    "spawns": [
+                        {
+                            "key": "enemyC",
+                            "count": 5
+                        }
+                    ]
+                },
+                {
+                    "spawns": [
+                        {
+                            "key": "Boss2",
+                            "count": 1
+                        },
+                        {
+                            "key": "enemyB",
+                            "count": 10
                         }
                     ]
                 }
