@@ -102,6 +102,7 @@ namespace Game
                     var character = ObjectPool<Character.Character>.instance.GetObject();
                     character.Initialize(key, Character.Character.Force.Enemy);
                     SetPosition(character);
+                    SetRotation(character);
                     AddMovementToCharacter(character);
                     _remains.Add(character);
                     character.onDestroy += () => { _remains.Remove(character); };
@@ -135,6 +136,15 @@ namespace Game
             }
 
             character.movement.SetPosition(newPosition);
+        }
+
+        void SetRotation(Character.Character character)
+        {
+            var player = PlayerSetter.instance.player;
+            var vector = player.movement.position - character.movement.position;
+            var direction = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
+
+            character.movement.LookAtDirection(direction);
         }
 
         void AddMovementToCharacter(Character.Character character)

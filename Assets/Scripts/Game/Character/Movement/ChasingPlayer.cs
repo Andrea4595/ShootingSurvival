@@ -19,8 +19,9 @@ namespace Game.Character
 
             while (owner.activated)
             {
-                owner.movement.LookAt(player.movement.position);
-                owner.movement.MoveTo(player.movement.position);
+
+                owner.movement.LookAtDirection(GameMath.Homming(owner.movement.lookingDirection, owner.movement.position, player.movement.position, owner.information.homming));
+                owner.movement.Move(owner.movement.lookingDirection);
 
                 yield return null;
             }
