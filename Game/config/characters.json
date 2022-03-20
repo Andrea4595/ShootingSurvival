@@ -11,6 +11,7 @@
             "scale": 1.0,
             "maxHp": 100.0,
             "moveSpeed": 5.0,
+            "homming": 1000.0,
             "weapons": [
                 "rifle"
             ]
@@ -26,8 +27,9 @@
             "scale": 1.0,
             "maxHp": 1.0,
             "moveSpeed": 3.0,
+            "homming": 1000.0,
             "weapons": [
-                "enemyA_weapon"
+                "e_weak_rifle"
             ]
         },
         {
@@ -41,13 +43,14 @@
             "scale": 1.2000000476837159,
             "maxHp": 10.0,
             "moveSpeed": 2.0,
+            "homming": 1000.0,
             "weapons": [
-                "enemyB_weapon"
+                "e_big_missile"
             ]
         },
         {
-            "key": "enemyC",
-            "sprite": "Bomber",
+            "key": "Boss1",
+            "sprite": "Lightning",
             "color": [
                 1.0,
                 0.5,
@@ -56,8 +59,58 @@
             "scale": 3.0,
             "maxHp": 100.0,
             "moveSpeed": 3.0,
+            "homming": 10.0,
             "weapons": [
-                "enemyC_weapon"
+                "e_3way_rifle"
+            ]
+        },
+        {
+            "key": "Boss2",
+            "sprite": "Airship",
+            "color": [
+                0.679611086845398,
+                0.0,
+                0.4072192311286926
+            ],
+            "scale": 5.0,
+            "maxHp": 130.0,
+            "moveSpeed": 1.0,
+            "homming": 10.0,
+            "weapons": [
+                "e_aircraft_carrier",
+                "e_minigun"
+            ]
+        },
+        {
+            "key": "enemyC",
+            "sprite": "Whild",
+            "color": [
+                1.0,
+                0.0,
+                0.0
+            ],
+            "scale": 1.0,
+            "maxHp": 1.0,
+            "moveSpeed": 15.0,
+            "homming": 130.0,
+            "weapons": [
+                "e_minigun2"
+            ]
+        },
+        {
+            "key": "enemyD",
+            "sprite": "Stealth",
+            "color": [
+                0.6133237481117249,
+                0.0,
+                0.0
+            ],
+            "scale": 2.0,
+            "maxHp": 10.0,
+            "moveSpeed": 2.0,
+            "homming": 1000.0,
+            "weapons": [
+                "e_ballista"
             ]
         }
     ]
