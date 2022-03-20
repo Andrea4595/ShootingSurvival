@@ -53,5 +53,10 @@ namespace Game.Character
             var vector = target - _body.position;
             _body.eulerAngles = new Vector3(0, 0, Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg);
         }
+
+        public void LookAtDirection(float direction)
+        {
+            _body.eulerAngles = new Vector3(0, 0, direction);
+        }
     }
 }
