@@ -30,6 +30,7 @@ namespace JsonEditor
         CharacterWeaponList _weaponList;
 
         public Data.Object.CharacterInformation target => _information;
+        public event System.Action onUpdate;
 
         private void Awake() => Initialize();
 
@@ -142,6 +143,8 @@ namespace JsonEditor
             _moveSpeed.SetTextWithoutNotify(information.moveSpeed.ToString());
             _homming.SetTextWithoutNotify(information.homming.ToString());
             _weaponList.UpdateInterface(_information.weapons);
+
+            onUpdate?.Invoke();
         }
 
         public void HideInterface() => gameObject.SetActive(false);
