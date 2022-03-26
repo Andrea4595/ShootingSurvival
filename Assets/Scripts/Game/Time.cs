@@ -8,11 +8,30 @@ namespace Game
     {
         public static float smoothDeltaTime => timeScale * UnityEngine.Time.smoothDeltaTime;
         public static float timeScale = 1f;
+        public static float time => instance._time;
+
+        float _time;
 
         [SerializeField]
         AnimationCurve _fadeCurve;
 
         Coroutine _fade;
+
+        private void Awake()
+        {
+            Application.targetFrameRate = 144;
+        }
+
+        private void OnEnable() => StartCoroutine(CCountTime());
+
+        IEnumerator CCountTime()
+        {
+            while (true)
+            {
+                yield return null;
+                _time += smoothDeltaTime;
+            }
+        }
 
         public void Fade(float targetTimeScale, float duration)
         {
@@ -25,10 +44,10 @@ namespace Game
                 return;
             }
 
-            _fade = StartCoroutine(CRun(targetTimeScale, duration));
+            _fade = StartCoroutine(CTimeFade(targetTimeScale, duration));
         }
 
-        IEnumerator CRun(float targetTimeScale, float duration)
+        IEnumerator CTimeFade(float targetTimeScale, float duration)
         {
             var time = 0f;
             var start = timeScale;
