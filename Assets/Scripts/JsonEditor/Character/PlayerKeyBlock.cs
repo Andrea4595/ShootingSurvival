@@ -9,35 +9,55 @@ namespace JsonEditor
         [SerializeField]
         Character _character;
         [SerializeField]
-        TMPro.TMP_InputField _inputField;
+        UnityEngine.UI.Selectable _field;
+
+
+        bool isPlayer => _character.target.key.CompareTo("player") == 0;
 
         private void Awake()
         {
-            StartCoroutine(CRun());
+            _character.onUpdate += CheckPlayer;
+
+            AdvancedTool.instance.onEnable += SetEnable;
+            AdvancedTool.instance.onDisable += SetDisable;
         }
 
-        IEnumerator CRun()
+        private void OnEnable() => CheckAdvancedEnable();
+
+
+        void CheckAdvancedEnable()
         {
-            var previous = _character.target;
+            if (AdvancedTool.instance.enable)
+                SetEnable();
+            else
+                SetDisable();
+        }
 
-            while (true)
+        void CheckPlayer()
+        {
+            if (isPlayer)
             {
-                yield return null;
-
-                if (previous == _character.target)
-                    continue;
-
-                previous = _character.target;
-
-                if (_character.target.key.CompareTo("player") == 0)
-                {
-                    _inputField.interactable = false;
-                }
-                else
-                {
-                    _inputField.interactable = true;
-                }
+                SetDisable();
+                return;
             }
+
+            CheckAdvancedEnable();
+        }
+
+        void SetEnable()
+        {
+            if (isPlayer)
+            {
+                SetDisable();
+                return;
+            }
+
+            _field.interactable = true;
+        }
+
+        void SetDisable()
+        {
+            _field.interactable = false;
         }
     }
 }
