@@ -58,4 +58,4 @@
 
 - [x] json 편집기
 
-- [ ] config 폴더에 포함 될 기본적인 json 데이터들
+- [x] config 폴더에 포함 될 기본적인 json 데이터들
