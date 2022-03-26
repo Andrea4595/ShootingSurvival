@@ -4,28 +4,24 @@ using UnityEngine;
 
 namespace JsonEditor
 {
-    public class PlayerKeyBlock : MonoBehaviour
+    public class AdvancedContent : MonoBehaviour
     {
-        [SerializeField]
-        Character _character;
         [SerializeField]
         UnityEngine.UI.Selectable _field;
 
-
-        bool isPlayer => _character.target.key.CompareTo("player") == 0;
-
         private void Awake()
         {
-            _character.onUpdate += CheckPlayer;
-
             AdvancedTool.instance.onEnable += SetEnable;
             AdvancedTool.instance.onDisable += SetDisable;
         }
 
-        private void OnEnable() => CheckAdvancedEnable();
+        private void OnDestroy()
+        {
+            AdvancedTool.instance.onEnable -= SetEnable;
+            AdvancedTool.instance.onDisable -= SetDisable;
+        }
 
-
-        void CheckAdvancedEnable()
+        private void OnEnable()
         {
             if (AdvancedTool.instance.enable)
                 SetEnable();
@@ -33,25 +29,8 @@ namespace JsonEditor
                 SetDisable();
         }
 
-        void CheckPlayer()
-        {
-            if (isPlayer)
-            {
-                SetDisable();
-                return;
-            }
-
-            CheckAdvancedEnable();
-        }
-
         void SetEnable()
         {
-            if (isPlayer)
-            {
-                SetDisable();
-                return;
-            }
-
             _field.interactable = true;
         }
 
