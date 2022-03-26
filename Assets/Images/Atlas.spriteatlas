@@ -39,7 +39,7 @@ SpriteAtlas:
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 0
-      enableTightPacking: 1
+      enableTightPacking: 0
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
@@ -60,8 +60,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 1500838891da39c4d8be0ca5f1ae721b, type: 3}
   - {fileID: 21300000, guid: 4311ee5b9668b804b873787629c97e03, type: 3}
   - {fileID: 21300000, guid: 53a9117c8a72e8048912f3194f0eebca, type: 3}
+  - {fileID: 21300000, guid: d8339c8c7b6c99d4596cb79f8a79aac7, type: 3}
   - {fileID: 21300000, guid: b4e7177dbc13cb849b835207401f1e23, type: 3}
+  - {fileID: 21300000, guid: 18ebae4e492c3d54187f2862416dbf73, type: 3}
   - {fileID: 21300000, guid: de95edeeb33a489448287de930e80497, type: 3}
+  - {fileID: 21300000, guid: dfa8a31f06a4122409029364cc86edce, type: 3}
   - {fileID: 21300000, guid: e6a784afaf6cb90499df409c3ed8a82c, type: 3}
   - {fileID: 21300000, guid: c5189defb95c55f41ab04cf1a49381e6, type: 3}
   m_PackedSpriteNamesToIndex:
@@ -75,8 +78,11 @@ SpriteAtlas:
   - Bomber
   - Credit
   - Fighter
+  - Heart
   - Explosion
+  - Heart damaged
   - Missile
+  - direction
   - Box
   - Bullet
   m_RenderDataMap: {}

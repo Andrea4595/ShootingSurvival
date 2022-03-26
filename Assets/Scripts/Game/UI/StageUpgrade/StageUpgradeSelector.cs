@@ -97,7 +97,7 @@ namespace Game.UI
             if (allChoices.Count < count)
                 allChoices.Add(new StageUpgrade.GetCredit(), stageUpgrades.credit.weight);
 
-            if (PlayerSetter.instance.player.health.hpPercent <= stageUpgrades.heal.power[0])
+            if (PlayerSetter.instance.player.health.hpPercent < 1)
                 allChoices.Add(new StageUpgrade.GetHeal(), stageUpgrades.heal.weight);
 
             List<StageUpgrade.IUpgrade> choices = new List<StageUpgrade.IUpgrade>();
