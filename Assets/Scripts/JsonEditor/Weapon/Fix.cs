@@ -15,6 +15,7 @@ namespace JsonEditor
         Data.Object.WeaponInformation.Upgrade.Fix _fix;
 
         string[] keyList => Data.Object.WeaponInformation.Upgrade.Fix.keyList;
+        string[] keyList_Kor => Data.Object.WeaponInformation.Upgrade.Fix.keyList_Kor;
 
         public void Initialize(FixList fixList, Data.Object.WeaponInformation.Upgrade.Fix fix)
         {
@@ -22,7 +23,7 @@ namespace JsonEditor
             _fix = fix;
 
             _key.ClearOptions();
-            _key.AddOptions(new List<string>(keyList));
+            _key.AddOptions(new List<string>(keyList_Kor));
             _key.onValueChanged.AddListener(UpdateKey);
             _key.SetValueWithoutNotify(GetKeyIndex(fix.key));
             _fixTo.onValueChanged.AddListener(UpdateValue);
