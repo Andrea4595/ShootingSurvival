@@ -459,7 +459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reward Credit
+  m_text: "\uD06C\uB808\uB527 \uBCF4\uC0C1"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef408cd5d522759429405c2d1d1dd0d4, type: 2}
   m_sharedMaterial: {fileID: -1374290455135232677, guid: ef408cd5d522759429405c2d1d1dd0d4, type: 2}

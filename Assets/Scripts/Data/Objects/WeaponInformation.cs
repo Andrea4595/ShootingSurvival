@@ -45,6 +45,7 @@ namespace Data.Object
                 public float fixTo;
 
                 public static string[] keyList = { "projectile/maxHp", "projectile/damage", "projectile/range", "projectile/speed", "projectile/scale", "projectile/homming", "projectile/lifetime", "fireCount", "continuousCount", "interval", "angleRange" };
+                public static string[] keyList_Kor = { "투사체/체력", "투사체/공격력", "투사체/폭발 범위", "투사체/속도", "투사체/크기", "투사체/선회력", "투사체/유지 시간", "동시 발사 개수", "연사 횟수", "공격 대기 시간", "방사각" };
 
                 public Fix Clone()
                 {
