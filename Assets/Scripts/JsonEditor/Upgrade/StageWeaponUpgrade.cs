@@ -18,7 +18,7 @@ namespace JsonEditor
         {
             _upgradeList = upgradeList;
             _weapon = weapon;
-            _title.text = $"Weapon: {weapon.key}";
+            _title.text = $"¹«±â: {weapon.key}";
             _rate.text = rateText;
         }
 

@@ -17,7 +17,7 @@ namespace Game.Weapon.FireType
                     break;
 
                 var direction = owner.movement.lookingDirection;
-                var offsetInterval = information.projectile.scale * 0.01f;
+                var offsetInterval = information.angleRange * 0.01f;
                 var offset = new Vector2(offsetInterval * (information.fireCount - 1) * 0.25f, 0);
 
                 if (IsEven(information.fireCount))
