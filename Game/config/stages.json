@@ -7,23 +7,20 @@
                     "spawns": [
                         {
                             "key": "enemyA",
+                            "count": 5
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "credit": 0,
+            "groups": [
+                {
+                    "spawns": [
+                        {
+                            "key": "enemyB",
                             "count": 3
-                        }
-                    ]
-                },
-                {
-                    "spawns": [
-                        {
-                            "key": "enemyA",
-                            "count": 5
-                        }
-                    ]
-                },
-                {
-                    "spawns": [
-                        {
-                            "key": "enemyA",
-                            "count": 5
                         }
                     ]
                 }
@@ -36,34 +33,65 @@
                     "spawns": [
                         {
                             "key": "enemyA",
+                            "count": 5
+                        },
+                        {
+                            "key": "enemyB",
+                            "count": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "credit": 0,
+            "groups": [
+                {
+                    "spawns": [
+                        {
+                            "key": "enemyA",
+                            "count": 5
+                        },
+                        {
+                            "key": "enemyB",
                             "count": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "credit": 0,
+            "groups": [
+                {
+                    "spawns": [
+                        {
+                            "key": "enemyB",
+                            "count": 5
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "credit": 200,
+            "groups": [
+                {
+                    "spawns": [
+                        {
+                            "key": "enemyA",
+                            "count": 10
                         },
                         {
                             "key": "enemyB",
-                            "count": 1
+                            "count": 3
                         }
                     ]
                 },
                 {
                     "spawns": [
                         {
-                            "key": "enemyA",
-                            "count": 5
-                        },
-                        {
-                            "key": "enemyB",
-                            "count": 1
-                        }
-                    ]
-                },
-                {
-                    "spawns": [
-                        {
-                            "key": "enemyA",
-                            "count": 5
-                        },
-                        {
-                            "key": "enemyB",
+                            "key": "Boss1",
                             "count": 1
                         }
                     ]
@@ -76,7 +104,15 @@
                 {
                     "spawns": [
                         {
-                            "key": "enemyB",
+                            "key": "enemyC",
+                            "count": 2
+                        }
+                    ]
+                },
+                {
+                    "spawns": [
+                        {
+                            "key": "enemyC",
                             "count": 3
                         }
                     ]
@@ -84,56 +120,45 @@
                 {
                     "spawns": [
                         {
-                            "key": "enemyA",
-                            "count": 3
-                        },
-                        {
-                            "key": "enemyB",
-                            "count": 3
-                        }
-                    ]
-                },
-                {
-                    "spawns": [
-                        {
-                            "key": "enemyA",
-                            "count": 20
-                        },
-                        {
-                            "key": "enemyB",
-                            "count": 3
-                        }
-                    ]
-                },
-                {
-                    "spawns": [
-                        {
-                            "key": "Boss1",
-                            "count": 1
+                            "key": "enemyC",
+                            "count": 5
                         }
                     ]
                 }
             ]
         },
         {
-            "credit": 130,
+            "credit": 120,
             "groups": [
                 {
                     "spawns": [
                         {
-                            "key": "enemyA",
-                            "count": 30
+                            "key": "enemyC",
+                            "count": 3
+                        },
+                        {
+                            "key": "enemyD",
+                            "count": 1
                         }
                     ]
                 },
                 {
                     "spawns": [
                         {
-                            "key": "enemyB",
-                            "count": 10
+                            "key": "enemyC",
+                            "count": 3
+                        },
+                        {
+                            "key": "enemyD",
+                            "count": 2
                         }
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "credit": 250,
+            "groups": [
                 {
                     "spawns": [
                         {
@@ -145,21 +170,42 @@
             ]
         },
         {
-            "credit": 140,
+            "credit": 150,
             "groups": [
                 {
                     "spawns": [
                         {
-                            "key": "enemyC",
-                            "count": 1
+                            "key": "enemyD",
+                            "count": 3
                         }
                     ]
                 },
                 {
                     "spawns": [
                         {
-                            "key": "enemyC",
+                            "key": "enemyD",
+                            "count": 3
+                        },
+                        {
+                            "key": "enemyB",
+                            "count": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "credit": 300,
+            "groups": [
+                {
+                    "spawns": [
+                        {
+                            "key": "enemyB",
                             "count": 5
+                        },
+                        {
+                            "key": "enemyD",
+                            "count": 2
                         }
                     ]
                 },
@@ -171,7 +217,7 @@
                         },
                         {
                             "key": "enemyB",
-                            "count": 10
+                            "count": 5
                         }
                     ]
                 }

@@ -26,11 +26,19 @@
                         {
                             "key": "continuousCount",
                             "fixTo": 5.0
+                        },
+                        {
+                            "key": "projectile/damage",
+                            "fixTo": 2.5
                         }
                     ]
                 },
                 {
                     "fixes": [
+                        {
+                            "key": "continuousCount",
+                            "fixTo": 7.0
+                        },
                         {
                             "key": "projectile/damage",
                             "fixTo": 3.0
@@ -40,16 +48,12 @@
                 {
                     "fixes": [
                         {
-                            "key": "continuousCount",
-                            "fixTo": 7.0
-                        }
-                    ]
-                },
-                {
-                    "fixes": [
+                            "key": "interval",
+                            "fixTo": 0.10000000149011612
+                        },
                         {
-                            "key": "projectile/damage",
-                            "fixTo": 4.0
+                            "key": "continuousCount",
+                            "fixTo": 1.0
                         }
                     ]
                 }
@@ -80,7 +84,7 @@
                     "fixes": [
                         {
                             "key": "projectile/damage",
-                            "fixTo": 18.0
+                            "fixTo": 15.0
                         },
                         {
                             "key": "fireCount",
@@ -92,11 +96,23 @@
                     "fixes": [
                         {
                             "key": "projectile/damage",
-                            "fixTo": 24.0
+                            "fixTo": 18.0
                         },
                         {
                             "key": "fireCount",
                             "fixTo": 3.0
+                        }
+                    ]
+                },
+                {
+                    "fixes": [
+                        {
+                            "key": "projectile/speed",
+                            "fixTo": 25.0
+                        },
+                        {
+                            "key": "projectile/homming",
+                            "fixTo": 260.0
                         }
                     ]
                 }
@@ -120,7 +136,7 @@
             "fireType": "FrontEvenSpread",
             "fireCount": 5,
             "continuousCount": 1,
-            "interval": 2.200000047683716,
+            "interval": 1.2000000476837159,
             "angleRange": 45.0,
             "upgrades": [
                 {
@@ -155,37 +171,21 @@
             "weight": 1.0,
             "projectile": {
                 "sprite": "Bomb",
-                "maxHp": 30.0,
+                "maxHp": 0.0,
                 "damage": 30.0,
                 "range": 8.0,
-                "speed": 3.0,
+                "speed": 10.0,
                 "scale": 2.0,
                 "homming": 0.0,
-                "lifetime": 5.0,
-                "hitProjectile": true
+                "lifetime": 10.0,
+                "hitProjectile": false
             },
             "fireType": "FrontArrow",
             "fireCount": 1,
             "continuousCount": 1,
             "interval": 8.0,
-            "angleRange": 0.0,
+            "angleRange": 2.0,
             "upgrades": [
-                {
-                    "fixes": [
-                        {
-                            "key": "projectile/range",
-                            "fixTo": 12.0
-                        }
-                    ]
-                },
-                {
-                    "fixes": [
-                        {
-                            "key": "projectile/maxHp",
-                            "fixTo": 45.0
-                        }
-                    ]
-                },
                 {
                     "fixes": [
                         {
@@ -198,15 +198,11 @@
                     "fixes": [
                         {
                             "key": "projectile/range",
-                            "fixTo": 20.0
-                        }
-                    ]
-                },
-                {
-                    "fixes": [
+                            "fixTo": 12.0
+                        },
                         {
-                            "key": "projectile/maxHp",
-                            "fixTo": 60.0
+                            "key": "projectile/speed",
+                            "fixTo": 18.0
                         }
                     ]
                 },
@@ -227,7 +223,7 @@
             "projectile": {
                 "sprite": "Bullet",
                 "maxHp": 0.0,
-                "damage": 3.0,
+                "damage": 1.0,
                 "range": 0.0,
                 "speed": 10.0,
                 "scale": 0.6000000238418579,
@@ -248,8 +244,8 @@
             "weight": 1.0,
             "projectile": {
                 "sprite": "Bomb",
-                "maxHp": 5.0,
-                "damage": 10.0,
+                "maxHp": 1.0,
+                "damage": 1.0,
                 "range": 3.0,
                 "speed": 10.0,
                 "scale": 1.5,
@@ -271,7 +267,7 @@
             "projectile": {
                 "sprite": "Bullet",
                 "maxHp": 0.0,
-                "damage": 5.0,
+                "damage": 1.0,
                 "range": 0.0,
                 "speed": 20.0,
                 "scale": 1.0,
@@ -293,7 +289,7 @@
             "projectile": {
                 "sprite": "Fighter",
                 "maxHp": 1.0,
-                "damage": 15.0,
+                "damage": 1.0,
                 "range": 3.0,
                 "speed": 15.0,
                 "scale": 1.0,
@@ -315,7 +311,7 @@
             "projectile": {
                 "sprite": "Bullet",
                 "maxHp": 0.0,
-                "damage": 5.0,
+                "damage": 1.0,
                 "range": 0.0,
                 "speed": 15.0,
                 "scale": 0.699999988079071,
@@ -331,7 +327,7 @@
             "upgrades": []
         },
         {
-            "key": "e_minigun2",
+            "key": "e_rifle",
             "forPlayer": false,
             "weight": 1.0,
             "projectile": {
@@ -339,17 +335,17 @@
                 "maxHp": 0.0,
                 "damage": 1.0,
                 "range": 0.0,
-                "speed": 30.0,
+                "speed": 20.0,
                 "scale": 0.30000001192092898,
                 "homming": 0.0,
                 "lifetime": 5.0,
                 "hitProjectile": true
             },
-            "fireType": "Random",
-            "fireCount": 1,
-            "continuousCount": 10,
-            "interval": 2.0,
-            "angleRange": 8.0,
+            "fireType": "FrontArrow",
+            "fireCount": 2,
+            "continuousCount": 1,
+            "interval": 1.0,
+            "angleRange": 1.0,
             "upgrades": []
         },
         {
@@ -359,9 +355,9 @@
             "projectile": {
                 "sprite": "Ballista",
                 "maxHp": 0.0,
-                "damage": 30.0,
+                "damage": 1.0,
                 "range": 0.0,
-                "speed": 30.0,
+                "speed": 50.0,
                 "scale": 3.5999999046325685,
                 "homming": 0.0,
                 "lifetime": 30.0,

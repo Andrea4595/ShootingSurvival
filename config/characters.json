@@ -9,7 +9,7 @@
                 1.0
             ],
             "scale": 1.0,
-            "maxHp": 100.0,
+            "maxHp": 3.0,
             "moveSpeed": 5.0,
             "homming": 1000.0,
             "weapons": [
@@ -40,8 +40,8 @@
                 0.0,
                 0.0
             ],
-            "scale": 1.2000000476837159,
-            "maxHp": 10.0,
+            "scale": 2.0,
+            "maxHp": 15.0,
             "moveSpeed": 2.0,
             "homming": 1000.0,
             "weapons": [
@@ -57,7 +57,7 @@
                 0.0
             ],
             "scale": 3.0,
-            "maxHp": 100.0,
+            "maxHp": 120.0,
             "moveSpeed": 3.0,
             "homming": 10.0,
             "weapons": [
@@ -73,7 +73,7 @@
                 0.4072192311286926
             ],
             "scale": 5.0,
-            "maxHp": 130.0,
+            "maxHp": 150.0,
             "moveSpeed": 1.0,
             "homming": 10.0,
             "weapons": [
@@ -94,7 +94,7 @@
             "moveSpeed": 15.0,
             "homming": 130.0,
             "weapons": [
-                "e_minigun2"
+                "e_rifle"
             ]
         },
         {
@@ -105,10 +105,10 @@
                 0.0,
                 0.0
             ],
-            "scale": 2.0,
-            "maxHp": 10.0,
+            "scale": 2.5999999046325685,
+            "maxHp": 20.0,
             "moveSpeed": 2.0,
-            "homming": 1000.0,
+            "homming": 30.0,
             "weapons": [
                 "e_ballista"
             ]
