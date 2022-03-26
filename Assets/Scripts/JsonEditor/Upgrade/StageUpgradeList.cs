@@ -84,32 +84,32 @@ namespace JsonEditor
 
         public void ShowIncreaseHp()
         {
-            _upgradeInterface.UpdateInterface(Data.GameData.instance.stageUpgrades.increaseHp, "Increase Hp");
+            _upgradeInterface.UpdateInterface(Data.GameData.instance.stageUpgrades.increaseHp, Data.GameData.instance.language.IncreaseStatusText(Data.GameData.instance.language.hp));
         }
 
         public void ShowIncreaseMoveSpeed()
         {
-            _upgradeInterface.UpdateInterface(Data.GameData.instance.stageUpgrades.increaseMoveSpeed, "Increase MoveSpeed");
+            _upgradeInterface.UpdateInterface(Data.GameData.instance.stageUpgrades.increaseMoveSpeed, Data.GameData.instance.language.IncreaseStatusText(Data.GameData.instance.language.moveSpeed));
         }
 
         public void ShowIncreaseCredit()
         {
-            _upgradeInterface.UpdateInterface(Data.GameData.instance.stageUpgrades.increaseCredit, "Increase Credit");
+            _upgradeInterface.UpdateInterface(Data.GameData.instance.stageUpgrades.increaseCredit, Data.GameData.instance.language.IncreaseStatusText(Data.GameData.instance.language.credit));
         }
 
         public void ShowHeal()
         {
-            _upgradeInterface.UpdateInterface(Data.GameData.instance.stageUpgrades.heal, "Heal", true);
+            _upgradeInterface.UpdateInterface(Data.GameData.instance.stageUpgrades.heal, Data.GameData.instance.language.heal, true);
         }
 
         public void ShowCredit()
         {
-            _upgradeInterface.UpdateInterface(Data.GameData.instance.stageUpgrades.credit, "Credit", true);
+            _upgradeInterface.UpdateInterface(Data.GameData.instance.stageUpgrades.credit, Data.GameData.instance.language.credit, true);
         }
 
         public void ShowWeaponWeight(Data.Object.WeaponInformation weapon)
         {
-            _upgradeInterface.UpdateInterface(weapon, $"Weapon: {weapon.key}");
+            _upgradeInterface.UpdateInterface(weapon, $"¹«±â: {weapon.key}");
         }
     }
 }

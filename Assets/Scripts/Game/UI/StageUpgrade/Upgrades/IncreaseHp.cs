@@ -1,28 +1,39 @@
+using Data;
+
 namespace Game.UI.StageUpgrade
 {
     public class IncreaseHp : IUpgrade
     {
-        Data.GameData gameData => Data.GameData.instance;
+        GameData gameData => GameData.instance;
         Character.Character player => PlayerSetter.instance.player;
 
-        float baseHp => gameData.GetCharacterInformation("player").maxHp + gameData.permanentUpgrades.increaseHp.current.power;
-        float stageIncreasedHp => gameData.stageUpgrades.increaseHp.current;
-        float nextStageIncreasedHp => gameData.stageUpgrades.increaseHp.next;
-        float nextHp => baseHp * (1 + nextStageIncreasedHp);
+        public UpgradeInformation.StageUpgrades.Upgrade upgrade => gameData.stageUpgrades.increaseHp;
 
-        public string GetName() => $"{gameData.language.IncreaseStatusText(gameData.language.hp)} {gameData.stageUpgrades.increaseHp.level + 1}";
+        float baseValue => gameData.GetCharacterInformation("player").maxHp + gameData.permanentUpgrades.increaseHp.current.power;
+        float currentUpgrade => upgrade.current;
+        float nextUpgrade => upgrade.next;
+        float nextValue => baseValue + nextUpgrade;
+
+        public string GetName() => $"{gameData.language.IncreaseStatusText(gameData.language.hp)} {GetLevel()}";
+        string GetLevel()
+        {
+            if (upgrade.level + 2 >= upgrade.power.Length)
+                return "MAX";
+
+            return (upgrade.level + 1).ToString();
+        }
 
         public string GetContent()
         {
-            var nowHp = baseHp * (1 + stageIncreasedHp);
+            var nowHp = baseValue + currentUpgrade;
 
-            return $"{gameData.language.hp} : {nowHp} ¡æ {nextHp}\n";
+            return $"{gameData.language.hp} : {nowHp} ¡æ {nextValue}\n";
         }
 
         public void Upgrade()
         {
-            player.health.SetMaxHp(nextHp);
-            gameData.stageUpgrades.increaseHp.level++;
+            player.health.SetMaxHp(nextValue);
+            upgrade.level++;
         }
     }
 }

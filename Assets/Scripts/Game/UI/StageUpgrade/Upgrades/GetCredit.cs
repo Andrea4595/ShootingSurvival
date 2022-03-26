@@ -1,12 +1,15 @@
+using Data;
 using UnityEngine;
 
 namespace Game.UI.StageUpgrade
 {
     public class GetCredit : IUpgrade
     {
-        Data.GameData gameData => Data.GameData.instance;
+        GameData gameData => GameData.instance;
 
-        int creditAmount => Mathf.RoundToInt(gameData.stageUpgrades.credit.power[0] * Data.GameData.instance.creditBonus);
+        int creditAmount => Mathf.RoundToInt(gameData.stageUpgrades.credit.power[0] * gameData.creditBonus);
+
+        public UpgradeInformation.StageUpgrades.Upgrade upgrade => null;
 
         public string GetName() => gameData.language.credit;
 
