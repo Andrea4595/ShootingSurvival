@@ -61,8 +61,6 @@ namespace Game.Weapon
 
             while (lifeTime < information.lifetime)
             {
-                yield return null;
-
                 var moveSpeed = information.speed * Time.smoothDeltaTime;
                 var newPosition = new Vector3();
                 newPosition.x = Mathf.Cos(_direction * Mathf.Deg2Rad) * moveSpeed;
@@ -75,6 +73,8 @@ namespace Game.Weapon
                     RunHomming();
 
                 lifeTime += Time.smoothDeltaTime;
+
+                yield return null;
             }
 
             Destroy();
