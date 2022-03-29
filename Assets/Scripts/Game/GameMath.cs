@@ -62,5 +62,32 @@ namespace Game
 
             return Homming(originalDirection, targetDirection, homming);
         }
+
+        public static Character.Character GetNearest(Character.Character.Force targetForce, Vector3 origin, float maxDistance)
+        {
+            var targets = StageSpawner.instance.Remains(targetForce);
+
+            if (targets.Length <= 0)
+                return null;
+
+            Character.Character nearestTarget = null;
+            var nearestDistance = Mathf.Infinity;
+
+            foreach(var target in targets)
+            {
+                var distance = Vector3.Distance(origin, target.movement.position);
+                
+                if (distance > maxDistance)
+                    continue;
+
+                if (distance > nearestDistance)
+                    continue;
+
+                nearestDistance = distance;
+                nearestTarget = target;
+            }
+
+            return nearestTarget;
+        }
     }
 }

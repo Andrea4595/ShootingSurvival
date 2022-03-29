@@ -9,6 +9,8 @@ namespace Game.Character
     {
         [SerializeField]
         Character _character;
+        [SerializeField]
+        float _autoAimDistance;
 
         private void OnEnable()
         {
@@ -22,7 +24,7 @@ namespace Game.Character
                 yield return null;
 
                 Move();
-                LookAtMouse();
+                LookAtNeareestTargetOnAim();
             }
         }
 
@@ -36,12 +38,23 @@ namespace Game.Character
             _character.movement.Move(inputVector);
         }
 
-        void LookAtMouse()
+        void LookAtNeareestTargetOnAim()
         {
             if (Time.timeScale == 0)
                 return;
 
-            _character.movement.LookAtDirection(GameMath.Homming(_character.movement.lookingDirection, _character.movement.position, Cursor.position, _character.information.homming));
+            var nearest = GameMath.GetNearest(Character.Force.Enemy, Cursor.position, _autoAimDistance);
+
+            if (nearest != null)
+            {
+                var newDirection = GameMath.Homming(_character.movement.lookingDirection, _character.movement.position, nearest.movement.position, _character.information.homming);
+                _character.movement.LookAtDirection(newDirection);
+            }
+            else
+            {
+                var newDirection = GameMath.Homming(_character.movement.lookingDirection, _character.movement.position, Cursor.position, _character.information.homming);
+                _character.movement.LookAtDirection(newDirection);
+            }
         }
     }
 }
